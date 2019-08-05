@@ -1,0 +1,8 @@
+<p-sidebar [(visible)]="display" [fullScreen]="false">
+  <p-menu  (click)="clickItemMenu()" [model]="items"></p-menu>
+</p-sidebar>
+
+<div class="menu pointer no-print">
+  <i (click)="display = true" class="pi pi-list"></i>
+</div>
+

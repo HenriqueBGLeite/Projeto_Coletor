@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #ededed;
+  background-size: 100%;
+  filter: alpha(opacity=100);
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  padding: 0;
+  margin: 0;
+}
+
+#logo {
+  width: 100px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.ui-menu {
+  border: 0px solid !important;
+  padding-left: 0 !important;
+  width: 217px !important;
+}
+
+.ui-sidebar-left {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 220px !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.body {
+  margin: 3px;
+}
+
+@media print {
+  .no-print, .no-print * {
+    display: none !important;
+    opacity: 0.0;
+  }
+}
