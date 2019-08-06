@@ -20,7 +20,7 @@ import { PesquisaProdutoModule } from './componentes/pesquisa-produto/pesquisa-p
     BrowserAnimationsModule,
     SidebarModule,
     GalleriaModule,
-    PesquisaProdutoModule
+    PesquisaProdutoModule   
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' }

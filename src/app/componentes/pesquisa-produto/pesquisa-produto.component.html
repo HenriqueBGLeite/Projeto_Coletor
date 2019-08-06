@@ -1,12 +1,31 @@
 <p-panel header="Busca Produto">
-  <div class="ui-g ui-fluid">
-    <div class="ui-g-12 ui-md-4">
+  <div class="ui-g ui-md-12">
+    <div class="ui-g-6 ui-md-3 camposBusca">
       <div class="ui-inputgroup">
-        <input type="text" pInputText pKeyFilter="pnum" placeholder="Código EAN">
-        <button pButton type="button" icon="pi pi-search"></button>
+          <p-dropdown name="criterioBusca" [options]="criterioBusca" [(ngModel)]="tipoBusca"></p-dropdown>
+          <input *ngIf="tipoBusca == 'codprod'" name="codprod" type="text" placeholder="Digite o Cod. Prod." pInputText />
+          <input *ngIf="tipoBusca == 'codauxiliar'" name="codauxiliar" type="text" placeholder="Digite o EAN" pInputText />
+          <input *ngIf="tipoBusca == 'codauxiliar2'" name="codauxiliar2" type="text" placeholder="Digite o DUN" pInputText />
+        <button pButton type="button" icon="fa fa-search" (click)="definirBusca()"></button>
       </div>
     </div>
   </div>
+  <p-table [value]="produtos" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 50, 100]">
+    <ng-template pTemplate="header">
+        <tr>
+            <th *ngFor="let coluna of col">{{coluna.label}}</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-produtos>
+        <tr>
+            <td>{{produtos.codprod}}</td>
+            <td>{{produtos.descricao}}</td>
+            <td>{{produtos.fornecedor}}</td>
+            <td>{{produtos.embalagem}}</td>
+            <td>{{produtos.qtunitcx}}</td>
+        </tr>
+    </ng-template>
+</p-table>
 </p-panel>
 
   

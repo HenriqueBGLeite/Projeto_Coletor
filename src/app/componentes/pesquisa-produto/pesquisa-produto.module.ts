@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { PesquisaProdutoComponent } from './pesquisa-produto.component';
 import { PanelModule } from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
-import { KeyFilterModule } from 'primeng/keyfilter';
+import {TableModule} from 'primeng/table';
+import {DropdownModule} from 'primeng/dropdown';
+import {FormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [PesquisaProdutoComponent],
@@ -11,7 +13,9 @@ import { KeyFilterModule } from 'primeng/keyfilter';
     CommonModule,
     PanelModule,
     ButtonModule,
-    KeyFilterModule
+    TableModule,
+    DropdownModule,
+    FormsModule
   ]
 })
 
