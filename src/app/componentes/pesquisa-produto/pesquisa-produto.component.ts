@@ -9,17 +9,12 @@ export class PesquisaProdutoComponent implements OnInit {
 
   produtos: any[];
   col: any[];
-  criterioBusca = [
-    {label: 'Cod. Prod.', value: 'codprod'},
-    {label: 'EAN', value: 'codauxiliar'},
-    {label: 'DUN', value: 'codauxiliar2'}
-  ];
-  tipoBusca = 'codprod';
+
 
   constructor() { }
 
   ngOnInit() {
-    this.carregaProduto();
+    this.buscarProduto();
     this.carregaColuna();
   }
 
@@ -60,21 +55,8 @@ export class PesquisaProdutoComponent implements OnInit {
     ]
   }
 
-  definirBusca() {
-    switch (this.tipoBusca) {
-      case 'codprod':
-        //Pesquisa por Codigo do Produto
-        this.produtos = [
-          {codprod: 123, descricao: 'Copo', fornecedor: 'Colgate', embalagem: '10x5', qtunitcx: '10'}
-        ];
-        break;
-      case 'descricao':
-        //Pesquisa pela descrição do Produto
-
-        break;
-      case '':
-
-    }
+  buscarProduto() {
+    this.carregaProduto();
   }
 
 }

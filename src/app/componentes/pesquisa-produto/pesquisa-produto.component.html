@@ -1,15 +1,9 @@
 <p-panel header="Busca Produto">
-  <div class="ui-g ui-md-12">
-    <div class="ui-g-6 ui-md-3 camposBusca">
-      <div class="ui-inputgroup">
-          <p-dropdown name="criterioBusca" [options]="criterioBusca" [(ngModel)]="tipoBusca"></p-dropdown>
-          <input *ngIf="tipoBusca == 'codprod'" name="codprod" type="text" placeholder="Digite o Cod. Prod." pInputText />
-          <input *ngIf="tipoBusca == 'codauxiliar'" name="codauxiliar" type="text" placeholder="Digite o EAN" pInputText />
-          <input *ngIf="tipoBusca == 'codauxiliar2'" name="codauxiliar2" type="text" placeholder="Digite o DUN" pInputText />
-        <button pButton type="button" icon="fa fa-search" (click)="definirBusca()"></button>
-      </div>
-    </div>
+  <div class="ui-inputgroup camposBusca">
+      <input name="buscar" type="text" placeholder="Todos os registros" pInputText />
+    <button pButton type="button" icon="fa fa-search" (click)="buscarProduto()"></button>
   </div>
+
   <p-table [value]="produtos" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 50, 100]">
     <ng-template pTemplate="header">
         <tr>
