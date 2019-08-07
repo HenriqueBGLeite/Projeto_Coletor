@@ -5,7 +5,7 @@ import { PanelModule } from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
 import {TableModule} from 'primeng/table';
 import {DropdownModule} from 'primeng/dropdown';
-import {FormsModule} from '@angular/forms'
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [PesquisaProdutoComponent],

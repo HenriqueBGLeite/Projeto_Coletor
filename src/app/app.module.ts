@@ -8,6 +8,7 @@ import { MenuLateralModule } from './componentes/menu-lateral/menu-lateral.modul
 import { SidebarModule } from 'primeng/sidebar';
 import { GalleriaModule } from 'primeng/galleria';
 import { PesquisaProdutoModule } from './componentes/pesquisa-produto/pesquisa-produto.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PesquisaProdutoModule } from './componentes/pesquisa-produto/pesquisa-p
     BrowserAnimationsModule,
     SidebarModule,
     GalleriaModule,
-    PesquisaProdutoModule   
+    PesquisaProdutoModule,
+    HttpClientModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' }
