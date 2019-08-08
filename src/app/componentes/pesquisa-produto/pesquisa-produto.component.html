@@ -2,7 +2,7 @@
   <form>
     <div class="ui-inputgroup camposBusca">
         <input name="buscar" type="text" [(ngModel)]="filtroPesquisa" placeholder="Cod.Prod / EAN / DUN" pInputText />
-        <button pButton type="button" icon="fa fa-search" (click)="buscarProdutoId(14531)"></button>
+        <button pButton type="button" icon="fa fa-search" (click)="buscarProdutoId()"></button>
     </div>
   </form>
   <p-table [value]="produtos" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 50, 100]">
