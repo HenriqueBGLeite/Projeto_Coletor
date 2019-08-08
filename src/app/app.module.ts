@@ -9,6 +9,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { GalleriaModule } from 'primeng/galleria';
 import { PesquisaProdutoModule } from './componentes/pesquisa-produto/pesquisa-produto.module';
 import { HttpClientModule } from '@angular/common/http';
+import { BlockUIModule } from 'ng-block-ui';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     SidebarModule,
     GalleriaModule,
     PesquisaProdutoModule,
-    HttpClientModule
+    HttpClientModule,
+    BlockUIModule.forRoot(),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' }

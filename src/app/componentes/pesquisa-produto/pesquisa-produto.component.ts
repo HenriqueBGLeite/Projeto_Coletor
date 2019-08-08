@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PesquisaProdutoService } from './compartilhado/pesquisa-produto.service';
 import { Produto } from './compartilhado/produto.model';
+import { NgBlockUI, BlockUI } from 'ng-block-ui';
+import { MensagemUtil } from 'src/Util/mensagem-util';
 
 @Component({
   selector: 'app-pesquisa-produto',
@@ -8,6 +10,8 @@ import { Produto } from './compartilhado/produto.model';
   styleUrls: ['./pesquisa-produto.component.css']
 })
 export class PesquisaProdutoComponent implements OnInit {
+
+  @BlockUI() blockUI: NgBlockUI;
 
   produtos: Produto;
   col: any[];
@@ -24,17 +28,24 @@ export class PesquisaProdutoComponent implements OnInit {
   carregaColuna() {
     this.col = [
       { var: 'codigo', label: 'Cod. Prod.' },
-      { var: 'descricao', label: 'Descrição' },
-      { var: 'fornecedor', label: 'Fornecedor' },
-      { var: 'embalagem', label: 'Embalagem' },
-      { var: 'qtunitcx', label: 'Qtd. UnitCx' },
+      { var: 'descricao', label: 'Descrição' }
     ];
   }
 
+  buscarTodos() {
+    this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
+  }
+
   buscarProdutoId() {
-   this.pesquisaProdutoService.buscarProduto(this.filtroPesquisa).subscribe((produto: Produto) =>{
-      this.produtos = produto;
-    }, (respostaErro) => { respostaErro.error.errors.msg });
+    this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
+      this.pesquisaProdutoService.buscarProduto(this.filtroPesquisa).subscribe((produto: Produto) =>{
+        this.produtos = produto;
+    }, () => { 
+              MensagemUtil.ERRO_NA_BUSCA 
+              this.blockUI.stop();
+            },
+    () => this.blockUI.stop());
+    
   }
 
 }

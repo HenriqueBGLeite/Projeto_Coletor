@@ -7,6 +7,8 @@ import {TableModule} from 'primeng/table';
 import {DropdownModule} from 'primeng/dropdown';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 
 @NgModule({
   declarations: [PesquisaProdutoComponent],
@@ -17,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     TableModule,
     DropdownModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MessagesModule,
+    MessageModule,
   ]
 })
 
