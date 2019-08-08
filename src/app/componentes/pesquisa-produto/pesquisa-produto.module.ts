@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import {TableModule} from 'primeng/table';
 import {DropdownModule} from 'primeng/dropdown';
 import {FormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [PesquisaProdutoComponent],
@@ -15,7 +16,8 @@ import {FormsModule} from '@angular/forms';
     ButtonModule,
     TableModule,
     DropdownModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ]
 })
 

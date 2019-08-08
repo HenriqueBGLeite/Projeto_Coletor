@@ -7,14 +7,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PesquisaProdutoService {
 
-  urlApi = environment.urlApi.concat('PesquisaProduto/getProdutosColetor/');
+  //urlApi = environment.urlApi.concat('PesquisaProduto/getProdutosColetor/');
   urlApiTeste = environment.urlApi.concat('PesquisaProduto/getTodosProdutos/');
 
   constructor(private httpClient: HttpClient) { }
 
-  public buscarProduto(filtro: string){
+  /*public buscarProduto(filtro: string){
     return this.httpClient.get(`${this.urlApi}${filtro}`);
-  }
+  }*/
 
   public testeApi(){
     return this.httpClient.get(`${this.urlApiTeste}`);

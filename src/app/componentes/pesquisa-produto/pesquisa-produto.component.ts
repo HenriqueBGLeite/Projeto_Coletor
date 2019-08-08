@@ -9,7 +9,7 @@ import { Produto } from './compartilhado/produto.model';
 })
 export class PesquisaProdutoComponent implements OnInit {
 
-  produtos: Produto[] = [];
+  produtos: Produto;
   col: any[];
 
   filtroPesquisa: string;
@@ -17,7 +17,7 @@ export class PesquisaProdutoComponent implements OnInit {
   constructor(private pesquisaProdutoService: PesquisaProdutoService) { }
 
   ngOnInit() {
-    this.carregaProduto();
+    this.buscarProdutoId();
     this.carregaColuna();
   }
 
@@ -30,6 +30,7 @@ export class PesquisaProdutoComponent implements OnInit {
       { var: 'qtunitcx', label: 'Qtd. UnitCx' },
     ];
   }
+  /*
   carregaProduto() {
     this.produtos = [
       {codprod: 123, descricao: 'Copo', fornecedor: 'Colgate', embalagem: '10x5', qtunitcx: 10},
@@ -56,13 +57,14 @@ export class PesquisaProdutoComponent implements OnInit {
       {codprod: 925, descricao: 'Sabonete', fornecedor: 'Colgate', embalagem: '10x5', qtunitcx: 10},
       {codprod: 914, descricao: 'Enxaguante bucal', fornecedor: 'P&G', embalagem: '8x4', qtunitcx: 8}
     ]
-  }
+  }*/
 
   buscarProdutoId() {
-    this.pesquisaProdutoService.buscarProduto(this.filtroPesquisa).subscribe((produto: Produto[]) =>{
-      console.log(produto);
-      this.produtos = produto;
+   this.pesquisaProdutoService.testeApi().subscribe(result =>{
+      console.log(result);
     }, (respostaErro) => { respostaErro.error.errors['ERRO NO PROCESSO'].msg });
+
+    console.log("Teste")
   }
 
 }
