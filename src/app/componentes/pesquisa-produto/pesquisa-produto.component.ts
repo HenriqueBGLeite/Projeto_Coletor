@@ -13,7 +13,7 @@ export class PesquisaProdutoComponent implements OnInit {
 
   @BlockUI() blockUI: NgBlockUI;
 
-  produtos: Produto;
+  produtos: Produto [] = [];
   col: any[];
 
   filtroPesquisa: string;
@@ -21,7 +21,7 @@ export class PesquisaProdutoComponent implements OnInit {
   constructor(private pesquisaProdutoService: PesquisaProdutoService) { }
 
   ngOnInit() {
-    this.buscarProdutoId();
+    this.buscarTodos();
     this.carregaColuna();
   }
 
@@ -34,11 +34,18 @@ export class PesquisaProdutoComponent implements OnInit {
 
   buscarTodos() {
     this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
+      this.pesquisaProdutoService.buscarTodosProdutos().subscribe((produto: Produto[]) => {
+        this.produtos = produto;
+      }, () => {
+                MensagemUtil.ERRO_NA_BUSCA 
+                this.blockUI.stop();
+               },
+      () => this.blockUI.stop());
   }
 
   buscarProdutoId() {
     this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
-      this.pesquisaProdutoService.buscarProduto(this.filtroPesquisa).subscribe((produto: Produto) =>{
+      this.pesquisaProdutoService.buscarProduto(this.filtroPesquisa).subscribe((produto: Produto[]) =>{
         this.produtos = produto;
     }, () => { 
               MensagemUtil.ERRO_NA_BUSCA 
