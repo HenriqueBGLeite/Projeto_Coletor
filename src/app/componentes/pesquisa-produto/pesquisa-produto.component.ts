@@ -16,8 +16,6 @@ export class PesquisaProdutoComponent implements OnInit {
   produtos: Produto [] = [];
   col: any[];
 
-  filtroPesquisa: string;
-
   constructor(private pesquisaProdutoService: PesquisaProdutoService) { }
 
   ngOnInit() {
@@ -43,9 +41,9 @@ export class PesquisaProdutoComponent implements OnInit {
       () => this.blockUI.stop());
   }
 
-  buscarProdutoId() {
+  buscarProdutoId(codprod: string) {
     this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
-      this.pesquisaProdutoService.buscarProduto(this.filtroPesquisa).subscribe((produto: Produto[]) =>{
+      this.pesquisaProdutoService.buscarProduto(codprod).subscribe((produto: Produto[]) =>{
         this.produtos = produto;
     }, () => { 
               MensagemUtil.ERRO_NA_BUSCA 
