@@ -31,7 +31,7 @@ export class PesquisaProdutoComponent implements OnInit {
   }
 
   buscarTodos() {
-    this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
+    this.blockUI.start('Carregando Registros...');
       this.pesquisaProdutoService.buscarTodosProdutos().subscribe((produto: Produto[]) => {
         this.produtos = produto;
       }, () => {

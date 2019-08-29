@@ -24,7 +24,7 @@ import { BlockUIModule } from 'ng-block-ui';
     GalleriaModule,
     PesquisaProdutoModule,
     HttpClientModule,
-    BlockUIModule.forRoot(),
+    BlockUIModule.forRoot()
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' }

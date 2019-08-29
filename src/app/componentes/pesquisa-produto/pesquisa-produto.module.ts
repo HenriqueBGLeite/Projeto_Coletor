@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
+import { BlockUIModule } from 'ng-block-ui';
 
 @NgModule({
   declarations: [PesquisaProdutoComponent],
@@ -22,6 +23,7 @@ import { MessageModule } from 'primeng/message';
     HttpClientModule,
     MessagesModule,
     MessageModule,
+    BlockUIModule
   ]
 })
 
