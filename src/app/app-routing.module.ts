@@ -4,7 +4,7 @@ import { PesquisaProdutoComponent } from './componentes/pesquisa-produto/pesquis
 
 const routes: Routes = [
   //Rota default do projeto
-  { path: '', redirectTo: '/pesquisa-produto', pathMatch: 'full' },
+  //{ path: '', redirectTo: '/pesquisa-produto', pathMatch: 'full' },
     
   //Rotas para pesquisar produto
   { path: 'pesquisa-produto', component: PesquisaProdutoComponent,  },

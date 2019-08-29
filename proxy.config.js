@@ -1,7 +1,7 @@
 const proxy = [
     {
       context: '/api',
-      target: 'http://192.168.0.118:81',
+      target: 'https://localhost:44383',
       secure: false,
       changeOrigin: true,
       logLevel: "debug"
