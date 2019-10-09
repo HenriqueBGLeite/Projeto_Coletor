@@ -10,6 +10,8 @@ import { GalleriaModule } from 'primeng/galleria';
 import { PesquisaProdutoModule } from './componentes/pesquisa-produto/pesquisa-produto.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BlockUIModule } from 'ng-block-ui';
+import { MessageService } from 'primeng/api';
+import { MessageServiceUtil } from 'src/Util/message-service-util.service';
 
 @NgModule({
   declarations: [
@@ -24,9 +26,10 @@ import { BlockUIModule } from 'ng-block-ui';
     GalleriaModule,
     PesquisaProdutoModule,
     HttpClientModule,
-    BlockUIModule.forRoot()
+    BlockUIModule.forRoot(),
   ],
-  providers: [
+  providers: [MessageService,
+    MessageServiceUtil,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent]

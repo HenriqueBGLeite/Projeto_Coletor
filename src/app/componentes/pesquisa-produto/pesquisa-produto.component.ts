@@ -3,6 +3,7 @@ import { PesquisaProdutoService } from './compartilhado/pesquisa-produto.service
 import { Produto } from './compartilhado/produto.model';
 import { NgBlockUI, BlockUI } from 'ng-block-ui';
 import { MensagemUtil } from 'src/Util/mensagem-util';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-pesquisa-produto',
@@ -13,10 +14,11 @@ export class PesquisaProdutoComponent implements OnInit {
 
   @BlockUI() blockUI: NgBlockUI;
 
+  prod: string;
   produtos: Produto [] = [];
   col: any[];
 
-  constructor(private pesquisaProdutoService: PesquisaProdutoService) { }
+  constructor(private pesquisaProdutoService: PesquisaProdutoService, private messageService: MessageService) { }
 
   ngOnInit() {
     this.buscarTodos();
@@ -31,7 +33,7 @@ export class PesquisaProdutoComponent implements OnInit {
   }
 
   buscarTodos() {
-    this.blockUI.start('Carregando Registros...');
+    this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
       this.pesquisaProdutoService.buscarTodosProdutos().subscribe((produto: Produto[]) => {
         this.produtos = produto;
       }, () => {
@@ -42,15 +44,22 @@ export class PesquisaProdutoComponent implements OnInit {
   }
 
   buscarProdutoId(codprod: string) {
+    
     this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
+    if(codprod){
       this.pesquisaProdutoService.buscarProduto(codprod).subscribe((produto: Produto[]) =>{
         this.produtos = produto;
-    }, () => { 
-              MensagemUtil.ERRO_NA_BUSCA 
+      }, () => {  
+              this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA))
               this.blockUI.stop();
-            },
-    () => this.blockUI.stop());
-    
+              },
+      () => this.blockUI.stop());
+
+      this.prod = '';
+      
+    } else
+      this.buscarTodos();
+      this.blockUI.stop();
   }
 
 }

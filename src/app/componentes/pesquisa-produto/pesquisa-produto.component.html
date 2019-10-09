@@ -1,7 +1,7 @@
 <p-panel header="Busca Produto">
   <form>
     <div class="ui-inputgroup camposBusca">
-        <input #produto name="buscar" type="text" (keyup.enter)="buscarProdutoId(produto.value)" placeholder="Cod.Prod / EAN / DUN" pInputText />
+        <input #produto [(ngModel)]="prod" name="buscar" type="text" (keyup.enter)="buscarProdutoId(produto.value)" placeholder="Cod.Prod / EAN / DUN" pInputText />
         <button pButton type="button" icon="fa fa-search"></button>
     </div>
   </form>
