@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BlockUIModule } from 'ng-block-ui';
 import { MessageService } from 'primeng/api';
 import { MessageServiceUtil } from 'src/Util/message-service-util.service';
+import { InventarioModule } from './componentes/inventario/inventario.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MessageServiceUtil } from 'src/Util/message-service-util.service';
     PesquisaProdutoModule,
     HttpClientModule,
     BlockUIModule.forRoot(),
+    InventarioModule
   ],
   providers: [MessageService,
     MessageServiceUtil,

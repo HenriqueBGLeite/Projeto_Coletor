@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { BlockUIModule } from 'ng-block-ui';
-
+import {KeyFilterModule} from 'primeng/keyfilter';
 @NgModule({
   declarations: [PesquisaProdutoComponent],
   imports: [
@@ -23,7 +23,8 @@ import { BlockUIModule } from 'ng-block-ui';
     HttpClientModule,
     MessagesModule,
     MessageModule,
-    BlockUIModule
+    BlockUIModule,
+    KeyFilterModule
   ]
 })
 
