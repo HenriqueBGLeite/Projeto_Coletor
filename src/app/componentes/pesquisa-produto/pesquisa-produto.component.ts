@@ -14,7 +14,7 @@ export class PesquisaProdutoComponent implements OnInit {
 
   @BlockUI() blockUI: NgBlockUI;
 
-  prod: string;
+  limpar: string;
   produtos: Produto [] = [];
   col: any[];
 
@@ -55,7 +55,7 @@ export class PesquisaProdutoComponent implements OnInit {
               },
       () => this.blockUI.stop());
 
-      this.prod = '';
+      this.limpar = '';
       
     } else
       this.buscarTodos();

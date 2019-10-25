@@ -5,13 +5,15 @@ import { MenuModule } from 'primeng/menu';
 import { SidebarModule } from 'primeng/sidebar';
 import { PanelMenuModule } from 'primeng/panelmenu';
 
+
 @NgModule({
   declarations: [MenuLateralComponent],
   imports: [
     CommonModule,
     MenuModule,
     SidebarModule,
-    PanelMenuModule
+    PanelMenuModule,
+
   ],
   exports: [MenuLateralComponent]
 })
