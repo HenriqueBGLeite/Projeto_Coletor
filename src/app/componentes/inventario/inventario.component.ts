@@ -14,10 +14,14 @@ export class InventarioComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
   produtos: Produto [] = [];
   limpar: string;
+  total: number;
+  qtUnit: number;
+  qtCx: number;
 
   constructor(private pesquisaProdutoService: PesquisaProdutoService, private messageService: MessageService) { }
 
   ngOnInit() {
+    this.somarQuantidades();
   }
 
   buscarProdutoId(codprod: string) {
@@ -26,7 +30,6 @@ export class InventarioComponent implements OnInit {
     if(codprod){
       this.pesquisaProdutoService.buscarProduto(codprod).subscribe((produto: Produto[]) =>{
         this.produtos = produto;
-        console.log(this.produtos);
       }, () => {  
               this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA))
               this.blockUI.stop();
@@ -38,7 +41,11 @@ export class InventarioComponent implements OnInit {
     }
   }
 
+  buscaQtunit(evento: KeyboardEvent){
+    this.qtUnit = (<HTMLInputElement>evento.target).valueAsNumber;
+  }
   somarQuantidades(){
-    null;
+    this.qtCx = 15;
+    this.total = this.qtCx + 5;
   }
 }

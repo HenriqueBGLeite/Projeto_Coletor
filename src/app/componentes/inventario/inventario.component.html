@@ -1,5 +1,5 @@
 <p-panel header="Inventário">
-  <form>
+  <form #f="ngForm">
     <div class="ui-g">
       <div class="ui-g-12 ui-md-12 ui-lg-12">
         <div class="ui-inputgroup camposBusca">
@@ -12,7 +12,7 @@
     <div class="ui-g ui-fluid">
       <div class="ui-g-12 ui-md-12 ui-lg-12">
         <div class="ui-inputgroup">
-            <input id="disabled-input" type="text" size="30" pInputText disabled placeholder="Produto" />
+            <input type="text" name="descricao" disabled="true" [(ngModel)]="produtos.descricao" readonly="true" pInputText />
         </div>
       </div>
       <div class="ui-g-6 ui-md-6 ui-lg-6">
@@ -38,19 +38,19 @@
       </div>      
       <div class="ui-g-3 ui-md-3 ui-lg-3">
         <div class="ui-inputgroup">
-            <input id="disabled-input" type="text" size="30" pKeyFilter="pnum" pInputText placeholder="Qt. Cx." />
+            <input id="disabled-input" type="text" size="30" pKeyFilter="pnum" pInputText name="qtCx" (ngModel)="qtCx" placeholder="Qt. Cx." />
         </div>
       </div>
       <div class="ui-g-1 ui-md-1 ui-lg-1">+</div>      
       <div class="ui-g-3 ui-md-3 ui-lg-3">
         <div class="ui-inputgroup">
-            <input id="disabled-input" type="text" size="30" pKeyFilter="pnum" pInputText placeholder="Qt. Unit." />
+            <input id="disabled-input" type="text" size="30" pKeyFilter="pnum" pInputText name="qtUnit" (ngModel)="qtUnit = $event.target.value" placeholder="Qt. Unit." />
         </div>
       </div>
       <div class="ui-g-1 ui-md-1 ui-lg-1">=</div>
       <div class="ui-g-4 ui-md-4 ui-lg-4">
         <div class="ui-inputgroup">
-            <input id="disabled-input" type="text" size="30" pInputText disabled placeholder="Total" />
+            <input id="disabled-input" type="text" size="30" pInputText [value]="total" disabled />
         </div>
       </div>
       <button pButton type="button" label="CONFIRMAR"></button>             
