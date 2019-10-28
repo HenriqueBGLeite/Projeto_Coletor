@@ -15,6 +15,10 @@ export class PesquisaProdutoService {
     return this.httpClient.get(`${this.urlApi}getProdutosColetor/${filtro}`);
   }
 
+  public buscarProdutoLista(filtro: string){
+    return this.httpClient.get(`${this.urlApi}getProdutoLista/${filtro}`);
+  }
+
   public buscarTodosProdutos(){
     return this.httpClient.get(`${this.urlApi}getTodosProdutos/`);
   }

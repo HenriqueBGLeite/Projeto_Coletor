@@ -1,3 +1,14 @@
+.camposBusca {
+    padding-left: 0px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    width: 100%;
+}
+
+#responsive{
+    width: 100%;
+}
+
 .efeito{
     padding-top: 10px;
 }

@@ -47,7 +47,7 @@ export class PesquisaProdutoComponent implements OnInit {
     
     this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
     if(codprod){
-      this.pesquisaProdutoService.buscarProduto(codprod).subscribe((produto: Produto[]) =>{
+      this.pesquisaProdutoService.buscarProdutoLista(codprod).subscribe((produto: Produto[]) =>{
         this.produtos = produto;
       }, () => {  
               this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA))
