@@ -3,57 +3,65 @@
     <div class="ui-g">
       <div class="ui-g-12 ui-md-12 ui-lg-12">
         <div class="ui-inputgroup camposBusca">
-          <input #produto size="44%" [(ngModel)]="limpar" name="buscar" type="text" pKeyFilter="pnum" (keyup.enter)="buscarProdutoId(produto.value)" placeholder="Cod.Prod / EAN / DUN" pInputText />
+          <input #produto size="44%" name="buscar" type="text" pKeyFilter="pnum" (keyup.enter)="buscarProdutoId(produto.value)" placeholder="Cod.Prod / EAN / DUN" pInputText />
           <span class="ui-inputgroup-addon"><i class="fa fa-search" style="line-height: 1.25;"></i></span>
         </div>
       </div>
     </div>  
       
     <div class="ui-g ui-fluid">
-      <div class="ui-g-12 ui-md-12 ui-lg-12">
-        <div class="ui-inputgroup">
-            <input type="text" name="descricao" disabled="true" [(ngModel)]="produtos.descricao" readonly="true" pInputText />
-        </div>
+      <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
+          <span class="ui-float-label">
+            <input id="float-input" size="30" type="text" name="descricao"  [(ngModel)]="produtos.descricao" readonly="true" pInputText />
+            <label for="float-input">Descrição</label>
+          </span>
       </div>
-      <div class="ui-g-6 ui-md-6 ui-lg-6">
-        <div class="ui-inputgroup">
-            <input id="disabled-input" type="text" size="30" pInputText disabled placeholder="Embalagem" />
-        </div>
+      <div class="ui-g-6 ui-md-6 ui-lg-6 efeito">
+        <span class="ui-float-label">
+          <input id="disabled-input" name="embalagem" type="text" size="30" pInputText readonly="true" [(ngModel)]="produtos.embalagem" />
+          <label for="float-input">Embalagem</label>
+        </span>
       </div>
-      <div class="ui-g-6 ui-md-6 ui-lg-6">
-        <div class="ui-inputgroup">
-            <input id="disabled-input" type="text" size="30" pInputText disabled placeholder="Qt.Unit.Cx." />
-        </div>
+      <div class="ui-g-6 ui-md-6 ui-lg-6 efeito">
+        <span class="ui-float-label">
+          <input id="disabled-input" name="qtunitcx" type="text" size="30" pInputText readonly="true" [(ngModel)]="produtos.qtunitcx" />
+          <label for="float-input">Qt.Unit.Cx</label>
+        </span>
       </div>
-      <div class="ui-g-5 ui-md-5 ui-lg-5">
-        <div class="ui-inputgroup">
-            <input id="disabled-input" type="text" size="30" pKeyFilter="pnum" pInputText placeholder="Lastro" />
-        </div>
+      <div class="ui-g-5 ui-md-5 ui-lg-5 efeito">
+        <span class="ui-float-label">
+          <input id="lastro" type="number" size="30" pKeyFilter="pnum" (blur)="buscaLastro($event.target.value)" pInputText />
+          <label for="float-input">Lastro</label>
+        </span>
       </div>
-      <div class="ui-g-1 ui-md-1 ui-lg-1">X</div>
-      <div class="ui-g-6 ui-md-6 ui-lg-6">
-        <div class="ui-inputgroup">
-            <input id="disabled-input" type="text" size="30" pKeyFilter="pnum" pInputText placeholder="Camada" />
-        </div>
+      <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">X</div>
+      <div class="ui-g-6 ui-md-6 ui-lg-6 efeito">
+        <span class="ui-float-label">
+          <input id="disabled-input" type="number" size="30" pKeyFilter="pnum" (blur)="buscaCamada($event.target.value)" pInputText />
+          <label for="float-input">Camada</label>
+        </span>
       </div>      
-      <div class="ui-g-3 ui-md-3 ui-lg-3">
-        <div class="ui-inputgroup">
-            <input id="disabled-input" type="text" size="30" pKeyFilter="pnum" pInputText name="qtCx" (ngModel)="qtCx" placeholder="Qt. Cx." />
-        </div>
+      <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
+        <span class="ui-float-label">
+          <input id="disabled-input" type="number" size="30" pKeyFilter="pnum" (blur)="buscaQtCx($event.target.value)" pInputText />
+          <label for="float-input">Qt.Cx</label>
+        </span>
       </div>
-      <div class="ui-g-1 ui-md-1 ui-lg-1">+</div>      
-      <div class="ui-g-3 ui-md-3 ui-lg-3">
-        <div class="ui-inputgroup">
-            <input id="disabled-input" type="text" size="30" pKeyFilter="pnum" pInputText name="qtUnit" (ngModel)="qtUnit = $event.target.value" placeholder="Qt. Unit." />
-        </div>
+      <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">+</div>      
+      <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
+        <span class="ui-float-label">
+          <input id="disabled-input" type="number" size="30" pKeyFilter="pnum" (blur)="buscaQtunit($event.target.value)" pInputText />
+          <label for="float-input">Qt.Un</label>
+        </span>
       </div>
-      <div class="ui-g-1 ui-md-1 ui-lg-1">=</div>
-      <div class="ui-g-4 ui-md-4 ui-lg-4">
-        <div class="ui-inputgroup">
-            <input id="disabled-input" type="text" size="30" pInputText [value]="total" disabled />
-        </div>
+      <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">=</div>
+      <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
+        <span class="ui-float-label">
+            <input id="disabled-input" type="number" size="30" pInputText [value]="total" readonly="true" />
+            <label for="float-input">Total</label>
+        </span>
       </div>
       <button pButton type="button" label="CONFIRMAR"></button>             
     </div>     
-  </form>      
+  </form> 
 </p-panel>
