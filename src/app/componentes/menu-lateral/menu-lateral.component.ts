@@ -18,13 +18,12 @@ export class MenuLateralComponent implements OnInit {
     this.items = [
       {
         label: 'Menu Coletor', items: [
-          { label: 'Inicio', icon: 'pi pi-home', routerLink: '/' },
+          { label: 'INÍCIO', icon: 'pi pi-home', routerLink: '/' },
           { separator: true },
-          { label: 'Pesquisar Produto', icon: 'pi pi-search', routerLink: '/pesquisa-produto' },
+          { label: 'PESQUISAR PRODUTO', icon: 'pi pi-search', routerLink: '/pesquisa-produto' },
           { separator: true },
-          { label: 'Inventario', icon: 'fa fa-dropbox', routerLink: '/inventario' },
-          { separator: true },
-          { label: 'Listar Produtos', icon: 'pi pi-list', routerLink: '/' },
+          { label: 'INVENTÁRIO', icon: 'fa fa-dropbox', routerLink: '/inventario' },
+          { separator: true }
         ]
       }
     ];

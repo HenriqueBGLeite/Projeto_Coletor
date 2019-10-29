@@ -3,7 +3,7 @@
     <div class="ui-g">
       <div class="ui-g-12 ui-md-12 ui-lg-12">
         <div class="ui-inputgroup camposBusca">
-          <input #produto id="responsive" name="buscar" type="text" pKeyFilter="pnum" (keyup.enter)="buscarProdutoId(produto.value)" placeholder="Cod.Prod / EAN / DUN" pInputText />
+          <input #produto id="responsive" name="buscar" type="text" pKeyFilter="pnum" (keyup.enter)="buscarProdutoId(produto.value)" placeholder="COD.PROD / EAN / DUN" pInputText />
           <span class="ui-inputgroup-addon"><i class="fa fa-search" style="line-height: 1.25;"></i></span>
         </div>
       </div>
@@ -12,56 +12,56 @@
     <div class="ui-g ui-fluid">
       <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
           <span class="ui-float-label">
-            <input id="float-input" size="30" type="text" name="descricao"  [(ngModel)]="produtos.descricao" readonly="true" pInputText />
-            <label for="float-input">Descrição</label>
+            <textarea id="float-input" class="apenas_leitura" rows="2" cols="30" name="descricao" [(ngModel)]="produtos.descricao" readonly="true" pInputTextarea></textarea>
+            <label for="float-input">Descrição/Embalagem</label>
           </span>
       </div>
-      <div class="ui-g-6 ui-md-6 ui-lg-6 efeito">
+      <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
         <span class="ui-float-label">
-          <input id="disabled-input" name="embalagem" type="text" size="30" pInputText readonly="true" [(ngModel)]="produtos.embalagem" />
-          <label for="float-input">Embalagem</label>
+          <p-calendar [locale]="configCalendar" [dateFormat]="configCalendar.dateFormat" [showIcon]="true"></p-calendar>
+          <label for="float-input">Data Validade</label>
         </span>
       </div>
-      <div class="ui-g-6 ui-md-6 ui-lg-6 efeito">
+      <div class="ui-g-4 ui-md-1 ui-lg-1 efeito">
         <span class="ui-float-label">
-          <input id="disabled-input" name="qtunitcx" type="text" size="30" pInputText readonly="true" [(ngModel)]="produtos.qtunitcx" />
+          <input id="disabled-input" class="apenas_leitura" name="qtunitcx" type="text" pInputText readonly="true" [(ngModel)]="produtos.qtunitcx" />
           <label for="float-input">Qt.Unit.Cx</label>
         </span>
       </div>
-      <div class="ui-g-5 ui-md-5 ui-lg-5 efeito">
+      <div class="ui-g-3 ui-md-5 ui-lg-5 efeito">
         <span class="ui-float-label">
-          <input id="lastro" type="number" size="30" pKeyFilter="pnum" (blur)="buscaLastro($event.target.value)" pInputText />
+          <input id="lastro" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaLastro($event.target.value)" pInputText />
           <label for="float-input">Lastro</label>
         </span>
       </div>
       <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">X</div>
-      <div class="ui-g-6 ui-md-6 ui-lg-6 efeito">
+      <div class="ui-g-4 ui-md-5 ui-lg-5 efeito">
         <span class="ui-float-label">
-          <input id="disabled-input" type="number" size="30" pKeyFilter="pnum" (blur)="buscaCamada($event.target.value)" pInputText />
+          <input id="camada" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaCamada($event.target.value)" pInputText />
           <label for="float-input">Camada</label>
         </span>
       </div>      
       <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
         <span class="ui-float-label">
-          <input id="disabled-input" type="number" size="30" pKeyFilter="pnum" (blur)="buscaQtCx($event.target.value)" pInputText />
+          <input id="qtcx" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtCx($event.target.value)" pInputText />
           <label for="float-input">Qt.Cx</label>
         </span>
       </div>
       <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">+</div>      
       <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
         <span class="ui-float-label">
-          <input id="disabled-input" type="number" size="30" pKeyFilter="pnum" (blur)="buscaQtunit($event.target.value)" pInputText />
+          <input id="qtun" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtunit($event.target.value)" pInputText />
           <label for="float-input">Qt.Un</label>
         </span>
       </div>
       <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">=</div>
       <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
         <span class="ui-float-label">
-            <input id="disabled-input" type="number" size="30" pInputText [value]="total" readonly="true" />
+            <input id="disabled-input" class="style_input" type="number" pInputText [value]="total" readonly="true" />
             <label for="float-input">Total</label>
         </span>
       </div>
-      <button pButton type="button" label="CONFIRMAR"></button>             
+      <button pButton id="confirmar" class="style_input" (keyup.enter)="salvar()" type="button" label="CONFIRMAR"></button>             
     </div>     
   </form> 
 </p-panel>

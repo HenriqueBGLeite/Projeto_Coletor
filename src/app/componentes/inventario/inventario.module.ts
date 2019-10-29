@@ -6,6 +6,8 @@ import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import {KeyFilterModule} from 'primeng/keyfilter';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {CalendarModule} from 'primeng/calendar';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import {KeyFilterModule} from 'primeng/keyfilter';
     InputTextModule,
     ButtonModule,
     FormsModule,
-    KeyFilterModule
+    KeyFilterModule,
+    InputTextareaModule,
+    CalendarModule
   ]
 })
 export class InventarioModule { }

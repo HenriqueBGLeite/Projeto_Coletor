@@ -4,6 +4,7 @@ import { Produto } from '../pesquisa-produto/compartilhado/produto.model';
 import { PesquisaProdutoService } from '../pesquisa-produto/compartilhado/pesquisa-produto.service';
 import { MessageService } from 'primeng/api';
 import { MensagemUtil } from 'src/Util/mensagem-util';
+import { Constantes } from 'src/Util/constantes';
 
 @Component({
   selector: 'app-inventario',
@@ -19,6 +20,7 @@ export class InventarioComponent implements OnInit {
   camada: number = 0;
   qtUnit: number = 0;
   qtCx: number = 0;
+  configCalendar = Constantes.configCalendar;
 
   constructor(private pesquisaProdutoService: PesquisaProdutoService, private messageService: MessageService) { }
 
@@ -37,36 +39,64 @@ export class InventarioComponent implements OnInit {
               },
       () => this.blockUI.stop());
       
-      this.voltarFoco();
+      this.focoLastro();
       
     }
   }
   
   buscaLastro(valor: number){
     this.lastro = valor;
+    this.focoCamada();
   }
 
   buscaCamada(valor: number){
     this.camada = valor;
     this.somarQuantidades();
+    this.focoQtCx();
   }
 
   buscaQtCx(valor: number){
     this.qtCx = valor;
+    this.somarQuantidades();
+    this.focoQtUn();
   }
 
   buscaQtunit(valor: number){
     this.qtUnit = valor;
     this.somarQuantidades();
+    this.focoConfirmar();
   }
 
   somarQuantidades(){
     this.total =  ((this.lastro * this.camada) * this.produtos.qtunitcx) + (Number(this.qtUnit) + (Number(this.qtCx) * this.produtos.qtunitcx));
   }
 
-  voltarFoco(){
+  focoLastro(){
     var element = document.getElementById("lastro");
-
     element.focus();
+  }
+
+  focoCamada(){
+    var element = document.getElementById("camada");
+    element.focus();
+  }
+
+  focoQtCx(){
+    var element = document.getElementById("qtcx");
+    element.focus();
+  }
+  
+  focoQtUn(){
+    var element = document.getElementById("qtun");
+    element.focus();
+  }
+
+  focoConfirmar(){
+    var element = document.getElementById("confirmar");
+    element.focus();
+  }
+
+  salvar(){
+    
   }
 }
