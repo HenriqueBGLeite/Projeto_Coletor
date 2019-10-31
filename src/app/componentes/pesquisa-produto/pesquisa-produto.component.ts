@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { PesquisaProdutoService } from './compartilhado/pesquisa-produto.service';
 import { Produto } from './compartilhado/produto.model';
 import { NgBlockUI, BlockUI } from 'ng-block-ui';
 import { MensagemUtil } from 'src/Util/mensagem-util';
 import { MessageService } from 'primeng/api';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-pesquisa-produto',
@@ -46,10 +45,21 @@ export class PesquisaProdutoComponent implements OnInit {
   buscarProdutoId(codprod: string) {
     
     this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
-    if(codprod){
+    
+    if ( codprod ){
       this.pesquisaProdutoService.buscarProdutoLista(codprod).subscribe((produto: Produto[]) =>{
+        produto.map( ( prod ) =>{
+          if(prod.codprod == 0)
+            if(prod.erro == 'S')  
+              this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA));
+            else
+              this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.ERRO_NENHUM_REGISTRO));
+          else {
+            this.produtos = produto;
+            this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.BUSCA_REALIZADA));
+          }
+        });
         this.produtos = produto;
-
       }, () => {  
               this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA))
               this.blockUI.stop();

@@ -37,17 +37,17 @@ export class InventarioComponent implements OnInit {
             if(produto.erro == 'S')  
               this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA));
             else
-              this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NENHUM_REGISTRO));
+              this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.ERRO_NENHUM_REGISTRO));
           else {
             this.produtos = produto;
             this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.BUSCA_REALIZADA));
+            this.focoLastro();
           }        
         }, () => {  
                 this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA))
                 this.blockUI.stop();
                 },
         () => this.blockUI.stop());
-      
     }
   }
   
