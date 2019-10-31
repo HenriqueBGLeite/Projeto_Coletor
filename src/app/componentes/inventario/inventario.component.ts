@@ -31,7 +31,8 @@ export class InventarioComponent implements OnInit {
 
   buscarProdutoId(codprod: string) {
     
-    this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
+    //this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
+    
     if(codprod){
         this.pesquisaProdutoService.buscarProduto(codprod).subscribe((produto: Produto) =>{
           if(produto.codprod == 0) 
