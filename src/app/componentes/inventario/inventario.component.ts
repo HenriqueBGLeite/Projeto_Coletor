@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 export class InventarioComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
   produtos: Produto = new Produto;
+  limpar: string;
   total: number = 0;
   foco: string;
   lastro: number = 0;
@@ -104,10 +105,13 @@ export class InventarioComponent implements OnInit {
   }
 
   limparFormulario() {
-    this.router.navigate(['inventario']);
+    this.produtos = new Produto;
+    this.limpar = '';
+    console.log("Entrou no limparFormulario");
   }
 
   salvar(){
     this.limparFormulario();
+    console.log("Entrou no salvar");
   }
 }
