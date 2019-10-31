@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import {KeyFilterModule} from 'primeng/keyfilter';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {CalendarModule} from 'primeng/calendar';
+import { BlockUIModule } from 'ng-block-ui';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {CalendarModule} from 'primeng/calendar';
     FormsModule,
     KeyFilterModule,
     InputTextareaModule,
-    CalendarModule
+    CalendarModule,
+    BlockUIModule
   ]
 })
 export class InventarioModule { }

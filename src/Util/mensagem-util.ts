@@ -1,7 +1,8 @@
 export class MensagemUtil {
 
     public static BUSCA_REALIZADA = 'Buscar realizada com sucesso!';
-    public static ERRO_NA_BUSCA = 'Erro ao buscar registros na API';
+    public static ERRO_NENHUM_REGISTRO = 'Nenhum produto encontrado!';
+    public static ERRO_NA_BUSCA = 'Erro ao buscar registros na API.';
     public static CARREGANDO_REGISTRO = 'Carregando Registros...';
 
 

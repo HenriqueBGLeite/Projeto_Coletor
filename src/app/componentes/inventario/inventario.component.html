@@ -8,60 +8,61 @@
         </div>
       </div>
     </div>  
-      
-    <div class="ui-g ui-fluid">
-      <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
+    <block-ui>
+      <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
+            <span class="ui-float-label">
+              <textarea id="float-input" class="apenas_leitura" rows="2" cols="30" name="descricao" [(ngModel)]="produtos.descricao" readonly="true" pInputTextarea></textarea>
+              <label for="float-input">Descrição/Embalagem</label>
+            </span>
+        </div>
+        <div class="ui-g-4 ui-md-1 ui-lg-1 efeito">
           <span class="ui-float-label">
-            <textarea id="float-input" class="apenas_leitura" rows="2" cols="30" name="descricao" [(ngModel)]="produtos.descricao" readonly="true" pInputTextarea></textarea>
-            <label for="float-input">Descrição/Embalagem</label>
+            <input id="disabled-input" class="apenas_leitura" name="qtunitcx" type="text" pInputText readonly="true" [(ngModel)]="produtos.qtunitcx" />
+            <label for="float-input">Qt.Unit.Cx</label>
           </span>
-      </div>
-      <div class="ui-g-4 ui-md-1 ui-lg-1 efeito">
-        <span class="ui-float-label">
-          <input id="disabled-input" class="apenas_leitura" name="qtunitcx" type="text" pInputText readonly="true" [(ngModel)]="produtos.qtunitcx" />
-          <label for="float-input">Qt.Unit.Cx</label>
-        </span>
-      </div>
-      <div class="ui-g-3 ui-md-5 ui-lg-5 efeito">
-        <span class="ui-float-label">
-          <input id="lastro" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaLastro($event.target.value)" pInputText />
-          <label for="float-input">Lastro</label>
-        </span>
-      </div>
-      <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">X</div>
-      <div class="ui-g-4 ui-md-5 ui-lg-5 efeito">
-        <span class="ui-float-label">
-          <input id="camada" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaCamada($event.target.value)" pInputText />
-          <label for="float-input">Camada</label>
-        </span>
-      </div>
-      <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
-        <span class="ui-float-label">
-          <p-calendar [locale]="configCalendar" [numberOfMonths]="13" [dateFormat]="configCalendar.dateFormat" [showIcon]="true" showButtonBar="true"></p-calendar>
-          <label for="float-input">Data Validade</label>
-        </span>
-      </div>      
-      <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
-        <span class="ui-float-label">
-          <input id="qtcx" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtCx($event.target.value)" pInputText />
-          <label for="float-input">Qt.Cx</label>
-        </span>
-      </div>
-      <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">+</div>      
-      <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
-        <span class="ui-float-label">
-          <input id="qtun" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtunit($event.target.value)" pInputText />
-          <label for="float-input">Qt.Un</label>
-        </span>
-      </div>
-      <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">=</div>
-      <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
-        <span class="ui-float-label">
-            <input id="disabled-input" class="style_input" type="number" pInputText [value]="total" readonly="true" />
-            <label for="float-input">Total</label>
-        </span>
-      </div>
-      <button pButton id="confirmar" class="style_input" (keyup.enter)="salvar()" type="submit" label="CONFIRMAR"></button>             
-    </div>     
+        </div>
+        <div class="ui-g-3 ui-md-5 ui-lg-5 efeito">
+          <span class="ui-float-label">
+            <input id="lastro" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaLastro($event.target.value)" pInputText />
+            <label for="float-input">Lastro</label>
+          </span>
+        </div>
+        <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">X</div>
+        <div class="ui-g-4 ui-md-5 ui-lg-5 efeito">
+          <span class="ui-float-label">
+            <input id="camada" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaCamada($event.target.value)" pInputText />
+            <label for="float-input">Camada</label>
+          </span>
+        </div>
+        <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
+          <span class="ui-float-label">
+            <p-calendar [locale]="configCalendar" [numberOfMonths]="13" [dateFormat]="configCalendar.dateFormat" [showIcon]="true" showButtonBar="true"></p-calendar>
+            <label for="float-input">Data Validade</label>
+          </span>
+        </div>      
+        <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
+          <span class="ui-float-label">
+            <input id="qtcx" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtCx($event.target.value)" pInputText />
+            <label for="float-input">Qt.Cx</label>
+          </span>
+        </div>
+        <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">+</div>      
+        <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
+          <span class="ui-float-label">
+            <input id="qtun" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtunit($event.target.value)" pInputText />
+            <label for="float-input">Qt.Un</label>
+          </span>
+        </div>
+        <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">=</div>
+        <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
+          <span class="ui-float-label">
+              <input id="disabled-input" class="style_input" type="number" pInputText [value]="total" readonly="true" />
+              <label for="float-input">Total</label>
+          </span>
+        </div>
+        <button pButton id="confirmar" class="style_input" (keyup.enter)="salvar()" type="submit" label="CONFIRMAR"></button>             
+      </div> 
+    </block-ui>          
   </form> 
 </p-panel>
