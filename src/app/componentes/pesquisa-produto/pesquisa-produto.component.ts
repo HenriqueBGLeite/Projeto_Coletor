@@ -4,6 +4,7 @@ import { Produto } from './compartilhado/produto.model';
 import { NgBlockUI, BlockUI } from 'ng-block-ui';
 import { MensagemUtil } from 'src/Util/mensagem-util';
 import { MessageService } from 'primeng/api';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-pesquisa-produto',
@@ -13,7 +14,6 @@ import { MessageService } from 'primeng/api';
 export class PesquisaProdutoComponent implements OnInit {
 
   @BlockUI() blockUI: NgBlockUI;
-
   limpar: string;
   produtos: Produto [] = [];
   col: any[];
@@ -36,8 +36,8 @@ export class PesquisaProdutoComponent implements OnInit {
     this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
       this.pesquisaProdutoService.buscarTodosProdutos().subscribe((produto: Produto[]) => {
         this.produtos = produto;
+        this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.BUSCA_REALIZADA))
       }, () => {
-                MensagemUtil.ERRO_NA_BUSCA 
                 this.blockUI.stop();
                },
       () => this.blockUI.stop());
@@ -49,6 +49,7 @@ export class PesquisaProdutoComponent implements OnInit {
     if(codprod){
       this.pesquisaProdutoService.buscarProdutoLista(codprod).subscribe((produto: Produto[]) =>{
         this.produtos = produto;
+
       }, () => {  
               this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA))
               this.blockUI.stop();

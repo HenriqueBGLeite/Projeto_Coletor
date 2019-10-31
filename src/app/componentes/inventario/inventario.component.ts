@@ -33,6 +33,7 @@ export class InventarioComponent implements OnInit {
     if(codprod){
       this.pesquisaProdutoService.buscarProduto(codprod).subscribe((produto: Produto) =>{
         this.produtos = produto;
+        this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.BUSCA_REALIZADA))
       }, () => {  
               this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA))
               this.blockUI.stop();

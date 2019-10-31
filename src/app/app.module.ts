@@ -13,6 +13,7 @@ import { BlockUIModule } from 'ng-block-ui';
 import { MessageService } from 'primeng/api';
 import { MessageServiceUtil } from 'src/Util/message-service-util.service';
 import { InventarioModule } from './componentes/inventario/inventario.module';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { InventarioModule } from './componentes/inventario/inventario.module';
     PesquisaProdutoModule,
     HttpClientModule,
     BlockUIModule.forRoot(),
-    InventarioModule
+    InventarioModule,
+    ToastModule
   ],
   providers: [MessageService,
     MessageServiceUtil,

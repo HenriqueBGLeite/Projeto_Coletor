@@ -11,6 +11,7 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { BlockUIModule } from 'ng-block-ui';
 import {KeyFilterModule} from 'primeng/keyfilter';
+import { MessageService } from 'primeng/api';
 @NgModule({
   declarations: [PesquisaProdutoComponent],
   imports: [
@@ -25,7 +26,7 @@ import {KeyFilterModule} from 'primeng/keyfilter';
     MessageModule,
     BlockUIModule,
     KeyFilterModule
-  ]
+  ], providers: [MessageService]
 })
 
 export class PesquisaProdutoModule { }
