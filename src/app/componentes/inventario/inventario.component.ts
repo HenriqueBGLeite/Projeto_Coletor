@@ -5,6 +5,7 @@ import { PesquisaProdutoService } from '../pesquisa-produto/compartilhado/pesqui
 import { MessageService } from 'primeng/api';
 import { MensagemUtil } from 'src/Util/mensagem-util';
 import { Constantes } from 'src/Util/constantes';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inventario',
@@ -22,7 +23,7 @@ export class InventarioComponent implements OnInit {
   qtCx: number = 0;
   configCalendar = Constantes.configCalendar;
 
-  constructor(private pesquisaProdutoService: PesquisaProdutoService, private messageService: MessageService) { }
+  constructor(private router: Router, private pesquisaProdutoService: PesquisaProdutoService, private messageService: MessageService) { }
 
   ngOnInit() {
   }
@@ -102,7 +103,11 @@ export class InventarioComponent implements OnInit {
     element.focus();
   }
 
+  limparFormulario() {
+    this.router.navigate(['inventario']);
+  }
+
   salvar(){
-    
+    this.limparFormulario();
   }
 }
