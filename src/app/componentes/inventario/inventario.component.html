@@ -3,7 +3,7 @@
     <div class="ui-g">
       <div class="ui-g-12 ui-md-12 ui-lg-12">
         <div class="ui-inputgroup camposBusca">
-          <input #produto id="responsive" name="buscar" type="text" pKeyFilter="pnum" (keyup.enter)="buscarProdutoId(produto.value)" placeholder="COD.PROD / EAN / DUN" pInputText />
+          <input #produto id="responsive" name="buscar" [(ngModel)]="limpar" type="text" pKeyFilter="pnum" (keyup.enter)="buscarProdutoId(produto.value)" placeholder="COD.PROD / EAN / DUN" pInputText />
           <span class="ui-inputgroup-addon"><i class="fa fa-search" style="line-height: 1.25;"></i></span>
         </div>
       </div>
@@ -61,7 +61,7 @@
               <label for="float-input">Total</label>
           </span>
         </div>
-        <button pButton id="confirmar" class="style_input" (keyup.enter)="salvar()" type="submit" label="CONFIRMAR"></button>             
+        <button pButton id="confirmar" class="style_input" (click)="salvar()" type="button" label="CONFIRMAR"></button>             
       </div> 
     </block-ui>          
   </form> 
