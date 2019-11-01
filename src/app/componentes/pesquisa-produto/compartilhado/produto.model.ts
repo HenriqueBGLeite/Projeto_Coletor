@@ -5,6 +5,8 @@ export class Produto {
         public descricao?: string,
         public qtunitcx?: number,
         public embalagem?: string,
+        public lastro?: number,
+        public camada?: number,
         public erro?: string,
         public warning?: string,
         public mensagemErroWarning?: string,

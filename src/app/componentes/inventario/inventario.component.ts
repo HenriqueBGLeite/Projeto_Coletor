@@ -6,6 +6,7 @@ import { MessageService } from 'primeng/api';
 import { MensagemUtil } from 'src/Util/mensagem-util';
 import { Constantes } from 'src/Util/constantes';
 import { Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-inventario',
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export class InventarioComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
+  dados: FormGroup;
   produtos: Produto = new Produto;
   limpar: string;
   total: number = 0;
@@ -104,14 +106,7 @@ export class InventarioComponent implements OnInit {
     element.focus();
   }
 
-  limparFormulario() {
-    this.produtos = new Produto;
-    this.limpar = '';
-    console.log("Entrou no limparFormulario");
-  }
-
-  salvar(){
-    this.limparFormulario();
-    console.log("Entrou no salvar");
+  salvar(dados){
+    dados.reset(); 
   }
 }
