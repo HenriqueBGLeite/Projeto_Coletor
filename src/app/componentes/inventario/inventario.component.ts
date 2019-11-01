@@ -24,6 +24,7 @@ export class InventarioComponent implements OnInit {
   camada: number = 0;
   qtUnit: number = 0;
   qtCx: number = 0;
+  dtvalidade: Date;
   configCalendar = Constantes.configCalendar;
 
   constructor(private router: Router, private pesquisaProdutoService: PesquisaProdutoService, private messageService: MessageService) { }

@@ -43,25 +43,25 @@
         </div>      
         <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
           <span class="ui-float-label">
-            <input id="qtcx" name="qtcx" (ngModel)="qtcx" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtCx($event.target.value)" pInputText />
+            <input id="qtcx" name="qtCx" (ngModel)="qtCx" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtCx($event.target.value)" pInputText />
             <label for="float-input">Qt.Cx</label>
           </span>
         </div>
         <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">+</div>      
         <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
           <span class="ui-float-label">
-            <input id="qtun" name="qtun" (ngModel)="qtun" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtunit($event.target.value)" pInputText />
+            <input id="qtun" name="qtUnit" (ngModel)="qtUnit" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtunit($event.target.value)" pInputText />
             <label for="float-input">Qt.Un</label>
           </span>
         </div>
         <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">=</div>
         <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
           <span class="ui-float-label">
-              <input id="total" class="style_input" type="number" pInputText [value]="total" readonly="true" />
+              <input id="total" name="total" [(ngModel)]="total" class="style_input" type="number" pInputText [value]="total" readonly="true" />
               <label for="float-input">Total</label>
           </span>
         </div>
-        <button pButton id="confirmar" class="style_input" type="button" (keyup.enter)="salvar(dados)" label="CONFIRMAR"></button>                              
+        <button pButton id="confirmar" class="style_input" type="button" (click)="salvar(dados)" (keyup.enter)="salvar(dados)" label="CONFIRMAR"></button>                              
       </div> 
     </block-ui> 
   </form> 
