@@ -4,6 +4,7 @@ export class MensagemUtil {
     public static ERRO_NENHUM_REGISTRO = 'Nenhum produto encontrado!';
     public static ERRO_NA_BUSCA = 'Erro ao buscar registros na API.';
     public static CARREGANDO_REGISTRO = 'Carregando Registros...';
+    public static REGISTRO_SALVO = 'Registro salvo com sucesso!';
 
 
     public static criaMensagemSucesso(mensagem: string) {

@@ -53,6 +53,7 @@ export class InventarioComponent implements OnInit {
                 },
         () => this.blockUI.stop());
     }
+    this.blockUI.stop();
   }
   
   buscaLastro(valor: number){
@@ -107,7 +108,14 @@ export class InventarioComponent implements OnInit {
     element.focus();
   }
 
+  focoBusca(){
+    var element = document.getElementById("codprod");
+    element.focus();    
+  }
+
   salvar(dados){
-    dados.reset(); 
+    this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
+    dados.reset();
+    this.focoBusca(); 
   }
 }
