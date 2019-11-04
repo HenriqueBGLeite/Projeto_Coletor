@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵConsole } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PesquisaProdutoService } from './compartilhado/pesquisa-produto.service';
 import { Produto } from './compartilhado/produto.model';
 import { NgBlockUI, BlockUI } from 'ng-block-ui';

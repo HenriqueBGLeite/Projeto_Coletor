@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgBlockUI, BlockUI } from 'ng-block-ui';
-import { Produto } from '../pesquisa-produto/compartilhado/produto.model';
-import { PesquisaProdutoService } from '../pesquisa-produto/compartilhado/pesquisa-produto.service';
 import { MessageService } from 'primeng/api';
 import { MensagemUtil } from 'src/Util/mensagem-util';
 import { Constantes } from 'src/Util/constantes';
-import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
+import { ProdutoInventario } from './compartilhado/produto-inventario.model';
+import { InventarioService } from './compartilhado/inventario.service';
+
 
 @Component({
   selector: 'app-inventario',
@@ -16,10 +16,9 @@ import { FormGroup } from '@angular/forms';
 export class InventarioComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
   dados: FormGroup;
-  produtos: Produto = new Produto;
+  produtos: ProdutoInventario = new ProdutoInventario();
   limpar: string;
   total: number = 0;
-  foco: string;
   lastro: number = 0;
   camada: number = 0;
   qtUnit: number = 0;
@@ -27,21 +26,39 @@ export class InventarioComponent implements OnInit {
   dtvalidade: Date;
   configCalendar = Constantes.configCalendar;
 
-  constructor(private router: Router, private pesquisaProdutoService: PesquisaProdutoService, private messageService: MessageService) { }
+  constructor(private inventarioSevice: InventarioService, private messageService: MessageService) { }
 
   ngOnInit() {
+  }
+
+  salvar(dados){
+    if ( dados.value.codprod != null ) { 
+      this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
+        dados.reset();
+      this.blockUI.stop();
+      this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
+      this.focoBusca(); 
+    } else {
+        this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.VALIDA_DADOS));
+        this.focoBusca(); 
+    }
+      
   }
 
   buscarProdutoId(codprod: string) {
     
     this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);    
     if(codprod){
-        this.pesquisaProdutoService.buscarProduto(codprod).subscribe((produto: Produto) =>{
-          if(produto.codprod == 0) 
-            if(produto.erro == 'S')  
+        this.inventarioSevice.buscarProduto(codprod).subscribe((produto: ProdutoInventario) =>{
+          if ( produto.codprod == 0 ) 
+            if ( produto.erro == 'S' ) {
               this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA));
-            else
+              this.limpar = '';
+            }
+            else {
               this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.ERRO_NENHUM_REGISTRO));
+              this.limpar = '';
+            }
           else {
             this.produtos = produto;
             this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.BUSCA_REALIZADA));
@@ -54,6 +71,7 @@ export class InventarioComponent implements OnInit {
         () => this.blockUI.stop());
     }
     this.blockUI.stop();
+    
   }
   
   buscaLastro(valor: number){
@@ -77,10 +95,6 @@ export class InventarioComponent implements OnInit {
     this.qtUnit = valor;
     this.somarQuantidades();
     this.focoConfirmar();
-  }
-
-  somarQuantidades(){
-    this.total =  ((this.lastro * this.camada) * this.produtos.qtunitcx) + (Number(this.qtUnit) + (Number(this.qtCx) * this.produtos.qtunitcx));
   }
 
   focoLastro(){
@@ -113,9 +127,8 @@ export class InventarioComponent implements OnInit {
     element.focus();    
   }
 
-  salvar(dados){
-    this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
-    dados.reset();
-    this.focoBusca(); 
+  somarQuantidades(){
+    this.total =  ((this.lastro * this.camada) * this.produtos.qtunitcx) + (Number(this.qtUnit) + (Number(this.qtCx) * this.produtos.qtunitcx));
   }
+
 }

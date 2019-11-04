@@ -3,7 +3,7 @@
     <div class="ui-g">
       <div class="ui-g-12 ui-md-12 ui-lg-12">
         <div class="ui-inputgroup camposBusca">
-          <input #produto id="codprod" class="responsive" name="buscar" [(ngModel)]="limpar" type="text" pKeyFilter="pnum" (keyup.enter)="buscarProdutoId(produto.value)" placeholder="COD.PROD / EAN / DUN" pInputText />
+          <input #produto id="codprod" class="responsive" name="codprod" [(ngModel)]="limpar" [(ngModel)]="limpar" type="text" pKeyFilter="pnum" (keyup.enter)="buscarProdutoId(produto.value)" placeholder="COD.PROD / EAN / DUN" pInputText />
           <span class="ui-inputgroup-addon"><i class="fa fa-search" style="line-height: 1.25;"></i></span>
         </div>
       </div>
@@ -37,7 +37,7 @@
         </div>
         <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
           <span class="ui-float-label">
-            <p-calendar id="dtvalidade" name="dtvalidade" (ngModel)="dtvalidade" [locale]="configCalendar" [numberOfMonths]="13" [dateFormat]="configCalendar.dateFormat" [showIcon]="true" showButtonBar="true" ></p-calendar>
+            <p-calendar id="dtvalidade" name="dtvalidade" (ngModel)="dtvalidade" disabled="true" [locale]="configCalendar" [numberOfMonths]="13" [dateFormat]="configCalendar.dateFormat" [showIcon]="true" showButtonBar="true" ></p-calendar>
             <label for="float-input">Data Validade</label>
           </span>
         </div>      

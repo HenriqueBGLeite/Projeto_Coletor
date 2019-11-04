@@ -10,6 +10,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import {CalendarModule} from 'primeng/calendar';
 import { BlockUIModule } from 'ng-block-ui';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 
 @NgModule({
@@ -25,6 +26,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     CalendarModule,
     BlockUIModule,
     ReactiveFormsModule
-  ]
+  ], providers: [MessageService]
 })
 export class InventarioModule { }
