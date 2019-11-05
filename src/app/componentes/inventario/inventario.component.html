@@ -3,7 +3,7 @@
     <div class="ui-g">
       <div class="ui-g-12 ui-md-12 ui-lg-12">
         <div class="ui-inputgroup camposBusca">
-          <input #produto id="codprod" class="responsive" name="codprod" [(ngModel)]="limpar" [(ngModel)]="limpar" type="number" pKeyFilter="pnum" (keyup.enter)="buscarProdutoId(produto.value)" placeholder="COD.PROD / EAN / DUN" pInputText />
+          <input #produto id="codprod" class="responsive" name="codprod" [(ngModel)]="limpar" [(ngModel)]="limpar" type="number" pKeyFilter="pnum" (keyup.enter)="buscarProdutoId(produto.value)" (blur)="buscarProdutoId(produto.value)" placeholder="COD.PROD / EAN / DUN" pInputText />
           <span class="ui-inputgroup-addon"><i class="fa fa-search" style="line-height: 1.25;"></i></span>
         </div>
       </div>
@@ -24,14 +24,14 @@
         </div>
         <div class="ui-g-3 ui-md-3 ui-lg-5 efeito">
           <span class="ui-float-label">
-            <input id="lastro" name="lastro" [(ngModel)]="lastro" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaLastro($event.target.value)" pInputText />
+            <input id="lastro" name="lastro" [(ngModel)]="lastro" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaLastro($event.target.value)" (blur)="buscaLastro($event.target.value)" pInputText />
             <label for="float-input">Lastro</label>
           </span>
         </div>
         <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">X</div>
         <div class="ui-g-4 ui-md-4 ui-lg-5 efeito">
           <span class="ui-float-label">
-            <input id="camada" name="camada" [(ngModel)]="camada" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaCamada($event.target.value)" pInputText />
+            <input id="camada" name="camada" [(ngModel)]="camada" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaCamada($event.target.value)" (blur)="buscaCamada($event.target.value)" pInputText />
             <label for="float-input">Camada</label>
           </span>
         </div>
@@ -43,14 +43,14 @@
         </div>      
         <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
           <span class="ui-float-label">
-            <input id="qtcx" name="qtCx" (ngModel)="qtCx" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtCx($event.target.value)" pInputText />
+            <input id="qtcx" name="qtCx" (ngModel)="qtCx" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtCx($event.target.value)" (blur)="buscaQtCx($event.target.value)" pInputText />
             <label for="float-input">Qt.Cx</label>
           </span>
         </div>
         <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">+</div>      
         <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
           <span class="ui-float-label">
-            <input id="qtun" name="qtUnit" (ngModel)="qtUnit" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtunit($event.target.value)" pInputText />
+            <input id="qtun" name="qtUnit" (ngModel)="qtUnit" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtunit($event.target.value)" (blur)="buscaQtunit($event.target.value)" pInputText />
             <label for="float-input">Qt.Un</label>
           </span>
         </div>
