@@ -79,7 +79,7 @@ export class InventarioComponent implements OnInit {
       this.focoCamada();
     }else{
       this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.VALIDA_LASTRO));
-      this.lastro = 0;
+      this.lastro = null;
       this.focoLastro();
     }    
   }
@@ -91,7 +91,7 @@ export class InventarioComponent implements OnInit {
       this.focoQtCx();
     } else {
         this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.VALIDA_CAMADA));
-        this.camada = 0;
+        this.camada = null;
         this.focoCamada();
     }    
   }
