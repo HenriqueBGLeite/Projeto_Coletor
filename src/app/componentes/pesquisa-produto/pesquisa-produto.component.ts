@@ -34,7 +34,6 @@ export class PesquisaProdutoComponent implements OnInit {
     this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
       this.pesquisaProdutoService.buscarTodosProdutos().subscribe((produto: Produto[]) => {
         this.produtos = produto;
-        this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.BUSCA_REALIZADA))
       }, () => {
                 this.blockUI.stop();
                },
@@ -55,7 +54,6 @@ export class PesquisaProdutoComponent implements OnInit {
               this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.ERRO_NENHUM_REGISTRO));
           else {
             this.produtos = produto;
-            this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.BUSCA_REALIZADA));
           }
         });
         this.produtos = produto;

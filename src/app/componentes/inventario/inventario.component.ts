@@ -62,7 +62,6 @@ export class InventarioComponent implements OnInit {
             }
           else {
             this.produtos = produto;
-            this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.BUSCA_REALIZADA));
             this.focoLastro();
           }        
         }, () => {  
@@ -141,16 +140,11 @@ export class InventarioComponent implements OnInit {
 
   somarQuantidades(){
     this.total =  ((this.lastro * this.camada) * this.produtos.qtunitcx) + (Number(this.qtUnit) + (Number(this.qtCx) * this.produtos.qtunitcx));
-    /*console.log('Lastro: ' + this.lastro);
-    console.log('Camada: ' + this.camada);
-    console.log('Qt. Unit. CX: ' + this.produtos.qtunitcx);
-    console.log('Valor CX: ' + this.qtCx);
-    console.log('Valor UN: ' + this.qtUnit);*/
   }
 
   limpaVariaveis(){
-    this.qtCx = 0;
-    this.qtUnit = 0;
+    this.qtCx = null;
+    this.qtUnit = null;
   }
 
 }
