@@ -71,7 +71,6 @@ export class InventarioComponent implements OnInit {
         () => this.blockUI.stop());
     }
     this.blockUI.stop();
-    
   }
   
   buscaLastro(valor: number){

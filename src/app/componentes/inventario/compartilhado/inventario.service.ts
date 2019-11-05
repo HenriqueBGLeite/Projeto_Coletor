@@ -13,7 +13,7 @@ export class InventarioService {
   constructor(private httpClient: HttpClient) { }
 
   public buscarProduto(filtro: string){
-    return this.httpClient.get(`${this.urlApi}getProdutosColetor/${filtro}`);
+    return this.httpClient.get(`${this.urlApi}getProdutoInventario/${filtro}`);
   }
 
 }
