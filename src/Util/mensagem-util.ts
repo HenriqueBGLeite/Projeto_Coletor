@@ -6,6 +6,8 @@ export class MensagemUtil {
     public static CARREGANDO_REGISTRO = 'Carregando Registros...';
     public static REGISTRO_SALVO = 'Registro salvo com sucesso!';
     public static VALIDA_DADOS = 'Dados inválidos para requisição.';
+    public static VALIDA_LASTRO = 'Lastro informado, difere do cadastro.';
+    public static VALIDA_CAMADA = 'Camada informada, difere do cadastro.';
 
 
     public static criaMensagemSucesso(mensagem: string) {

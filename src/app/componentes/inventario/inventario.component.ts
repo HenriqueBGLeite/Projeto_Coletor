@@ -19,8 +19,8 @@ export class InventarioComponent implements OnInit {
   produtos: ProdutoInventario = new ProdutoInventario();
   limpar: string;
   total: number = 0;
-  lastro: number = 0;
-  camada: number = 0;
+  lastro: number;
+  camada: number;
   qtUnit: number = 0;
   qtCx: number = 0;
   dtvalidade: Date;
@@ -35,6 +35,7 @@ export class InventarioComponent implements OnInit {
     if ( dados.value.codprod != null ) { 
       this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
         dados.reset();
+        this.limpaVariaveis();
       this.blockUI.stop();
       this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
       this.focoBusca(); 
@@ -74,14 +75,26 @@ export class InventarioComponent implements OnInit {
   }
   
   buscaLastro(valor: number){
-    this.lastro = valor;
-    this.focoCamada();
+    if(this.produtos.lastro == valor){
+      this.lastro = valor;
+      this.focoCamada();
+    }else{
+      this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.VALIDA_LASTRO));
+      this.lastro = 0;
+      this.focoLastro();
+    }    
   }
 
   buscaCamada(valor: number){
-    this.camada = valor;
-    this.somarQuantidades();
-    this.focoQtCx();
+    if ( this.produtos.camada == valor ) {
+      this.camada = valor;
+      this.somarQuantidades();
+      this.focoQtCx();
+    } else {
+        this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.VALIDA_CAMADA));
+        this.camada = 0;
+        this.focoCamada();
+    }    
   }
 
   buscaQtCx(valor: number){
@@ -128,6 +141,16 @@ export class InventarioComponent implements OnInit {
 
   somarQuantidades(){
     this.total =  ((this.lastro * this.camada) * this.produtos.qtunitcx) + (Number(this.qtUnit) + (Number(this.qtCx) * this.produtos.qtunitcx));
+    /*console.log('Lastro: ' + this.lastro);
+    console.log('Camada: ' + this.camada);
+    console.log('Qt. Unit. CX: ' + this.produtos.qtunitcx);
+    console.log('Valor CX: ' + this.qtCx);
+    console.log('Valor UN: ' + this.qtUnit);*/
+  }
+
+  limpaVariaveis(){
+    this.qtCx = 0;
+    this.qtUnit = 0;
   }
 
 }

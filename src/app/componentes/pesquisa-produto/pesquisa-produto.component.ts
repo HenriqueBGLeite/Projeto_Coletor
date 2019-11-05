@@ -20,7 +20,6 @@ export class PesquisaProdutoComponent implements OnInit {
   constructor(private pesquisaProdutoService: PesquisaProdutoService, private messageService: MessageService) { }
 
   ngOnInit() {
-    this.buscarTodos();
     this.carregaColuna();
   }
 
