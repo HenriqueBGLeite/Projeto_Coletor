@@ -14,54 +14,38 @@ export class PesquisaProdutoComponent implements OnInit {
 
   @BlockUI() blockUI: NgBlockUI;
   limpar: string;
-  produtos: Produto [] = [];
-  col: any[];
+  produtos: Produto = new Produto();
 
   constructor(private pesquisaProdutoService: PesquisaProdutoService, private messageService: MessageService) { }
 
   ngOnInit() {
-    this.carregaColuna();
-  }
 
-  carregaColuna() {
-    this.col = [
-      { var: 'codigo', label: 'Cod. Prod.' },
-      { var: 'descricao', label: 'Descrição' }
-    ];
-  }
-
-  buscarTodos() {
-    this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
-      this.pesquisaProdutoService.buscarTodosProdutos().subscribe((produto: Produto[]) => {
-        this.produtos = produto;
-      }, () => {
-                this.blockUI.stop();
-               },
-      () => this.blockUI.stop());
   }
 
   buscarProdutoId(codprod: string) {
     
     if ( codprod ) {
       this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
-      this.pesquisaProdutoService.buscarProdutoLista(codprod).subscribe((produto: Produto[]) => {
-        produto.map( ( prod ) => {
-          if(prod.codprod == 0){
-            if(prod.erro == 'S')  
-              this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA));
-            else
-              this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.ERRO_NENHUM_REGISTRO));
-          } else {
-              this.produtos = produto;
+      this.pesquisaProdutoService.buscarProduto(codprod).subscribe((produto: Produto) => {
+        if ( produto.codprod == 0 ) {
+          if ( produto.erro == 'S' ) {
+            this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA));
+            this.limpar = '';
           }
-        });
+          else {
+            this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.ERRO_NENHUM_REGISTRO));
+            this.limpar = '';
+          }
+        } else {
+          this.produtos = produto;
+        }
       }, () => {
                 this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA))
                 this.blockUI.stop();
                },
       () => this.blockUI.stop());
     } else {
-        this.buscarTodos();
+        this.blockUI.stop();
     }
     
   }

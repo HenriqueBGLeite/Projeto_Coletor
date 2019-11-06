@@ -12,6 +12,8 @@ import { MessageModule } from 'primeng/message';
 import { BlockUIModule } from 'ng-block-ui';
 import {KeyFilterModule} from 'primeng/keyfilter';
 import { MessageService } from 'primeng/api';
+import {TabViewModule} from 'primeng/tabview';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 @NgModule({
   declarations: [PesquisaProdutoComponent],
   imports: [
@@ -25,7 +27,9 @@ import { MessageService } from 'primeng/api';
     MessagesModule,
     MessageModule,
     BlockUIModule,
-    KeyFilterModule
+    KeyFilterModule,
+    TabViewModule,
+    InputTextareaModule
   ], providers: [MessageService]
 })
 

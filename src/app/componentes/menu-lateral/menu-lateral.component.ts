@@ -20,7 +20,11 @@ export class MenuLateralComponent implements OnInit {
         label: 'Menu Coletor', items: [
           { label: 'INÍCIO', icon: 'pi pi-home', routerLink: '/home' },
           { separator: true },
-          { label: 'PESQUISAR PRODUTO', icon: 'pi pi-search', routerLink: '/pesquisa-produto' },
+          { label: 'CONF. ENTRADA', icon: 'pi pi-inbox', routerLink: '#', disabled: true },
+          { separator: true },
+          { label: 'CONF. OS', icon: 'pi pi-check', routerLink: '#', disabled: true },
+          { separator: true },
+          { label: 'CONSULTAR PRODUTO', icon: 'pi pi-search', routerLink: '/pesquisa-produto' },
           { separator: true },
           { label: 'INVENTÁRIO', icon: 'fa fa-dropbox', routerLink: '/inventario' },
           { separator: true }

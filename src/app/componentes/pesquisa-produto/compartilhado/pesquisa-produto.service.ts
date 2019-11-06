@@ -11,8 +11,8 @@ export class PesquisaProdutoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public buscarProdutoLista(filtro: string){
-    return this.httpClient.get(`${this.urlApi}getProdutoLista/${filtro}`);
+  public buscarProduto(filtro: string){
+    return this.httpClient.get(`${this.urlApi}getProduto/${filtro}`);
   }
 
   public buscarTodosProdutos(){

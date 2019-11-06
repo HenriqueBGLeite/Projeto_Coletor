@@ -18,3 +18,13 @@
 .title {
     text-align: center;
 }
+
+.efeito{
+    padding-top: 10px;
+}
+
+.apenas_leitura{
+    size: 30px;
+    font-size: 20px;
+    background-color: rgb(206, 206, 206);
+}
