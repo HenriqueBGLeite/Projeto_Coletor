@@ -33,12 +33,30 @@ export class InventarioComponent implements OnInit {
 
   salvar(dados){
     if ( dados.value.codprod != null ) { 
-      this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
-        dados.reset();
-        this.limpaVariaveis();
-      this.blockUI.stop();
-      this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
-      this.focoBusca(); 
+      console.log(dados.value.lastro);
+      console.log(dados.value.camada);
+      if ( dados.value.lastro > 0 || dados.value.camada > 0){
+        if ( dados.value.lastro == this.produtos.lastro && dados.value.camada == this.produtos.camada ) {
+            this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
+            dados.reset();
+            this.limpaVariaveis();
+            this.blockUI.stop();
+            this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
+            this.focoBusca(); 
+        } else {
+            this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.VALIDA_LASTRO_CAMADA));
+            this.lastro = null;
+            this.camada = null;
+            this.focoLastro();
+        }
+      } else {
+          this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
+          dados.reset();
+          this.limpaVariaveis();
+          this.blockUI.stop();
+          this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
+          this.focoBusca(); 
+      }      
     } else {
         this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.VALIDA_DADOS));
         this.focoBusca(); 
@@ -73,39 +91,47 @@ export class InventarioComponent implements OnInit {
     this.blockUI.stop();
   }
   
-  buscaLastro(valor: number){
-    if(this.produtos.lastro == valor){
+  buscaLastro(valor: number, tecla: string){
+    if ( tecla == 'E') {
       this.lastro = valor;
       this.focoCamada();
-    }else{
-      this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.VALIDA_LASTRO));
-      this.lastro = null;
-      this.focoLastro();
-    }    
+    } else 
+        this.lastro = valor;
   }
 
-  buscaCamada(valor: number){
-    if ( this.produtos.camada == valor ) {
+  buscaCamada(valor: number, tecla: string){
+    if ( tecla == 'E') {
       this.camada = valor;
       this.somarQuantidades();
-      this.focoQtCx();
+      this.focoQtCx();  
     } else {
-        this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.VALIDA_CAMADA));
-        this.camada = null;
-        this.focoCamada();
+        this.camada = valor;
+        this.somarQuantidades();
+    }
+    
+  }
+
+  buscaQtCx(valor: number, tecla: string){
+    if ( tecla == 'E') {
+      this.qtCx = valor;
+      this.somarQuantidades();
+      this.focoQtUn();
+    } else {
+        this.qtCx = valor;
+        this.somarQuantidades();
     }    
   }
 
-  buscaQtCx(valor: number){
-    this.qtCx = valor;
-    this.somarQuantidades();
-    this.focoQtUn();
-  }
-
-  buscaQtunit(valor: number){
-    this.qtUnit = valor;
-    this.somarQuantidades();
-    this.focoConfirmar();
+  buscaQtunit(valor: number, tecla: string){
+    if ( tecla == 'E') {
+      this.qtUnit = valor;
+      this.somarQuantidades();
+      this.focoConfirmar();
+    } else {
+        this.qtUnit = valor;
+        this.somarQuantidades();
+    }
+    
   }
 
   focoLastro(){
