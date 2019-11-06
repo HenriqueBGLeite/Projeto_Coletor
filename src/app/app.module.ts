@@ -14,10 +14,12 @@ import { MessageService } from 'primeng/api';
 import { MessageServiceUtil } from 'src/Util/message-service-util.service';
 import { InventarioModule } from './componentes/inventario/inventario.module';
 import {ToastModule} from 'primeng/toast';
+import { HomeComponent } from './componentes/home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
