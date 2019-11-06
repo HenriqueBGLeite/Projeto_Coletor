@@ -42,32 +42,28 @@ export class PesquisaProdutoComponent implements OnInit {
 
   buscarProdutoId(codprod: string) {
     
-    this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
-    
-    if ( codprod ){
-      this.pesquisaProdutoService.buscarProdutoLista(codprod).subscribe((produto: Produto[]) =>{
-        produto.map( ( prod ) =>{
-          if(prod.codprod == 0)
+    if ( codprod ) {
+      this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
+      this.pesquisaProdutoService.buscarProdutoLista(codprod).subscribe((produto: Produto[]) => {
+        produto.map( ( prod ) => {
+          if(prod.codprod == 0){
             if(prod.erro == 'S')  
               this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA));
             else
               this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.ERRO_NENHUM_REGISTRO));
-          else {
-            this.produtos = produto;
+          } else {
+              this.produtos = produto;
           }
         });
-        this.produtos = produto;
-      }, () => {  
-              this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA))
-              this.blockUI.stop();
-              },
+      }, () => {
+                this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA))
+                this.blockUI.stop();
+               },
       () => this.blockUI.stop());
-
-      this.limpar = '';
-      
-    } else
-      this.buscarTodos();
-      this.blockUI.stop();
+    } else {
+        this.buscarTodos();
+    }
+    
   }
 
 }

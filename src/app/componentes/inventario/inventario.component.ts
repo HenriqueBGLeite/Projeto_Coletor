@@ -33,8 +33,6 @@ export class InventarioComponent implements OnInit {
 
   salvar(dados){
     if ( dados.value.codprod != null ) { 
-      console.log(dados.value.lastro);
-      console.log(dados.value.camada);
       if ( dados.value.lastro > 0 || dados.value.camada > 0){
         if ( dados.value.lastro == this.produtos.lastro && dados.value.camada == this.produtos.camada ) {
             this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
@@ -66,29 +64,29 @@ export class InventarioComponent implements OnInit {
 
   buscarProdutoId(codprod: string) {
     
-    this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);    
-    if(codprod){
-        this.inventarioSevice.buscarProduto(codprod).subscribe((produto: ProdutoInventario) =>{
-          if ( produto.codprod == 0 ) 
-            if ( produto.erro == 'S' ) {
-              this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA));
-              this.limpar = '';
-            }
-            else {
-              this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.ERRO_NENHUM_REGISTRO));
-              this.limpar = '';
-            }
+    if ( codprod ) {
+      this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
+      this.inventarioSevice.buscarProduto(codprod).subscribe((produto: ProdutoInventario) => {
+        if ( produto.codprod == 0 ) {
+          if ( produto.erro == 'S' ) {
+            this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA));
+            this.limpar = '';
+          }
           else {
-            this.produtos = produto;
-            this.focoLastro();
-          }        
-        }, () => {  
+            this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.ERRO_NENHUM_REGISTRO));
+            this.limpar = '';
+          }
+        } else {
+          this.produtos = produto;
+          this.focoLastro();
+        }
+      }, () => {
                 this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA))
                 this.blockUI.stop();
-                },
-        () => this.blockUI.stop());
-    }
-    this.blockUI.stop();
+               },
+      () => this.blockUI.stop());
+    } else
+        this.blockUI.stop();
   }
   
   buscaLastro(valor: number, tecla: string){

@@ -6,9 +6,13 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  @Input() title = String;
 
   ngOnInit() {
+    this.telaCheia();
+  }
+
+  telaCheia(){
+    window.scrollTo(0,1);
   }
 }
 
