@@ -18,7 +18,7 @@ export class MenuLateralComponent implements OnInit {
     this.items = [
       {
         label: 'Menu Coletor', items: [
-          { label: 'INÍCIO', icon: 'pi pi-home', routerLink: '/' },
+          { label: 'INÍCIO', icon: 'pi pi-home', routerLink: '/home' },
           { separator: true },
           { label: 'PESQUISAR PRODUTO', icon: 'pi pi-search', routerLink: '/pesquisa-produto' },
           { separator: true },
