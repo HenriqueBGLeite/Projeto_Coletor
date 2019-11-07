@@ -7,13 +7,13 @@ import { AppComponent } from './app.component';
 import { MenuLateralModule } from './componentes/menu-lateral/menu-lateral.module';
 import { SidebarModule } from 'primeng/sidebar';
 import { GalleriaModule } from 'primeng/galleria';
-import { PesquisaProdutoModule } from './componentes/pesquisa-produto/pesquisa-produto.module';
+import { ConsultarProdutoModule } from './componentes/consultar-produto/consultar-produto.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BlockUIModule } from 'ng-block-ui';
 import { MessageService } from 'primeng/api';
 import { MessageServiceUtil } from 'src/Util/message-service-util.service';
 import { InventarioModule } from './componentes/inventario/inventario.module';
-import {ToastModule} from 'primeng/toast';
+import { ToastModule } from 'primeng/toast';
 import { HomeComponent } from './componentes/home/home.component';
 
 @NgModule({
@@ -28,7 +28,7 @@ import { HomeComponent } from './componentes/home/home.component';
     BrowserAnimationsModule,
     SidebarModule,
     GalleriaModule,
-    PesquisaProdutoModule,
+    ConsultarProdutoModule,
     HttpClientModule,
     BlockUIModule.forRoot(),
     InventarioModule,

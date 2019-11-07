@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PesquisaProdutoComponent } from './pesquisa-produto.component';
+import { ConsultarProdutoComponent } from './consultar-produto.component';
 import { PanelModule } from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
 import {TableModule} from 'primeng/table';
@@ -15,7 +15,7 @@ import { MessageService } from 'primeng/api';
 import {TabViewModule} from 'primeng/tabview';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 @NgModule({
-  declarations: [PesquisaProdutoComponent],
+  declarations: [ConsultarProdutoComponent],
   imports: [
     CommonModule,
     PanelModule,
@@ -33,4 +33,4 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
   ], providers: [MessageService]
 })
 
-export class PesquisaProdutoModule { }
+export class ConsultarProdutoModule { }

@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class PesquisaProdutoService {
+export class ConsultarProdutoService {
 
   urlApi = environment.urlApi.concat('PesquisaProduto/');
 

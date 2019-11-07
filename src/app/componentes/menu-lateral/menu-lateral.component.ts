@@ -24,7 +24,7 @@ export class MenuLateralComponent implements OnInit {
           { separator: true },
           { label: 'CONF. OS', icon: 'pi pi-check', routerLink: '#', disabled: true },
           { separator: true },
-          { label: 'CONSULTAR PRODUTO', icon: 'pi pi-search', routerLink: '/pesquisa-produto' },
+          { label: 'CONSULTAR PRODUTO', icon: 'pi pi-search', routerLink: '/consultar-produto' },
           { separator: true },
           { label: 'INVENTÁRIO', icon: 'fa fa-dropbox', routerLink: '/inventario' },
           { separator: true }

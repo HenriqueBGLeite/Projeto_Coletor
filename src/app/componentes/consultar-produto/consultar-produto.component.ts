@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { PesquisaProdutoService } from './compartilhado/pesquisa-produto.service';
+import { ConsultarProdutoService } from './compartilhado/consultar-produto.service';
 import { Produto } from './compartilhado/produto.model';
 import { NgBlockUI, BlockUI } from 'ng-block-ui';
 import { MensagemUtil } from 'src/Util/mensagem-util';
 import { MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'app-pesquisa-produto',
-  templateUrl: './pesquisa-produto.component.html',
-  styleUrls: ['./pesquisa-produto.component.css']
+  selector: 'app-consultar-produto',
+  templateUrl: './consultar-produto.component.html',
+  styleUrls: ['./consultar-produto.component.css']
 })
-export class PesquisaProdutoComponent implements OnInit {
+export class ConsultarProdutoComponent implements OnInit {
 
   @BlockUI() blockUI: NgBlockUI;
   limpar: string;
   produtos: Produto = new Produto();
 
-  constructor(private pesquisaProdutoService: PesquisaProdutoService, private messageService: MessageService) { }
+  constructor(private pesquisaProdutoService: ConsultarProdutoService, private messageService: MessageService) { }
 
   ngOnInit() {
 

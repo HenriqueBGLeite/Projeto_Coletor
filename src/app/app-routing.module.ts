@@ -1,6 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { PesquisaProdutoComponent } from './componentes/pesquisa-produto/pesquisa-produto.component';
+import { ConsultarProdutoComponent } from './componentes/consultar-produto/consultar-produto.component';
 import { InventarioComponent } from './componentes/inventario/inventario.component';
 import { HomeComponent } from './componentes/home/home.component';
 
@@ -11,8 +11,8 @@ const routes: Routes = [
   //Rota Home
   { path: 'home', component: HomeComponent },
   
-  //Rotas para pesquisar produto
-  { path: 'pesquisa-produto', component: PesquisaProdutoComponent,  },
+  //Rotas para consultar produto
+  { path: 'consultar-produto', component: ConsultarProdutoComponent,  },
   
   //Rota para inventario
   { path: 'inventario', component: InventarioComponent,  },
