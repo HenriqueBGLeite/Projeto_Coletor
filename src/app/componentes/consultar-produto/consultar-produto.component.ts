@@ -4,6 +4,7 @@ import { Produto } from './compartilhado/produto.model';
 import { NgBlockUI, BlockUI } from 'ng-block-ui';
 import { MensagemUtil } from 'src/Util/mensagem-util';
 import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-consultar-produto',
@@ -16,7 +17,7 @@ export class ConsultarProdutoComponent implements OnInit {
   limpar: string;
   produtos: Produto = new Produto();
 
-  constructor(private pesquisaProdutoService: ConsultarProdutoService, private messageService: MessageService) { }
+  constructor(private router: Router, private pesquisaProdutoService: ConsultarProdutoService, private messageService: MessageService) { }
 
   ngOnInit() {
 
@@ -48,6 +49,11 @@ export class ConsultarProdutoComponent implements OnInit {
         this.blockUI.stop();
     }
     
+  }
+
+  navegar(caminho: string){
+    if ( caminho == 'E' )
+      this.router.navigate(['estoque']);
   }
 
 }

@@ -43,8 +43,8 @@ export class InventarioComponent implements OnInit {
             this.focoBusca(); 
         } else {
             this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.VALIDA_LASTRO_CAMADA));
-            this.lastro = null;
-            this.camada = null;
+            this.camada = null; 
+            this.lastro = null;                
             this.focoLastro();
         }
       } else {
