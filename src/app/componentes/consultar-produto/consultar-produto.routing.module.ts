@@ -4,6 +4,7 @@ import { ProdutoHomeComponent } from './produto-home/produto-home.component';
 import { ProdutoEstoqueComponent } from './produto-estoque/produto-estoque.component';
 
 const produtoRoutes = [
+    { path: 'consultar-produto', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: ProdutoHomeComponent },
     { path: 'estoque', component: ProdutoEstoqueComponent }
 ];

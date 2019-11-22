@@ -12,10 +12,10 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   
   //Rotas para consultar produto
-  { path: 'consultar-produto', component: ConsultarProdutoComponent,  },
+  { path: 'consultar-produto', component: ConsultarProdutoComponent },
   
   //Rota para inventario
-  { path: 'inventario', component: InventarioComponent,  },
+  { path: 'inventario', component: InventarioComponent },
   
 ];
 

@@ -11,30 +11,59 @@
 
     <block-ui>
       <div class="ui-g ui-fluid">
-          <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
-              <span class="ui-float-label">
-                <textarea id="descricao" class="apenas_leitura" rows="2" cols="30" name="descricao" [(ngModel)]="produtos.descricao" readonly="true" pInputTextarea></textarea>
-                <label for="float-input">Descrição</label>
-              </span>
-          </div>
+        <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
+            <span class="ui-float-label">
+              <textarea id="descricao" class="apenas_leitura" rows="2" cols="30" name="descricao" [(ngModel)]="produtos.descricao" readonly="true" pInputTextarea></textarea>
+              <label for="float-input">Descrição</label>
+            </span>
+        </div>
         <div class="ui-g-12 ui-md-12 ui-lg-12">
           <p-tabView>
-            <p-tabPanel header="MENU" leftIcon="pi pi-folder-open">
+            <!--
+            <p-tabPanel header="EMBALAGEM/DIMENSÃO" leftIcon="pi pi-folder-open">
               <div class="ui-g ui-fluid">
                 <div class="ui-g-12 ui-md-12 ui-lg-12">
                   <button pButton id="botao" class="style_input" type="button" label="EMBALAGEM/DIMENSÃO"></button>
                 </div>
+              </div>
+            </p-tabPanel>
+            <p-tabPanel header="ENDEREÇO" leftIcon="pi pi-folder-open">
+              <div class="ui-g ui-fluid">
                 <div class="ui-g-12 ui-md-12 ui-lg-12">
                   <button pButton id="botao" class="style_input" type="button" label="ENDEREÇO"></button>
                 </div>
+              </div>
+            </p-tabPanel>    
+            <p-tabPanel header="LISTA ENDEREÇO" leftIcon="pi pi-folder-open">
+              <div class="ui-g ui-fluid">
                 <div class="ui-g-12 ui-md-12 ui-lg-12">
                   <button pButton id="botao" class="style_input" type="button" label="LISTA ENDEREÇO"></button>
                 </div>
+              </div>
+            </p-tabPanel>    
+            -->
+            <p-tabPanel header="ESTOQUE" leftIcon="pi pi-folder-open">
+              <div class="ui-g ui-fluid">
                 <div class="ui-g-12 ui-md-12 ui-lg-12">
-                  <button pButton id="botao" class="style_input" type="button" (click)="navegar('E')" label="ESTOQUE"></button>
+                  <p-table [cols]="coluna">
+                    <ng-template pTemplate="header" let-cols>
+                      <tr *ngFor="let col of cols">
+                        <th>
+                          {{ col.header }}
+                        </th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body">
+                      <tr>
+                        <td>
+                            
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
                 </div>
               </div>
-            </p-tabPanel>          
+            </p-tabPanel>              
           </p-tabView>
         </div>
       </div>

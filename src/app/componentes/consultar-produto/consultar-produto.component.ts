@@ -17,6 +17,14 @@ export class ConsultarProdutoComponent implements OnInit {
   limpar: string;
   produtos: Produto = new Produto();
 
+  coluna: any[] = [
+    { filed: 'codfilial', header: 'FILIAL' },
+    { filed: 'qtestger', header: 'GER' },
+    { filed: 'qtreserv', header: 'RESERV' },
+    { filed: 'qtbloqueada', header: 'BLOQ' },
+    { filed: 'qtindeniz', header: 'AVARIA' },
+  ];
+
   constructor(private router: Router, private pesquisaProdutoService: ConsultarProdutoService, private messageService: MessageService) { }
 
   ngOnInit() {

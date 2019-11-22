@@ -16,6 +16,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ProdutoEstoqueComponent } from './produto-estoque/produto-estoque.component';
 import { ProdutoHomeComponent } from './produto-home/produto-home.component';
+import { ConsultarProdutoRoutingModule } from './consultar-produto.routing.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ProdutoHomeComponent } from './produto-home/produto-home.component';
     BlockUIModule,
     KeyFilterModule,
     TabViewModule,
-    InputTextareaModule
+    InputTextareaModule,
+    ConsultarProdutoRoutingModule
   ], providers: [MessageService]
 })
 
