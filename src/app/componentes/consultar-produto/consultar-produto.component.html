@@ -18,12 +18,93 @@
           </div>
           <div class="ui-g-12 ui-md-12 ui-lg-12">
             <p-tabView>
-              <!--Menu--> 
-              <p-tabPanel header="MENU" leftIcon="pi pi-folder-open">
-                <H1>MENU TESTANDO MENU</H1>
+              <!--Embalagem\Dimensão--> 
+              <p-tabPanel header="EMB \ DIM." leftIcon="fa fa-dropbox">
+                <p-tabView>
+                  <p-tabPanel header="EMBALAGEM" leftIcon="fa fa-dropbox">
+                    <div class="ui-g ui-fluid">
+                      <div class="ui-g-5 ui-md-5 ui-lg-5 efeito">
+                        <span class="ui-float-label">
+                          <input id="codfilial" class="apenas_leitura" name="codfilial" type="text" readonly="true" [(ngModel)]="produtos.codfilial" pInputText />
+                          <label for="float-input">Emb.Master</label>
+                        </span>
+                      </div>
+                      <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
+                        <span class="ui-float-label">
+                          <input id="estger" class="apenas_leitura" name="estger" type="text" readonly="true" [(ngModel)]="produtos.estger" pInputText />
+                          <label for="float-input">Un.M</label>
+                        </span>
+                      </div>
+                      <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
+                        <span class="ui-float-label">
+                          <input id="estreserv" class="apenas_leitura" name="estreserv" type="text" readonly="true" [(ngModel)]="produtos.estreserv" pInputText />
+                          <label for="float-input">Qt.Cx</label>
+                        </span>
+                      </div>
+                      <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
+                        <span class="ui-float-label">
+                          <input id="estbloq" class="apenas_leitura" name="estbloq" type="text" readonly="true" [(ngModel)]="produtos.estbloq" pInputText />
+                          <label for="float-input">Cód.Barras Master</label>
+                        </span>
+                      </div>
+                      <div class="ui-g-5 ui-md-5 ui-lg-5 efeito">
+                        <span class="ui-float-label">
+                          <input id="estavaria" class="apenas_leitura" name="estavaria" type="text" readonly="true" [(ngModel)]="produtos.estavaria" pInputText />
+                          <label for="float-input">Emb.Unit</label>
+                        </span>
+                      </div>
+                      <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
+                        <span class="ui-float-label">
+                          <input id="estavaria" class="apenas_leitura" name="estavaria" type="text" readonly="true" [(ngModel)]="produtos.estavaria" pInputText />
+                          <label for="float-input">Unid</label>
+                        </span>
+                      </div>
+                      <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
+                        <span class="ui-float-label">
+                          <input id="estavaria" class="apenas_leitura" name="estavaria" type="text" readonly="true" [(ngModel)]="produtos.estavaria" pInputText />
+                          <label for="float-input">Qt.Unit</label>
+                        </span>
+                      </div>
+                      <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
+                        <span class="ui-float-label">
+                          <input id="estavaria" class="apenas_leitura" name="estavaria" type="text" readonly="true" [(ngModel)]="produtos.estavaria" pInputText />
+                          <label for="float-input">Cód. Barras Unit.</label>
+                        </span>
+                      </div>
+                    </div>
+                  </p-tabPanel>
+                  <p-tabPanel header="DIMENSÃO" leftIcon="fa fa-dropbox">
+                    <div class="ui-g ui-fluid">
+                      <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
+                        <span class="ui-float-label">
+                          <input id="estavaria" class="apenas_leitura" name="estavaria" type="text" readonly="true" [(ngModel)]="produtos.estavaria" pInputText />
+                          <label for="float-input">Alt.</label>
+                        </span>
+                      </div>
+                      <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
+                        <span class="ui-float-label">
+                          <input id="estavaria" class="apenas_leitura" name="estavaria" type="text" readonly="true" [(ngModel)]="produtos.estavaria" pInputText />
+                          <label for="float-input">Larg.</label>
+                        </span>
+                      </div>
+                      <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
+                        <span class="ui-float-label">
+                          <input id="estavaria" class="apenas_leitura" name="estavaria" type="text" readonly="true" [(ngModel)]="produtos.estavaria" pInputText />
+                          <label for="float-input">Comp.</label>
+                        </span>
+                      </div>
+                      <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
+                        <span class="ui-float-label">
+                          <input id="estavaria" class="apenas_leitura" name="estavaria" type="text" readonly="true" [(ngModel)]="produtos.estavaria" pInputText />
+                          <label for="float-input">Peso(K/g)</label>
+                        </span>
+                      </div>
+                    </div>
+                  </p-tabPanel>
+                </p-tabView>
               </p-tabPanel> 
               <!--Estoque--> 
-              <p-tabPanel header="ESTOQUE" leftIcon="pi pi-folder-open">
+              <p-tabPanel header="EST." leftIcon="pi pi-shopping-cart">
                 <div class="ui-g ui-fluid">
                   <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
                     <span class="ui-float-label">
@@ -56,7 +137,11 @@
                     </span>
                   </div>
                 </div>
-              </p-tabPanel>              
+              </p-tabPanel>
+              <!--LISTA ENDEREÇO--> 
+              <p-tabPanel header="ENDER." leftIcon="pi pi-home">
+
+              </p-tabPanel>           
             </p-tabView>
           </div>
         </div>

@@ -14,16 +14,11 @@ import { KeyFilterModule } from 'primeng/keyfilter';
 import { MessageService } from 'primeng/api';
 import { TabViewModule } from 'primeng/tabview';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-import { ProdutoEstoqueComponent } from './produto-estoque/produto-estoque.component';
-import { ProdutoHomeComponent } from './produto-home/produto-home.component';
-import { ConsultarProdutoRoutingModule } from './consultar-produto.routing.module';
 import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
-    ConsultarProdutoComponent, 
-    ProdutoEstoqueComponent, 
-    ProdutoHomeComponent
+    ConsultarProdutoComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +34,6 @@ import {InputTextModule} from 'primeng/inputtext';
     KeyFilterModule,
     TabViewModule,
     InputTextareaModule,
-    ConsultarProdutoRoutingModule,
     InputTextModule
   ], providers: [MessageService]
 })
