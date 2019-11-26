@@ -7,67 +7,61 @@
           <span class="ui-inputgroup-addon"><i class="fa fa-search" style="line-height: 1.25;"></i></span>
         </div>
       </div>
-    </div>  
 
-    <block-ui>
-      <div class="ui-g ui-fluid">
-        <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
+      <block-ui>
+        <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
             <span class="ui-float-label">
               <textarea id="descricao" class="apenas_leitura" rows="2" cols="30" name="descricao" [(ngModel)]="produtos.descricao" readonly="true" pInputTextarea></textarea>
               <label for="float-input">Descrição</label>
             </span>
+          </div>
+          <div class="ui-g-12 ui-md-12 ui-lg-12">
+            <p-tabView>
+              <!--Menu--> 
+              <p-tabPanel header="MENU" leftIcon="pi pi-folder-open">
+                <H1>MENU TESTANDO MENU</H1>
+              </p-tabPanel> 
+              <!--Estoque--> 
+              <p-tabPanel header="ESTOQUE" leftIcon="pi pi-folder-open">
+                <div class="ui-g ui-fluid">
+                  <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
+                    <span class="ui-float-label">
+                      <input id="codfilial" class="apenas_leitura" name="codfilial" type="text" readonly="true" [(ngModel)]="produtos.codfilial" pInputText />
+                      <label for="float-input">Filial</label>
+                    </span>
+                  </div>
+                  <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
+                    <span class="ui-float-label">
+                      <input id="estger" class="apenas_leitura" name="estger" type="text" readonly="true" [(ngModel)]="produtos.estger" pInputText />
+                      <label for="float-input">Est.Ger</label>
+                    </span>
+                  </div>
+                  <div class="ui-g-5 ui-md-5 ui-lg-5 efeito">
+                    <span class="ui-float-label">
+                      <input id="estreserv" class="apenas_leitura" name="estreserv" type="text" readonly="true" [(ngModel)]="produtos.estreserv" pInputText />
+                      <label for="float-input">Est.Reserv</label>
+                    </span>
+                  </div>
+                  <div class="ui-g-6 ui-md-6 ui-lg-6 efeito">
+                    <span class="ui-float-label">
+                      <input id="estbloq" class="apenas_leitura" name="estbloq" type="text" readonly="true" [(ngModel)]="produtos.estbloq" pInputText />
+                      <label for="float-input">Est.Bloq</label>
+                    </span>
+                  </div>
+                  <div class="ui-g-6 ui-md-6 ui-lg-6 efeito">
+                    <span class="ui-float-label">
+                      <input id="estavaria" class="apenas_leitura" name="estavaria" type="text" readonly="true" [(ngModel)]="produtos.estavaria" pInputText />
+                      <label for="float-input">Est.Avaria</label>
+                    </span>
+                  </div>
+                </div>
+              </p-tabPanel>              
+            </p-tabView>
+          </div>
         </div>
-        <div class="ui-g-12 ui-md-12 ui-lg-12">
-          <p-tabView>
-            <!--
-            <p-tabPanel header="EMBALAGEM/DIMENSÃO" leftIcon="pi pi-folder-open">
-              <div class="ui-g ui-fluid">
-                <div class="ui-g-12 ui-md-12 ui-lg-12">
-                  <button pButton id="botao" class="style_input" type="button" label="EMBALAGEM/DIMENSÃO"></button>
-                </div>
-              </div>
-            </p-tabPanel>
-            <p-tabPanel header="ENDEREÇO" leftIcon="pi pi-folder-open">
-              <div class="ui-g ui-fluid">
-                <div class="ui-g-12 ui-md-12 ui-lg-12">
-                  <button pButton id="botao" class="style_input" type="button" label="ENDEREÇO"></button>
-                </div>
-              </div>
-            </p-tabPanel>    
-            <p-tabPanel header="LISTA ENDEREÇO" leftIcon="pi pi-folder-open">
-              <div class="ui-g ui-fluid">
-                <div class="ui-g-12 ui-md-12 ui-lg-12">
-                  <button pButton id="botao" class="style_input" type="button" label="LISTA ENDEREÇO"></button>
-                </div>
-              </div>
-            </p-tabPanel>    
-            -->
-            <p-tabPanel header="ESTOQUE" leftIcon="pi pi-folder-open">
-              <div class="ui-g ui-fluid">
-                <div class="ui-g-12 ui-md-12 ui-lg-12">
-                  <p-table [cols]="coluna">
-                    <ng-template pTemplate="header" let-cols>
-                      <tr *ngFor="let col of cols">
-                        <th>
-                          {{ col.header }}
-                        </th>
-                      </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body">
-                      <tr>
-                        <td>
-                            
-                        </td>
-                      </tr>
-                    </ng-template>
-                  </p-table>
-                </div>
-              </div>
-            </p-tabPanel>              
-          </p-tabView>
-        </div>
-      </div>
-    </block-ui>
+      </block-ui>
+    </div>  
   </form>
 </p-panel>
 

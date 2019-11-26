@@ -17,6 +17,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ProdutoEstoqueComponent } from './produto-estoque/produto-estoque.component';
 import { ProdutoHomeComponent } from './produto-home/produto-home.component';
 import { ConsultarProdutoRoutingModule } from './consultar-produto.routing.module';
+import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ConsultarProdutoRoutingModule } from './consultar-produto.routing.modul
     KeyFilterModule,
     TabViewModule,
     InputTextareaModule,
-    ConsultarProdutoRoutingModule
+    ConsultarProdutoRoutingModule,
+    InputTextModule
   ], providers: [MessageService]
 })
 

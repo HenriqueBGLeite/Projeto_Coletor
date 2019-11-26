@@ -14,21 +14,13 @@ import { Router } from '@angular/router';
 export class ConsultarProdutoComponent implements OnInit {
 
   @BlockUI() blockUI: NgBlockUI;
+
   limpar: string;
   produtos: Produto = new Produto();
-
-  coluna: any[] = [
-    { filed: 'codfilial', header: 'FILIAL' },
-    { filed: 'qtestger', header: 'GER' },
-    { filed: 'qtreserv', header: 'RESERV' },
-    { filed: 'qtbloqueada', header: 'BLOQ' },
-    { filed: 'qtindeniz', header: 'AVARIA' },
-  ];
 
   constructor(private router: Router, private pesquisaProdutoService: ConsultarProdutoService, private messageService: MessageService) { }
 
   ngOnInit() {
-
   }
 
   buscarProdutoId(codprod: string) {
