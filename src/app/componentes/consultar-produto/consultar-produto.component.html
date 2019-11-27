@@ -9,121 +9,111 @@
       </div>
 
       <block-ui>
+        <p class="descricao">{{ produtos.descricao }}</p>
         <div class="ui-g ui-fluid">
-          <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
-            <span class="ui-float-label">
-              <textarea id="descricao" class="apenas_leitura" rows="2" cols="30" name="descricao" [(ngModel)]="produtos.descricao" readonly="true" pInputTextarea></textarea>
-              <label for="float-input">Descrição</label>
-            </span>
-          </div>
           <div class="ui-g-12 ui-md-12 ui-lg-12">
             <p-tabView>
               <!--Embalagem\Dimensão--> 
               <p-tabPanel header="EMB\DIM" leftIcon="fa fa-dropbox">
-                <p-tabView>
-                  <p-tabPanel header="EMBALAGEM" leftIcon="fa fa-dropbox">
-                    <div class="ui-g ui-fluid">
-                      <div class="ui-g-6 ui-md-6 ui-lg-6 efeito">
-                        <span class="ui-float-label">
-                          <input id="embalagemmaster" class="apenas_leitura" name="embalagemmaster" type="text" readonly="true" [(ngModel)]="produtos.embalagemmaster" pInputText />
-                          <label for="float-input">Emb.Master</label>
-                        </span>
-                      </div>
-                      <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
-                        <span class="ui-float-label">
-                          <input id="unidademaster" class="apenas_leitura" name="unidademaster" type="text" readonly="true" [(ngModel)]="produtos.unidademaster" pInputText />
-                          <label for="float-input">Un.M</label>
-                        </span>
-                      </div>
-                      <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
-                        <span class="ui-float-label">
-                          <input id="qtcx" class="apenas_leitura" name="qtcx" type="text" readonly="true" [(ngModel)]="produtos.qtcx" pInputText />
-                          <label for="float-input">Qt.Cx</label>
-                        </span>
-                      </div>
-                      <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
-                        <span class="ui-float-label">
-                          <input id="dun" class="apenas_leitura" name="dun" type="text" readonly="true" [(ngModel)]="produtos.dun" pInputText />
-                          <label for="float-input">Cód.Barras Master</label>
-                        </span>
-                      </div>
-                      <div class="ui-g-6 ui-md-6 ui-lg-6 efeito">
-                        <span class="ui-float-label">
-                          <input id="embalagem" class="apenas_leitura" name="embalagem" type="text" readonly="true" [(ngModel)]="produtos.embalagem" pInputText />
-                          <label for="float-input">Emb.Unit</label>
-                        </span>
-                      </div>
-                      <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
-                        <span class="ui-float-label">
-                          <input id="unidade" class="apenas_leitura" name="unidade" type="text" readonly="true" [(ngModel)]="produtos.unidade" pInputText />
-                          <label for="float-input">Unid</label>
-                        </span>
-                      </div>
-                      <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
-                        <span class="ui-float-label">
-                          <input id="qtunit" class="apenas_leitura" name="qtunit" type="text" readonly="true" [(ngModel)]="produtos.qtunit" pInputText />
-                          <label for="float-input">Qt.Unit</label>
-                        </span>
-                      </div>
-                      <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
-                        <span class="ui-float-label">
-                          <input id="ean" class="apenas_leitura" name="ean" type="text" readonly="true" [(ngModel)]="produtos.ean" pInputText />
-                          <label for="float-input">Cód. Barras Unit.</label>
-                        </span>
-                      </div>
+                <div class="ui-g ui-fluid">
+                  <p-fieldset legend="UNIDADE" class="subtitle">
+                    <div class="ui-g-6 ui-md-6 ui-lg-6 efeito">
+                      <span class="ui-float-label">
+                        <input id="embalagem" class="apenas_leitura" name="embalagem" type="text" readonly="true" [(ngModel)]="produtos.embalagem" pInputText />
+                        <label for="float-input">Emb.Unit</label>
+                      </span>
                     </div>
-                  </p-tabPanel>
-                  <p-tabPanel header="DIMENSÃO" leftIcon="fa fa-dropbox">
-                    <div class="ui-g ui-fluid">
-                      <p-fieldset legend="MASTER(cm)" class="subtitle">
-                        <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
-                          <span class="ui-float-label">
-                            <input id="alt" class="apenas_leitura" name="alt" type="text" readonly="true" [(ngModel)]="produtos.alt" pInputText />
-                            <label for="float-input">Alt</label>
-                          </span>
-                        </div>
-                        <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
-                          <span class="ui-float-label">
-                            <input id="larg" class="apenas_leitura" name="larg" type="text" readonly="true" [(ngModel)]="produtos.larg" pInputText />
-                            <label for="float-input">Larg</label>
-                          </span>
-                        </div>
-                        <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
-                          <span class="ui-float-label">
-                            <input id="comp" class="apenas_leitura" name="comp" type="text" readonly="true" [(ngModel)]="produtos.comp" pInputText />
-                            <label for="float-input">Comp</label>
-                          </span>
-                        </div>
-                        <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
-                          <span class="ui-float-label">
-                            <input id="peso" class="apenas_leitura" name="peso" type="text" readonly="true" [(ngModel)]="produtos.peso" pInputText />
-                            <label for="float-input">Peso(K/g)</label>
-                          </span>
-                        </div>
-                      </p-fieldset>
-                      <p-fieldset legend="NORMA" class="subtitle">
-                        <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
-                          <span class="ui-float-label">
-                            <input id="lastro" class="apenas_leitura" name="lastro" type="text" readonly="true" [(ngModel)]="produtos.lastro" pInputText />
-                            <label for="float-input">Lastro</label>
-                          </span>
-                        </div>
-                        <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
-                          <span class="ui-float-label">
-                            <input id="camada" class="apenas_leitura" name="camada" type="text" readonly="true" [(ngModel)]="produtos.camada" pInputText />
-                            <label for="float-input">Camada</label>
-                          </span>
-                        </div>
-                        <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
-                          <span class="ui-float-label">
-                            <input id="total" class="apenas_leitura" name="total" type="text" readonly="true" [(ngModel)]="produtos.total" pInputText />
-                            <label for="float-input">Total</label>
-                          </span>
-                        </div>
-                      </p-fieldset>
+                    <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
+                      <span class="ui-float-label">
+                        <input id="unidade" class="apenas_leitura" name="unidade" type="text" readonly="true" [(ngModel)]="produtos.unidade" pInputText />
+                        <label for="float-input">Unid</label>
+                      </span>
                     </div>
-                  </p-tabPanel>
-                </p-tabView>
+                    <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
+                      <span class="ui-float-label">
+                        <input id="qtunit" class="apenas_leitura" name="qtunit" type="text" readonly="true" [(ngModel)]="produtos.qtunit" pInputText />
+                        <label for="float-input">Qt.Unit</label>
+                      </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
+                      <span class="ui-float-label">
+                        <input id="ean" class="edicao" name="ean" type="number" pKeyFilter="pnum" [(ngModel)]="produtos.ean" pInputText />
+                        <label for="float-input">Cód. Barras Unit.</label>
+                      </span>
+                    </div>
+                  </p-fieldset>
+                                
+                  <p-fieldset legend="MASTER(cm)" class="subtitle">
+                    <div class="ui-g-6 ui-md-6 ui-lg-6 efeito">
+                      <span class="ui-float-label">
+                        <input id="embalagemmaster" class="apenas_leitura" name="embalagemmaster" type="text" readonly="true" [(ngModel)]="produtos.embalagemmaster" pInputText />
+                        <label for="float-input">Emb.Master</label>
+                      </span>
+                    </div>
+                    <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
+                      <span class="ui-float-label">
+                        <input id="unidademaster" class="apenas_leitura" name="unidademaster" type="text" readonly="true" [(ngModel)]="produtos.unidademaster" pInputText />
+                        <label for="float-input">Un.M</label>
+                      </span>
+                    </div>
+                    <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
+                      <span class="ui-float-label">
+                        <input id="qtcx" class="apenas_leitura" name="qtcx" type="text" readonly="true" [(ngModel)]="produtos.qtcx" pInputText />
+                        <label for="float-input">Qt.Cx</label>
+                      </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
+                      <span class="ui-float-label">
+                        <input id="dun" class="edicao" name="dun" type="number" pKeyFilter="pnum" [(ngModel)]="produtos.dun" pInputText />
+                        <label for="float-input">Cód.Barras Master</label>
+                      </span>
+                    </div>
+                    <div class="ui-g-2 ui-md-2 ui-lg-2 efeito">
+                      <span class="ui-float-label">
+                        <input id="alt" class="edicao" name="alt" type="number" pKeyFilter="pnum" [(ngModel)]="produtos.alt" pInputText />
+                        <label for="float-input">Alt</label>
+                      </span>
+                    </div>
+                    <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
+                      <span class="ui-float-label">
+                        <input id="larg" class="edicao" name="larg" type="number" pKeyFilter="pnum" [(ngModel)]="produtos.larg" pInputText />
+                        <label for="float-input">Larg</label>
+                      </span>
+                    </div>
+                    <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
+                      <span class="ui-float-label">
+                        <input id="comp" class="edicao" name="comp" type="number" pKeyFilter="pnum" [(ngModel)]="produtos.comp" pInputText />
+                        <label for="float-input">Comp</label>
+                      </span>
+                    </div>
+                    <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
+                      <span class="ui-float-label">
+                        <input id="peso" class="apenas_leitura" name="peso" type="number" readonly="true" [(ngModel)]="produtos.peso" pInputText />
+                        <label for="float-input">Peso(K/g)</label>
+                      </span>
+                    </div>
+                  </p-fieldset>
+                  <p-fieldset legend="NORMA" class="subtitle">
+                    <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
+                      <span class="ui-float-label">
+                        <input id="lastro" class="edicao" name="lastro" type="number" pKeyFilter="pnum" [(ngModel)]="produtos.lastro" pInputText />
+                        <label for="float-input">Lastro</label>
+                      </span>
+                    </div>
+                    <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
+                      <span class="ui-float-label">
+                        <input id="camada" class="edicao" name="camada" type="number" pKeyFilter="pnum" [(ngModel)]="produtos.camada" pInputText />
+                        <label for="float-input">Camada</label>
+                      </span>
+                    </div>
+                    <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
+                      <span class="ui-float-label">
+                        <input id="total" class="apenas_leitura" name="total" type="text" readonly="true" [(ngModel)]="produtos.total" pInputText />
+                        <label for="float-input">Total</label>
+                      </span>
+                    </div>
+                  </p-fieldset>
+                </div>
               </p-tabPanel> 
               <!--Estoque--> 
               <p-tabPanel header="EST" leftIcon="pi pi-shopping-cart">
@@ -167,10 +157,7 @@
             </p-tabView>
           </div>
         </div>
-        <div class="ui-g-6 ui-md-6 ui-lg-6 subtitle">
-          <p-button label="VOLTAR" icon="pi pi-caret-left" iconPos="left" (onClick)="navegar('V')"></p-button>
-        </div>   
-        <div class="ui-g-6 ui-md-6 ui-lg-6 salvar">
+        <div class="ui-g-12 ui-md-12 ui-lg-12 salvar">
           <p-button label="GRAVAR" icon="pi pi-save" iconPos="left" (onClick)="salvar(dados)"></p-button>     
         </div>
       </block-ui>

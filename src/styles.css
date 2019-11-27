@@ -44,3 +44,15 @@ html {
     opacity: 0.0;
   }
 }
+
+body .ui-inputtext {
+  font-size: 14px;
+  color: #333;
+  background: #fff;
+  padding: 2px;
+  border: 1px solid #a6a6a6;
+  transition: border-color .2s;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

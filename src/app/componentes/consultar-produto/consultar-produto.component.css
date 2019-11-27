@@ -36,3 +36,16 @@
     font-size: 20px;
     background-color: rgb(206, 206, 206);
 }
+
+.edicao{
+    size: 30px;
+    font-size: 20px;
+}
+
+.descricao{
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    color: #000;
+    background-color: rgb(206, 206, 206);
+}
