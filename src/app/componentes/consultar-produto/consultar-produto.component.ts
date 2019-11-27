@@ -56,4 +56,7 @@ export class ConsultarProdutoComponent implements OnInit {
       this.router.navigate(['estoque']);
   }
 
+  salvar(dados){
+
+  }
 }

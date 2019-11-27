@@ -15,6 +15,7 @@ import { MessageService } from 'primeng/api';
 import { TabViewModule } from 'primeng/tabview';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import {InputTextModule} from 'primeng/inputtext';
+import {FieldsetModule} from 'primeng/fieldset';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {InputTextModule} from 'primeng/inputtext';
     KeyFilterModule,
     TabViewModule,
     InputTextareaModule,
-    InputTextModule
+    InputTextModule,
+    FieldsetModule
   ], providers: [MessageService]
 })
 

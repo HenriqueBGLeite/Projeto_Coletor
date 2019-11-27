@@ -19,6 +19,14 @@
     text-align: center;
 }
 
+.subtitle {
+    text-align: left;
+}
+
+.salvar {
+    text-align: right;
+}
+
 .efeito{
     padding-top: 10px;
 }
