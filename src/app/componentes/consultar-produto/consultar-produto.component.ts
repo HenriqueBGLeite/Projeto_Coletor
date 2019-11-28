@@ -30,7 +30,7 @@ export class ConsultarProdutoComponent implements OnInit {
       this.pesquisaProdutoService.buscarProduto(codprod).subscribe((produto: Produto) => {
         if ( produto.codprod == 0 ) {
           if ( produto.erro == 'S' ) {
-            this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA));
+            this.messageService.add(MensagemUtil.criaMensagemErro(produto.mensagemErroWarning));
             this.limpar = '';
           }
           else {
@@ -39,6 +39,7 @@ export class ConsultarProdutoComponent implements OnInit {
           }
         } else {
           this.produtos = produto;
+          this.limpar = '';
         }
       }, () => {
                 this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA))

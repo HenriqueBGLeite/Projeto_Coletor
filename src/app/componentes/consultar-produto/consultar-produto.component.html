@@ -1,16 +1,24 @@
 <p-panel header="Consultar Produto" class="title">
   <form #dados="ngForm">
     <div class="ui-g">
-      <div class="ui-g-12 ui-md-12 ui-lg-12">
+      <div class="ui-g-8 ui-md-8 ui-lg-8">
         <div class="ui-inputgroup camposBusca">
-          <input #produto id="responsive" class="style_input" [(ngModel)]="limpar" name="buscar" type="number" pKeyFilter="pnum" (keyup.enter)="buscarProdutoId(produto.value)" placeholder="COD.PROD / EAN / DUN" pInputText />
+          <input #produto id="style_input" class="style_input" [(ngModel)]="limpar" name="buscar" type="number" pKeyFilter="pnum" (keyup.enter)="buscarProdutoId(produto.value)" placeholder="COD.PROD / EAN / DUN" pInputText />
           <span class="ui-inputgroup-addon"><i class="fa fa-search" style="line-height: 1.25;"></i></span>
         </div>
       </div>
+      <div class="ui-g-4 ui-md-4 ui-lg-4">
+        <span class="ui-float-label">
+          <input id="responsive" class="apenas_leitura" name="codprod" type="number" readonly="true" [(ngModel)]="produtos.codprod" pInputText />
+          <label for="float-input">Cód.Prod</label>
+        </span>
+      </div>
 
       <block-ui>
-        <p class="descricao">{{ produtos.descricao }}</p>
         <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-12 ui-lg-12">
+            <p class="descricao">{{ produtos.descricao }}</p>
+          </div>
           <div class="ui-g-12 ui-md-12 ui-lg-12">
             <p-tabView>
               <!--Embalagem\Dimensão--> 
@@ -43,7 +51,7 @@
                     </div>
                   </p-fieldset>
                                 
-                  <p-fieldset legend="MASTER(cm)" class="subtitle">
+                  <p-fieldset legend="MASTER (cm)" class="subtitle">
                     <div class="ui-g-6 ui-md-6 ui-lg-6 efeito">
                       <span class="ui-float-label">
                         <input id="embalagemmaster" class="apenas_leitura" name="embalagemmaster" type="text" readonly="true" [(ngModel)]="produtos.embalagemmaster" pInputText />
