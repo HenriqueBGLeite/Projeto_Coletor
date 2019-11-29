@@ -6,6 +6,7 @@ import { Constantes } from 'src/Util/constantes';
 import { FormGroup } from '@angular/forms';
 import { ProdutoInventario } from './compartilhado/produto-inventario.model';
 import { InventarioService } from './compartilhado/inventario.service';
+import { InventarioModule } from './inventario.module';
 
 
 @Component({
@@ -32,15 +33,27 @@ export class InventarioComponent implements OnInit {
   }
 
   salvar(dados){
+    this.formartarDataGravacao(dados, dados.value.dtvalidade);
+    console.log(dados.value.codprod);
+    console.log(dados.value.dtvalidade);
+    
     if ( dados.value.codprod != null ) { 
       if ( dados.value.lastro > 0 || dados.value.camada > 0){
         if ( dados.value.lastro == this.produtos.lastro && dados.value.camada == this.produtos.camada ) {
             this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
-            dados.reset();
-            this.limpaVariaveis();
-            this.blockUI.stop();
-            this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
-            this.focoBusca(); 
+            this.inventarioSevice.salvar(dados).subscribe(() => {
+              this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
+              dados.reset();
+              this.limpaVariaveis();
+              this.blockUI.stop();
+              this.focoBusca();
+
+            }, (erro) => {
+                  console.log(erro);
+                  this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
+                  this.blockUI.stop();
+            })           
+             
         } else {
             this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.VALIDA_LASTRO_CAMADA));
             this.camada = null; 
@@ -169,6 +182,20 @@ export class InventarioComponent implements OnInit {
   limpaVariaveis(){
     this.qtCx = null;
     this.qtUnit = null;
+  }
+
+  formartarDataGravacao(produto: ProdutoInventario, dtvalidade) {
+    if (dtvalidade) {
+      let dia = parseInt(dtvalidade.substring(0, 2));
+      let mes = parseInt(dtvalidade.substring(2, 4)) - 1;
+      let ano = parseInt(dtvalidade.substring(4, 8));
+
+      let data = new Date(ano, mes, dia);
+
+      produto.dtvalidade = data;
+
+      return produto;
+    }
   }
 
 }
