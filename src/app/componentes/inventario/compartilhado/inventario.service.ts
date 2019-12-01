@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { ProdutoInventario } from './produto-inventario.model';
 
 
 @Injectable({
@@ -17,9 +18,9 @@ export class InventarioService {
     return this.httpClient.get(`${this.urlApi}getProdutoInventario/${filtro}`);
   }
 
-  public salvar(dados){
-    console.log(dados);
-    return this.httpClient.post(this.urlApi, dados);
+  public salvar(produto: ProdutoInventario){
+    console.log(produto);
+    return this.httpClient.post(this.urlApi, produto);
   }
 
 }

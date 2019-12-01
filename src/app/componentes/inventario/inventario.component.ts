@@ -19,25 +19,33 @@ export class InventarioComponent implements OnInit {
   dados: FormGroup;
   produtos: ProdutoInventario = new ProdutoInventario();
   limpar: string;
-  total: number = 0;
-  lastro: number;
-  camada: number;
-  qtUnit: number = 0;
-  qtCx: number = 0;
-  dtvalidade: Date;
+
   configCalendar = Constantes.configCalendar;
 
   constructor(private inventarioSevice: InventarioService, private messageService: MessageService) { }
 
   ngOnInit() {
+    
   }
 
-  salvar(dados){
-    this.formartarDataGravacao(dados, dados.value.dtvalidade);
-    console.log(dados.value.codprod);
-    console.log(dados.value.dtvalidade);
+  salvar(){
+
+    this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
+    this.inventarioSevice.salvar(this.produtos).subscribe(() => {
+      this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
+      this.blockUI.stop();
+
+    }, (erro) => {
+          console.log(erro);
+          this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
+          this.blockUI.stop();
+    })           
+  
+    //this.formartarDataGravacao(dados, dados.value.dtvalidade);
+
     
-    if ( dados.value.codprod != null ) { 
+    /*
+     if ( dados.value.codprod != null ) { 
       if ( dados.value.lastro > 0 || dados.value.camada > 0){
         if ( dados.value.lastro == this.produtos.lastro && dados.value.camada == this.produtos.camada ) {
             this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
@@ -63,7 +71,6 @@ export class InventarioComponent implements OnInit {
       } else {
           this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
           dados.reset();
-          this.limpaVariaveis();
           this.blockUI.stop();
           this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
           this.focoBusca(); 
@@ -71,7 +78,7 @@ export class InventarioComponent implements OnInit {
     } else {
         this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.VALIDA_DADOS));
         this.focoBusca(); 
-    }
+    }*/
       
   }
 
@@ -91,6 +98,7 @@ export class InventarioComponent implements OnInit {
           }
         } else {
           this.produtos = produto;
+          this.limpaVariavel(this.produtos);
           this.focoLastro();
         }
       }, () => {
@@ -104,19 +112,19 @@ export class InventarioComponent implements OnInit {
   
   buscaLastro(valor: number, tecla: string){
     if ( tecla == 'E') {
-      this.lastro = valor;
+      this.produtos.lastro = valor;
       this.focoCamada();
     } else 
-        this.lastro = valor;
+      this.produtos.lastro = valor;
   }
 
   buscaCamada(valor: number, tecla: string){
     if ( tecla == 'E') {
-      this.camada = valor;
+      this.produtos.camada = valor;
       this.somarQuantidades();
       this.focoQtCx();  
     } else {
-        this.camada = valor;
+        this.produtos.camada = valor;
         this.somarQuantidades();
     }
     
@@ -124,22 +132,22 @@ export class InventarioComponent implements OnInit {
 
   buscaQtCx(valor: number, tecla: string){
     if ( tecla == 'E') {
-      this.qtCx = valor;
+      this.produtos.qtcx = valor;
       this.somarQuantidades();
       this.focoQtUn();
     } else {
-        this.qtCx = valor;
+        this.produtos.qtcx = valor;
         this.somarQuantidades();
     }    
   }
 
   buscaQtunit(valor: number, tecla: string){
     if ( tecla == 'E') {
-      this.qtUnit = valor;
+      this.produtos.qtun = valor;
       this.somarQuantidades();
       this.focoConfirmar();
     } else {
-        this.qtUnit = valor;
+        this.produtos.qtun = valor;
         this.somarQuantidades();
     }
     
@@ -176,12 +184,7 @@ export class InventarioComponent implements OnInit {
   }
 
   somarQuantidades(){
-    this.total =  ((this.lastro * this.camada) * this.produtos.qtunitcx) + (Number(this.qtUnit) + (Number(this.qtCx) * this.produtos.qtunitcx));
-  }
-
-  limpaVariaveis(){
-    this.qtCx = null;
-    this.qtUnit = null;
+    this.produtos.total =  ((this.produtos.lastro * this.produtos.camada) * this.produtos.qtunitcx) + (Number(this.produtos.qtun) + (Number(this.produtos.qtcx) * this.produtos.qtunitcx));
   }
 
   formartarDataGravacao(produto: ProdutoInventario, dtvalidade) {
@@ -196,6 +199,14 @@ export class InventarioComponent implements OnInit {
 
       return produto;
     }
+  }
+
+  limpaVariavel(prod: ProdutoInventario){
+    prod.lastro = null;
+    prod.camada = null;
+    prod.qtun = null;
+    prod.qtcx = null;
+    prod.total = 0;
   }
 
 }

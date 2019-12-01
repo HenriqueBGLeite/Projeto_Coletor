@@ -1,12 +1,14 @@
 <p-panel header="Inventário" class="title">
-  <form #dados="ngForm">
+  <form #form="ngForm" (ngSubmit)="salvar()">
     <div class="ui-g">
       <div class="ui-g-12 ui-md-12 ui-lg-12">
         <div class="ui-inputgroup camposBusca">
           <input #produto id="codprod" class="responsive" name="codprod" [(ngModel)]="limpar" 
                  type="number" pKeyFilter="pnum" (keyup.enter)="buscarProdutoId(produto.value)" 
                  (blur)="buscarProdutoId(produto.value)" placeholder="COD.PROD / EAN / DUN" pInputText />
-          <span class="ui-inputgroup-addon"><i class="fa fa-search" style="line-height: 1.25;"></i></span>
+          <button pButton id="pesquisar" (onClick)="buscarProdutoId(produto.value)">
+            <i class="fa fa-search"></i>
+          </button>                              
         </div>
       </div>
     </div>  
@@ -20,7 +22,7 @@
         </div>
         <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
           <span class="ui-float-label">
-            <p-calendar id="dtvalidade" name="dtvalidade" (ngModel)="dtvalidade" [locale]="configCalendar" [numberOfMonths]="13" [dateFormat]="configCalendar.dateFormat" [showIcon]="true" showButtonBar="true" ></p-calendar>
+            <p-calendar id="dtvalidade" name="dtvalidade" (ngModel)="produtos.dtvalidade" [locale]="configCalendar" [numberOfMonths]="13" [dateFormat]="configCalendar.dateFormat" [showIcon]="true" showButtonBar="true" ></p-calendar>
             <label for="float-input">Data Validade</label>
           </span>
         </div>
@@ -32,38 +34,38 @@
         </div>
         <div class="ui-g-3 ui-md-3 ui-lg-5 efeito">
           <span class="ui-float-label">
-            <input id="lastro" name="lastro" [(ngModel)]="lastro" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaLastro($event.target.value, 'E')" (blur)="buscaLastro($event.target.value, 'T')" pInputText />
+            <input id="lastro" name="lastro" [(ngModel)]="produtos.lastro" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaLastro($event.target.value, 'E')" (blur)="buscaLastro($event.target.value, 'T')" pInputText />
             <label for="float-input">Lastro</label>
           </span>
         </div>
         <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">X</div>
         <div class="ui-g-4 ui-md-4 ui-lg-5 efeito">
           <span class="ui-float-label">
-            <input id="camada" name="camada" [(ngModel)]="camada" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaCamada($event.target.value, 'E')" (blur)="buscaCamada($event.target.value, 'T')" pInputText />
+            <input id="camada" name="camada" [(ngModel)]="produtos.camada" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaCamada($event.target.value, 'E')" (blur)="buscaCamada($event.target.value, 'T')" pInputText />
             <label for="float-input">Camada</label>
           </span>
         </div>      
         <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
           <span class="ui-float-label">
-            <input id="qtcx" name="qtCx" (ngModel)="qtCx" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtCx($event.target.value, 'E')" (blur)="buscaQtCx($event.target.value, 'T')" pInputText />
+            <input id="qtcx" name="qtcx" [(ngModel)]="produtos.qtcx" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtCx($event.target.value, 'E')" (blur)="buscaQtCx($event.target.value, 'T')" pInputText />
             <label for="float-input">Qt.Cx</label>
           </span>
         </div>
         <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">+</div>      
         <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
           <span class="ui-float-label">
-            <input id="qtun" name="qtUnit" (ngModel)="qtUnit" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtunit($event.target.value, 'E')" (blur)="buscaQtunit($event.target.value, 'T')" pInputText />
+            <input id="qtun" name="qtun" [(ngModel)]="produtos.qtun" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtunit($event.target.value, 'E')" (blur)="buscaQtunit($event.target.value, 'T')" pInputText />
             <label for="float-input">Qt.Un</label>
           </span>
         </div>
         <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">=</div>
         <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
           <span class="ui-float-label">
-              <input id="total" name="total" [(ngModel)]="total" class="style_input" type="number" pInputText [value]="total" readonly="true" />
+              <input id="total" name="total" [(ngModel)]="produtos.total" class="style_input" type="number" pInputText [value]="total" readonly="true" />
               <label for="float-input">Total</label>
           </span>
         </div>
-        <button pButton id="confirmar" class="style_input" type="button" (click)="salvar(dados)" (keyup.enter)="salvar(dados)" label="CONFIRMAR"></button>                              
+        <button pButton id="confirmar" class="style_input" type="submit"  label="CONFIRMAR"></button>                              
       </div> 
     </block-ui> 
   </form> 
