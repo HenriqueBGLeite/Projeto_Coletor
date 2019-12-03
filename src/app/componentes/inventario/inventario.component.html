@@ -1,14 +1,12 @@
 <p-panel header="Inventário" class="title">
-  <form #form="ngForm" (ngSubmit)="salvar()">
+  <form #form="ngForm">
     <div class="ui-g">
       <div class="ui-g-12 ui-md-12 ui-lg-12">
         <div class="ui-inputgroup camposBusca">
           <input #produto id="codprod" class="responsive" name="codprod" [(ngModel)]="limpar" 
                  type="number" pKeyFilter="pnum" (keyup.enter)="buscarProdutoId(produto.value)" 
                  (blur)="buscarProdutoId(produto.value)" placeholder="COD.PROD / EAN / DUN" pInputText />
-          <button pButton id="pesquisar" (onClick)="buscarProdutoId(produto.value)">
-            <i class="fa fa-search"></i>
-          </button>                              
+          <button pButton id="pesquisar" icon="fa fa-search" (onClick)="buscarProdutoId(produto.value)"></button>                              
         </div>
       </div>
     </div>  
@@ -65,7 +63,7 @@
               <label for="float-input">Total</label>
           </span>
         </div>
-        <button pButton id="confirmar" class="style_input" type="submit"  label="CONFIRMAR"></button>                              
+        <button pButton id="confirmar" class="style_input" type="submit" ng-click="salvar()" (keyup.enter)="salvar()" label="CONFIRMAR"></button>                              
       </div> 
     </block-ui> 
   </form> 

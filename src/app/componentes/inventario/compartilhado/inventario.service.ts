@@ -19,8 +19,7 @@ export class InventarioService {
   }
 
   public salvar(produto: ProdutoInventario){
-    console.log(produto);
-    return this.httpClient.post(this.urlApi, produto);
+    return this.httpClient.post(`${this.urlApi}metodoPost/`, produto);
   }
 
 }

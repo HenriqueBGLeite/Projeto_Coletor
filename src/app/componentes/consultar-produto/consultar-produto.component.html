@@ -3,8 +3,9 @@
     <div class="ui-g">
       <div class="ui-g-8 ui-md-8 ui-lg-8">
         <div class="ui-inputgroup camposBusca">
-          <input #produto id="style_input" class="style_input" [(ngModel)]="limpar" name="buscar" type="number" pKeyFilter="pnum" (keyup.enter)="buscarProdutoId(produto.value)" placeholder="COD.PROD / EAN / DUN" pInputText />
-          <span class="ui-inputgroup-addon"><i class="fa fa-search" style="line-height: 1.25;"></i></span>
+          <input #produto id="codprod" class="responsive" [(ngModel)]="limpar" name="buscar" type="number" pKeyFilter="pnum" 
+                 (keyup.enter)="buscarProdutoId(produto.value)" placeholder="COD.PROD / EAN / DUN" pInputText />
+          <button pButton id="pesquisar" icon="fa fa-search" on-click="buscarProdutoId(produto.value)"></button>
         </div>
       </div>
       <div class="ui-g-4 ui-md-4 ui-lg-4">

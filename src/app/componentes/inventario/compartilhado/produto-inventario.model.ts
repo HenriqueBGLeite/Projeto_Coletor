@@ -7,7 +7,7 @@ export class ProdutoInventario {
         public embalagem?: string,
         public lastro?: number,
         public camada?: number,
-        public dtvalidade?: Date,
+        public datavalidade?: Date,
         public qtcx?: number,
         public qtun?: number,
         public total?: number,

@@ -19,6 +19,8 @@ export class InventarioComponent implements OnInit {
   dados: FormGroup;
   produtos: ProdutoInventario = new ProdutoInventario();
   limpar: string;
+  lastroOrig: number = 0;
+  camadaOrig: number = 0;
 
   configCalendar = Constantes.configCalendar;
 
@@ -30,29 +32,13 @@ export class InventarioComponent implements OnInit {
 
   salvar(){
 
-    this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
-    this.inventarioSevice.salvar(this.produtos).subscribe(() => {
-      this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
-      this.blockUI.stop();
-
-    }, (erro) => {
-          console.log(erro);
-          this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
-          this.blockUI.stop();
-    })           
-  
-    //this.formartarDataGravacao(dados, dados.value.dtvalidade);
-
-    
-    /*
-     if ( dados.value.codprod != null ) { 
-      if ( dados.value.lastro > 0 || dados.value.camada > 0){
-        if ( dados.value.lastro == this.produtos.lastro && dados.value.camada == this.produtos.camada ) {
+     if ( this.produtos.codprod != null ) { 
+      if ( this.produtos.lastro > 0 || this.produtos.camada > 0){
+        if ( this.produtos.lastro == this.lastroOrig && this.produtos.camada == this.camadaOrig ) {
             this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
-            this.inventarioSevice.salvar(dados).subscribe(() => {
+            this.inventarioSevice.salvar(this.produtos).subscribe(() => {
               this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
-              dados.reset();
-              this.limpaVariaveis();
+              this.produtos = new ProdutoInventario;
               this.blockUI.stop();
               this.focoBusca();
 
@@ -64,21 +50,28 @@ export class InventarioComponent implements OnInit {
              
         } else {
             this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.VALIDA_LASTRO_CAMADA));
-            this.camada = null; 
-            this.lastro = null;                
+            this.produtos.camada = null; 
+            this.produtos.lastro = null;                
             this.focoLastro();
         }
       } else {
-          this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
-          dados.reset();
-          this.blockUI.stop();
+        this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
+        this.inventarioSevice.salvar(this.produtos).subscribe(() => {
           this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
-          this.focoBusca(); 
+          this.produtos = new ProdutoInventario;
+          this.blockUI.stop();
+          this.focoBusca();
+
+        }, (erro) => {
+              console.log(erro);
+              this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
+              this.blockUI.stop();
+        })  
       }      
     } else {
         this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.VALIDA_DADOS));
         this.focoBusca(); 
-    }*/
+    }
       
   }
 
@@ -98,6 +91,8 @@ export class InventarioComponent implements OnInit {
           }
         } else {
           this.produtos = produto;
+          this.lastroOrig = this.produtos.lastro;
+          this.camadaOrig = this.produtos.camada;
           this.limpaVariavel(this.produtos);
           this.focoLastro();
         }
@@ -195,7 +190,7 @@ export class InventarioComponent implements OnInit {
 
       let data = new Date(ano, mes, dia);
 
-      produto.dtvalidade = data;
+      produto.datavalidade = data;
 
       return produto;
     }
