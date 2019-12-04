@@ -3,10 +3,10 @@
     <div class="ui-g">
       <div class="ui-g-12 ui-md-12 ui-lg-12">
         <div class="ui-inputgroup camposBusca">
-          <input #produto id="codprod" class="responsive" name="codprod" [(ngModel)]="limpar" 
+          <input #produto id="codprod" class="responsive" name="codprod" [(ngModel)]="produtos.codprod" 
                  type="number" pKeyFilter="pnum" (keyup.enter)="buscarProdutoId(produto.value)" 
-                 (blur)="buscarProdutoId(produto.value)" placeholder="COD.PROD / EAN / DUN" pInputText />
-          <button pButton id="pesquisar" icon="fa fa-search" (onClick)="buscarProdutoId(produto.value)"></button>                              
+                 placeholder="COD.PROD / EAN / DUN" pInputText />
+          <button pButton icon="fa fa-search" (click)="buscarProdutoId(produto.value)"></button>                              
         </div>
       </div>
     </div>  
@@ -59,11 +59,11 @@
         <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">=</div>
         <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
           <span class="ui-float-label">
-              <input id="total" name="total" [(ngModel)]="produtos.total" class="style_input" type="number" pInputText [value]="total" readonly="true" />
+              <input id="total" name="total" [(ngModel)]="produtos.total" class="style_input" type="number" [value]="total" readonly="true" pInputText />
               <label for="float-input">Total</label>
           </span>
         </div>
-        <button pButton id="confirmar" class="style_input" type="submit" ng-click="salvar()" (keyup.enter)="salvar()" label="CONFIRMAR"></button>                              
+        <button pButton id="confirmar" class="responsive"  type="submit" (click)="salvar()" label="CONFIRMAR"></button>            
       </div> 
     </block-ui> 
   </form> 

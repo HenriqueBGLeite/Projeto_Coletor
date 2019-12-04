@@ -10,7 +10,7 @@ import { ProdutoInventario } from './produto-inventario.model';
 })
 export class InventarioService {
 
-  urlApi = environment.urlApi.concat('Inventario/');
+  urlApi = environment.urlApi.concat('/Inventario/');
 
   constructor(private httpClient: HttpClient) { }
 
@@ -19,7 +19,12 @@ export class InventarioService {
   }
 
   public salvar(produto: ProdutoInventario){
+    console.log(produto);
     return this.httpClient.post(`${this.urlApi}metodoPost/`, produto);
+  }
+
+  public salvar2(id: string){
+    return this.httpClient.post(`${this.urlApi}teste/`, {"id": id});
   }
 
 }

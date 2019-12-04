@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ConsultarProdutoService {
 
-  urlApi = environment.urlApi.concat('PesquisaProduto/');
+  urlApi = environment.urlApi.concat('/PesquisaProduto/');
 
   constructor(private httpClient: HttpClient) { }
 

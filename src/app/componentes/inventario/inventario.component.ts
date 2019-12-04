@@ -6,7 +6,6 @@ import { Constantes } from 'src/Util/constantes';
 import { FormGroup } from '@angular/forms';
 import { ProdutoInventario } from './compartilhado/produto-inventario.model';
 import { InventarioService } from './compartilhado/inventario.service';
-import { InventarioModule } from './inventario.module';
 
 
 @Component({
@@ -18,7 +17,6 @@ export class InventarioComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
   dados: FormGroup;
   produtos: ProdutoInventario = new ProdutoInventario();
-  limpar: string;
   lastroOrig: number = 0;
   camadaOrig: number = 0;
 
@@ -43,7 +41,6 @@ export class InventarioComponent implements OnInit {
               this.focoBusca();
 
             }, (erro) => {
-                  console.log(erro);
                   this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
                   this.blockUI.stop();
             })           
@@ -63,7 +60,6 @@ export class InventarioComponent implements OnInit {
           this.focoBusca();
 
         }, (erro) => {
-              console.log(erro);
               this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
               this.blockUI.stop();
         })  
@@ -83,11 +79,11 @@ export class InventarioComponent implements OnInit {
         if ( produto.codprod == 0 ) {
           if ( produto.erro == 'S' ) {
             this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA));
-            this.limpar = '';
+            this.produtos.codprod = null;
           }
           else {
             this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.ERRO_NENHUM_REGISTRO));
-            this.limpar = '';
+            this.produtos.codprod = null;
           }
         } else {
           this.produtos = produto;

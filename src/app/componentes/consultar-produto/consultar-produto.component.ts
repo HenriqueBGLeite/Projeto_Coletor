@@ -52,12 +52,17 @@ export class ConsultarProdutoComponent implements OnInit {
     
   }
 
-  navegar(caminho: string){
-    if ( caminho == 'E' )
-      this.router.navigate(['estoque']);
+  navegar(){
+
+  }
+
+  focoBusca(){
+    var element = document.getElementById("codprod");
+    element.focus();    
   }
 
   salvar(dados){
-
+    this.produtos = new Produto;
+    this.focoBusca();
   }
 }
