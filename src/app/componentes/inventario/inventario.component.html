@@ -20,7 +20,7 @@
         </div>
         <div class="ui-g-12 ui-md-12 ui-lg-12 efeito">
           <span class="ui-float-label">
-            <p-calendar id="dtvalidade" name="dtvalidade" (ngModel)="produtos.dtvalidade" [locale]="configCalendar" [numberOfMonths]="13" [dateFormat]="configCalendar.dateFormat" [showIcon]="true" showButtonBar="true" ></p-calendar>
+            <p-calendar id="datavalidade" name="datavalidade" (ngModel)="produtos.datavalidade" [locale]="configCalendar" [numberOfMonths]="13" [dateFormat]="configCalendar.dateFormat" [showIcon]="true" showButtonBar="true" ></p-calendar>
             <label for="float-input">Data Validade</label>
           </span>
         </div>
@@ -59,7 +59,7 @@
         <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">=</div>
         <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
           <span class="ui-float-label">
-              <input id="total" name="total" [(ngModel)]="produtos.total" class="style_input" type="number" [value]="total" readonly="true" pInputText />
+              <input id="total" name="total" [(ngModel)]="produtos.total" class="style_input" type="number" readonly="true" pInputText />
               <label for="float-input">Total</label>
           </span>
         </div>

@@ -1,11 +1,9 @@
 const proxy = [
     {
       context: '/api',
-      target: 'http://localhost:44383',
+      target: 'https://localhost:44383',
       secure: false,
-      //changeOrigin: true,
-      logLevel: 'debug',
-      //pathRewrite: { '^/api': ''}
+      logLevel: 'debug'
     }
   ];
   module.exports = proxy;
