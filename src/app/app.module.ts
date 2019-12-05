@@ -15,6 +15,13 @@ import { MessageServiceUtil } from 'src/Util/message-service-util.service';
 import { InventarioModule } from './componentes/inventario/inventario.module';
 import { ToastModule } from 'primeng/toast';
 import { HomeComponent } from './componentes/home/home.component';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+import { AuthService } from './componentes/login/shared/auth.service';
+import { LoginModule } from './componentes/login/login.module';
+import { DropdownModule } from 'primeng/dropdown';
+
+
 
 @NgModule({
   declarations: [
@@ -23,6 +30,7 @@ import { HomeComponent } from './componentes/home/home.component';
   ],
   imports: [
     BrowserModule,
+    DropdownModule,
     AppRoutingModule,
     MenuLateralModule,
     BrowserAnimationsModule,
@@ -32,10 +40,13 @@ import { HomeComponent } from './componentes/home/home.component';
     HttpClientModule,
     BlockUIModule.forRoot(),
     InventarioModule,
-    ToastModule
+    ToastModule,
+    CardModule,
+    ButtonModule,
+    LoginModule
   ],
   providers: [MessageService,
-    MessageServiceUtil,
+    MessageServiceUtil, AuthService,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent]

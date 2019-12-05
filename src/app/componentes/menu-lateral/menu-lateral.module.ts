@@ -4,6 +4,7 @@ import { MenuLateralComponent } from './menu-lateral.component';
 import { MenuModule } from 'primeng/menu';
 import { SidebarModule } from 'primeng/sidebar';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
     MenuModule,
     SidebarModule,
     PanelMenuModule,
+    ButtonModule
 
   ],
   exports: [MenuLateralComponent]

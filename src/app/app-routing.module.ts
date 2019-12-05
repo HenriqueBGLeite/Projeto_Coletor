@@ -3,19 +3,33 @@ import { NgModule } from '@angular/core';
 import { ConsultarProdutoComponent } from './componentes/consultar-produto/consultar-produto.component';
 import { InventarioComponent } from './componentes/inventario/inventario.component';
 import { HomeComponent } from './componentes/home/home.component';
+import { LoginComponent } from './componentes/login/login.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   //Rota default do projeto
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
     
+  //Rota Login
+  { path: 'login', component: LoginComponent},
+
   //Rota Home
-  { path: 'home', component: HomeComponent },
+  { 
+    path: 'home', component: HomeComponent,
+    //canActivate: [AuthGuard] 
+  },
   
   //Rotas para consultar produto
-  { path: 'consultar-produto', component: ConsultarProdutoComponent },
+  { 
+    path: 'consultar-produto', component: ConsultarProdutoComponent, 
+    //canActivate: [AuthGuard] 
+  },
   
   //Rota para inventario
-  { path: 'inventario', component: InventarioComponent },
+  { 
+    path: 'inventario', component: InventarioComponent,
+    //canActivate: [AuthGuard]
+  }
   
 ];
 

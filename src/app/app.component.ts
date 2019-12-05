@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AuthService } from './componentes/login/shared/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
+  mostrarMenu: boolean = false;
+
+  constructor(private authService: AuthService) {
+
+  }
+
   ngOnInit() {
+    this.authService.mostrarMenu.subscribe(
+      mostrar => this.mostrarMenu = mostrar
+    );    
     this.telaCheia();
   }
 

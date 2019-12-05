@@ -11,5 +11,10 @@ export class Constantes {
         clear: 'Limpar',
         dateFormat: 'dd/mm/yy'
     }
+
+    public static baseUsuario = [
+        { label: 'EPOCA', value: 'EPOCA' },
+        { label: 'MRURAL', value: 'MRURAL' }
+    ]
     
 };

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { AuthService } from '../login/shared/auth.service';
 
 @Component({
   selector: 'app-menu-lateral',
@@ -12,7 +13,7 @@ export class MenuLateralComponent implements OnInit {
 
   items: MenuItem[] = [];
 
-  constructor() { }
+  constructor(private authSevice: AuthService) { }
 
   ngOnInit() {
     this.items = [
@@ -27,7 +28,8 @@ export class MenuLateralComponent implements OnInit {
           { label: 'CONSULTAR PRODUTO', icon: 'pi pi-search', routerLink: '/consultar-produto' },
           { separator: true },
           { label: 'INVENTÁRIO', icon: 'fa fa-dropbox', routerLink: '/inventario' },
-          { separator: true }
+          { separator: true },
+          { label: 'SAIR', icon: 'pi pi-sign-out', routerLink: '/login' },
         ]
       }
     ];
@@ -35,6 +37,10 @@ export class MenuLateralComponent implements OnInit {
 
   clickItemMenu() {
     this.display = false;
+  }
+
+  sair(){
+    
   }
 
 }

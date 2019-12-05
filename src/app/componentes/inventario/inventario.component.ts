@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgBlockUI, BlockUI } from 'ng-block-ui';
 import { MessageService } from 'primeng/api';
 import { MensagemUtil } from 'src/Util/mensagem-util';
 import { Constantes } from 'src/Util/constantes';
-import { FormGroup } from '@angular/forms';
 import { ProdutoInventario } from './compartilhado/produto-inventario.model';
 import { InventarioService } from './compartilhado/inventario.service';
 
@@ -15,7 +14,6 @@ import { InventarioService } from './compartilhado/inventario.service';
 })
 export class InventarioComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
-  dados: FormGroup;
   produtos: ProdutoInventario = new ProdutoInventario();
   lastroOrig: number = 0;
   camadaOrig: number = 0;
