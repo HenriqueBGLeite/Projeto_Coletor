@@ -40,7 +40,7 @@ export class MenuLateralComponent implements OnInit {
   }
 
   sair(){
-    
+    this.authSevice.sair();
   }
 
 }

@@ -41,7 +41,8 @@ export class ConsultarProdutoComponent implements OnInit {
           this.produtos = produto;
           this.limpar = '';
         }
-      }, () => {
+      }, (erro) => {
+                console.log(erro);
                 this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA))
                 this.blockUI.stop();
                },
@@ -50,10 +51,6 @@ export class ConsultarProdutoComponent implements OnInit {
         this.blockUI.stop();
     }
     
-  }
-
-  navegar(){
-
   }
 
   focoBusca(){

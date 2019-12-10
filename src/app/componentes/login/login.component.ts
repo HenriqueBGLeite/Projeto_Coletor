@@ -17,12 +17,11 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-
+    this.authService.sair();
   }
 
 
   login(){
-    console.log(this.usuario);
     this.authService.fazerLogin(this.usuario);
   }
 }

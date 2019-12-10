@@ -6,13 +6,17 @@
     <div class="ui-g-12 ui-md-12">
       <div class="ui-inputgroup responsive">
         <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
-        <input id="nome" name="nome" [(ngModel)]="usuario.nome" class="responsive" type="text" placeholder="Usuário" pInputText />
+        <input type="text" class="form-control responsive" placeholder="Usuário" name="nome" [(ngModel)]="usuario.nome">
       </div>
     </div>
     <div class="ui-g-12 ui-md-12">
       <div class="ui-inputgroup responsive">
         <span class="ui-inputgroup-addon"><i class="pi pi-lock" style="line-height: 1.25;"></i></span>
-        <p-dropdown class="responsive" [options]="base" [(ngModel)]="usuario.base" name="base" placeholder="Selecione sua Base:"></p-dropdown>
+        <select id="inputState" class="form-control responsive" [(ngModel)]="usuario.base">
+          <option *ngFor="let base of base" [value]="base.value">
+            {{base.label}}
+          </option>
+        </select>
       </div>
     </div>
     <div class="ui-g-12 ui-md-12 ui-lg-12 salvar">
