@@ -13,7 +13,7 @@ export class MenuLateralComponent implements OnInit {
 
   items: MenuItem[] = [];
 
-  constructor(private authSevice: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.items = [
@@ -40,7 +40,7 @@ export class MenuLateralComponent implements OnInit {
   }
 
   sair(){
-    this.authSevice.sair();
+    this.authService.mostrarMenu.emit(false);;
   }
 
 }

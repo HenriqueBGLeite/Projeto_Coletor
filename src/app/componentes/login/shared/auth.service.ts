@@ -2,6 +2,10 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Usuario } from './login.model';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { MessageService } from 'primeng/api';
+import { HttpClient } from '@angular/common/http';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,26 +13,18 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   urlApi = environment.urlApi.concat('/Login/');
   usuarioAutenticado: boolean = false;
-  mostrarMenu = new EventEmitter<boolean>();
+  mostrarMenu = new EventEmitter<boolean>(false);
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private messageService: MessageService, private httpClient: HttpClient) { }
 
-  fazerLogin(usuario: Usuario){
-    if ( usuario.nome === '1219' && usuario.base === 'EPOCA' ) {
-      this.usuarioAutenticado = true;
-      this.mostrarMenu.emit(true);
-      this.router.navigate(['/home']);
-    } 
-    else {
-      this.mostrarMenu.emit(false);
-      this.usuarioAutenticado = false;
-    }
+  fazerLogin(usuario: Usuario){    
+      return this.httpClient.post(`${this.urlApi}AutenticaUsuario/`, usuario);
   }
 
   sair(){    
-    this.mostrarMenu.emit(false);
     this.usuarioAutenticado = false;
     this.router.navigate(['/login']);
+    this.mostrarMenu.emit(false);
   }
 
 }
