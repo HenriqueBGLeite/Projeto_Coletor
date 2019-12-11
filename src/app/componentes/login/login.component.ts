@@ -5,6 +5,8 @@ import { SelectItem, MessageService } from 'primeng/api';
 import { Constantes } from 'src/Util/constantes';
 import { MensagemUtil } from 'src/Util/mensagem-util';
 import { Router } from '@angular/router';
+import { NgBlockUI, BlockUI } from 'ng-block-ui';
+import { AuthGuard } from 'src/app/guard/auth.guard';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +14,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  @BlockUI() blockUI: NgBlockUI;
   usuario: Usuario = new Usuario();
   base: SelectItem[] = Constantes.baseUsuario;
 
-  constructor(private authService: AuthService, private messageService: MessageService, private router: Router) { }
+  constructor(private authService: AuthService,  private messageService: MessageService, private router: Router) { }
 
   ngOnInit() {
     this.authService.mostrarMenu.emit(false);
@@ -24,21 +26,27 @@ export class LoginComponent implements OnInit {
 
 
   login(){
+    this.blockUI.start(MensagemUtil.VALIDANDO_DADOS);
     if ( this.usuario.codigo != null && this.usuario.base != null ) {
       this.authService.fazerLogin(this.usuario).subscribe((usuario) => {
         if (usuario == true) {
           this.authService.mostrarMenu.emit(true);
           this.router.navigate(['/home']);
+          this.blockUI.stop();
         } else {
+          this.blockUI.stop();
           this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.USUARIO_NAO_CADASTRADO));
           this.usuario = new Usuario();
         }
       }, (erro) => {
-            this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
+            this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_BUSCA));
+            this.usuario = new Usuario();
+            this.blockUI.stop();
       })    ;
     }
     else {
       this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.VALIDA_DADOS));
+      this.blockUI.stop();
     }
   }
 }

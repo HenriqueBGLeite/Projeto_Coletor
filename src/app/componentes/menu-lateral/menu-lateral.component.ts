@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { AuthService } from '../login/shared/auth.service';
+import { Usuario } from '../login/shared/login.model';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-menu-lateral',
@@ -12,13 +14,16 @@ export class MenuLateralComponent implements OnInit {
   display: boolean = false;
 
   items: MenuItem[] = [];
-
+  usuarioLogado: Usuario;
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    this.buscaUsuarioLogado();
     this.items = [
       {
         label: 'Menu Coletor', items: [
+          { label: `${this.usuarioLogado.codigo} - ${this.usuarioLogado.nome}`},
+          { separator: true },
           { label: 'INÍCIO', icon: 'pi pi-home', routerLink: '/home' },
           { separator: true },
           { label: 'CONF. ENTRADA', icon: 'pi pi-inbox', routerLink: '#', disabled: true },
@@ -39,6 +44,10 @@ export class MenuLateralComponent implements OnInit {
     this.display = false;
   }
 
+  buscaUsuarioLogado(): Usuario{
+    this.usuarioLogado = this.authService.getUsuarioLogado();
+    return this.usuarioLogado;
+  }
   sair(){
     this.authService.mostrarMenu.emit(false);;
   }

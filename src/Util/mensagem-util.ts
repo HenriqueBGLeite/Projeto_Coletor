@@ -4,8 +4,10 @@ export class MensagemUtil {
     public static ERRO_NENHUM_REGISTRO = 'Nenhum produto encontrado!';
     public static ERRO_NA_BUSCA = 'Erro ao buscar registros na API.';
     public static CARREGANDO_REGISTRO = 'Carregando Registros...';
+    public static VALIDANDO_DADOS = 'Aguarde, validação dos dados...';
     public static REGISTRO_SALVO = 'Registro salvo com sucesso!';
     public static ERRO_SALVAR = 'Ocorreu um erro ao tentar salvar o registro!';
+    public static ERRO_BUSCA = 'Ocorreu um erro na busca!';
     public static VALIDA_DADOS = 'Dados inválidos para requisição.';
     public static VALIDA_LASTRO_CAMADA = 'Lastro/Camada informados, diferem do cadastro.';
     public static USUARIO_NAO_CADASTRADO = 'Usuário inválido ou não cadastrado.';
