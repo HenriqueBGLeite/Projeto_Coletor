@@ -41,6 +41,7 @@ export class InventarioComponent implements OnInit {
             }, (erro) => {
                   this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
                   this.blockUI.stop();
+                  console.log(erro);
             })           
              
         } else {
@@ -58,6 +59,7 @@ export class InventarioComponent implements OnInit {
           this.focoBusca();
 
         }, (erro) => {
+              
               this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
               this.blockUI.stop();
         })  
