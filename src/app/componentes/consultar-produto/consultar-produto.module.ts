@@ -16,6 +16,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import {InputTextModule} from 'primeng/inputtext';
 import {FieldsetModule} from 'primeng/fieldset';
+import { TabelaModule } from '../tabela/tabela.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {FieldsetModule} from 'primeng/fieldset';
     TabViewModule,
     InputTextareaModule,
     InputTextModule,
-    FieldsetModule
+    FieldsetModule,
+    TabelaModule
   ], providers: [MessageService]
 })
 

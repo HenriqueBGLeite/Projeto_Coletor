@@ -1,0 +1,22 @@
+<div>
+  <p-table [value]="lista" [paginator]="true" [scrollable]="true" [rows]="20" scrollHeight="200px" [virtualScroll]="true" (onLazyLoad)="loadDataOnScroll($event)"
+  [lazy]="true" [totalRecords]="totalRecords" [virtualRowHeight]="34">
+    <ng-template pTemplate="colgroup" let-columns>
+      <colgroup>
+          <col *ngFor="let coluna of colunas" style="width:100%">
+      </colgroup>
+  </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th *ngFor="let coluna of colunas">
+          {{ coluna.label }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body">
+      <tr>
+        <td *ngFor="let coluna of colunas">{{ lista.codfilial }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

@@ -4,7 +4,7 @@
       <div class="ui-g-8 ui-md-8 ui-lg-8">
         <div class="ui-inputgroup camposBusca">
           <input #produto id="codprod" class="responsive" [(ngModel)]="limpar" name="buscar" type="number" pKeyFilter="pnum" 
-                 (keyup.enter)="buscarProdutoId(produto.value)" placeholder="COD.PROD / EAN / DUN" pInputText />
+                  placeholder="COD.PROD / EAN / DUN" pInputText />
           <button pButton id="pesquisar" icon="fa fa-search" on-click="buscarProdutoId(produto.value)"></button>
         </div>
       </div>
@@ -20,6 +20,7 @@
           <div class="ui-g-12 ui-md-12 ui-lg-12">
             <p class="descricao">{{ produtos.descricao }}</p>
           </div>
+
           <div class="ui-g-12 ui-md-12 ui-lg-12">
             <p-tabView>
               <!--Embalagem\Dimensão--> 
@@ -125,7 +126,9 @@
                 </div>
               </p-tabPanel> 
               <!--Estoque--> 
-              <p-tabPanel header="EST" leftIcon="pi pi-shopping-cart">
+              <p-tabPanel header="EST" leftIcon="pi pi-shopping-cart" (click)="definiTabela('E')">
+                  <app-tabela [colunas]="colunas" [lista]="lista"></app-tabela>                
+              <!--
                 <div class="ui-g ui-fluid">
                   <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
                     <span class="ui-float-label">
@@ -157,11 +160,12 @@
                       <label for="float-input">Est.Avaria</label>
                     </span>
                   </div>
-                </div>
+                </div>  
+              -->
               </p-tabPanel>
               <!--LISTA ENDEREÇO--> 
-              <p-tabPanel header="ENDER" leftIcon="pi pi-home">
-
+              <p-tabPanel header="ENDER" leftIcon="pi pi-home" (click)="definiTabela('V')">
+                <app-tabela [colunas]="colunas"></app-tabela>
               </p-tabPanel>           
             </p-tabView>
           </div>

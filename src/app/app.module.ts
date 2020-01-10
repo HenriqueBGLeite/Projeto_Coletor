@@ -20,6 +20,8 @@ import { ButtonModule } from 'primeng/button';
 import { AuthService } from './componentes/login/shared/auth.service';
 import { LoginModule } from './componentes/login/login.module';
 import { DropdownModule } from 'primeng/dropdown';
+import { TabelaComponent } from './componentes/tabela/tabela.component';
+import { TabelaModule } from './componentes/tabela/tabela.module';
 
 
 
@@ -43,7 +45,8 @@ import { DropdownModule } from 'primeng/dropdown';
     ToastModule,
     CardModule,
     ButtonModule,
-    LoginModule
+    LoginModule,
+    TabelaModule
   ],
   providers: [MessageService,
     MessageServiceUtil, AuthService,

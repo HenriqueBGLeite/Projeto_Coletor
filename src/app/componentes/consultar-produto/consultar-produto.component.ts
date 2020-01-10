@@ -16,35 +16,26 @@ export class ConsultarProdutoComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
 
   limpar: string;
-  produtos: Produto = new Produto();
+  produtos: Produto [] = [];
+  colunas: any[] = [];
+  lista: any[] = [];
+  tipoTabela: string = 'E';
 
   constructor(private router: Router, private pesquisaProdutoService: ConsultarProdutoService, private messageService: MessageService) { }
 
   ngOnInit() {
-    
+
   }
 
   buscarProdutoId(codprod: string) {
     
     if ( codprod ) {
       this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
-      this.pesquisaProdutoService.buscarProduto(codprod).subscribe((produto: Produto) => {
-        if ( produto.codprod == 0 ) {
-          if ( produto.erro == 'S' ) {
-            console.log(produto.mensagemErroWarning);
-            this.messageService.add(MensagemUtil.criaMensagemErro(produto.mensagemErroWarning));
-            this.limpar = '';
-          }
-          else {
-            this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.ERRO_NENHUM_REGISTRO));
-            this.limpar = '';
-          }
-        } else {
-          this.produtos = produto;
-          this.limpar = '';
-        }
+      this.pesquisaProdutoService.buscarProduto(codprod).subscribe((produto: Produto[]) => {
+        this.produtos = produto;
+        this.lista = produto; 
+        console.log(this.lista);
       }, (erro) => {
-                console.log(erro);
                 this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA))
                 this.blockUI.stop();
                },
@@ -60,8 +51,31 @@ export class ConsultarProdutoComponent implements OnInit {
     element.focus();    
   }
 
+  definiTabela(tipo: string){
+    if (tipo == 'E') {
+      this.colunas = [
+        {label: 'Filial', var: 'codfilial'},
+        {label: 'Ger.', var: 'qtestger'},
+        {label: 'Reserv.', var: 'qtreserv'},
+        {label: 'Bloq.', var: 'qtbloqueada'},
+        {label: 'Avar.', var: 'qtindeniz'}
+      ]
+    } else {
+      this.colunas = [
+        {label: 'Cod.', var: 'codprod'},
+        {label: 'Desc.', var: 'decricao'},
+        {label: 'Tipo End.', var: 'tipoender'},
+        {label: 'Deposito', var: 'deposito'},
+        {label: 'Rua', var: 'rua'},
+        {label: 'Predio', var: 'predio'},
+        {label: 'Nivel', var: 'nivel'},
+        {label: 'Apto', var: 'apto'}
+      ]
+    }
+  }
+
   salvar(dados){
-    this.produtos = new Produto;
+    this.produtos = [];
     this.focoBusca();
   }
 }

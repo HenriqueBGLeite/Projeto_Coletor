@@ -4,8 +4,7 @@
       <div class="ui-g-12 ui-md-12 ui-lg-12">
         <div class="ui-inputgroup camposBusca">
           <input #produto id="codprod" class="responsive" name="codprod" [(ngModel)]="produtos.codprod" 
-                 type="number" pKeyFilter="pnum" (keyup.enter)="buscarProdutoId(produto.value)" 
-                 placeholder="COD.PROD / EAN / DUN" pInputText />
+                 type="number" pKeyFilter="pnum" placeholder="COD.PROD / EAN / DUN" pInputText />
           <button pButton icon="fa fa-search" (click)="buscarProdutoId(produto.value)"></button>                              
         </div>
       </div>
