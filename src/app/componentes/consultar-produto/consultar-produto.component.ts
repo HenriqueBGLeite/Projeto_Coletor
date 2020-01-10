@@ -21,6 +21,7 @@ export class ConsultarProdutoComponent implements OnInit {
   constructor(private router: Router, private pesquisaProdutoService: ConsultarProdutoService, private messageService: MessageService) { }
 
   ngOnInit() {
+    
   }
 
   buscarProdutoId(codprod: string) {
@@ -30,6 +31,7 @@ export class ConsultarProdutoComponent implements OnInit {
       this.pesquisaProdutoService.buscarProduto(codprod).subscribe((produto: Produto) => {
         if ( produto.codprod == 0 ) {
           if ( produto.erro == 'S' ) {
+            console.log(produto.mensagemErroWarning);
             this.messageService.add(MensagemUtil.criaMensagemErro(produto.mensagemErroWarning));
             this.limpar = '';
           }

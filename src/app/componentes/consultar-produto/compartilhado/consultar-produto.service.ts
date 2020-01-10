@@ -12,6 +12,7 @@ export class ConsultarProdutoService {
   constructor(private httpClient: HttpClient) { }
 
   public buscarProduto(filtro: string){
+    console.log(`${this.urlApi}getProduto/${filtro}`);
     return this.httpClient.get(`${this.urlApi}getProduto/${filtro}`);
   }
 
