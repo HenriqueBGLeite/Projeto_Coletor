@@ -16,7 +16,7 @@ export class ConsultarProdutoComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
 
   limpar: string;
-  produtos: Produto [] = [];
+  produtos: Produto = new Produto();
   colunas: any[] = [];
   lista: any[] = [];
   tipoTabela: string = 'E';
@@ -24,18 +24,30 @@ export class ConsultarProdutoComponent implements OnInit {
   constructor(private router: Router, private pesquisaProdutoService: ConsultarProdutoService, private messageService: MessageService) { }
 
   ngOnInit() {
-
+    
   }
 
   buscarProdutoId(codprod: string) {
     
     if ( codprod ) {
       this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
-      this.pesquisaProdutoService.buscarProduto(codprod).subscribe((produto: Produto[]) => {
-        this.produtos = produto;
-        this.lista = produto; 
-        console.log(this.lista);
+      this.pesquisaProdutoService.buscarProduto(codprod).subscribe((produto: Produto) => {
+        if ( produto.codprod == 0 ) {
+          if ( produto.erro == 'S' ) {
+            console.log(produto.mensagemErroWarning);
+            this.messageService.add(MensagemUtil.criaMensagemErro(produto.mensagemErroWarning));
+            this.limpar = '';
+          }
+          else {
+            this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.ERRO_NENHUM_REGISTRO));
+            this.limpar = '';
+          }
+        } else {
+          this.produtos = produto;
+          this.limpar = '';
+        }
       }, (erro) => {
+                console.log(erro);
                 this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA))
                 this.blockUI.stop();
                },
@@ -75,7 +87,7 @@ export class ConsultarProdutoComponent implements OnInit {
   }
 
   salvar(dados){
-    this.produtos = [];
+    this.produtos = new Produto;
     this.focoBusca();
   }
 }

@@ -23,7 +23,6 @@ export class AuthService {
         this.usuario = usu;
       }, (erro) => {}
       );    
-      console.log(`${this.urlApi}AutenticaUsuario/`, usuario);
       return this.httpClient.post(`${this.urlApi}AutenticaUsuario/`, usuario);
   }
 

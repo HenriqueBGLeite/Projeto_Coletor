@@ -1,6 +1,6 @@
 <div>
   <p-table [value]="lista" [paginator]="true" [scrollable]="true" [rows]="20" scrollHeight="200px" [virtualScroll]="true" (onLazyLoad)="loadDataOnScroll($event)"
-  [lazy]="true" [totalRecords]="totalRecords" [virtualRowHeight]="34">
+  [lazy]="true" [virtualRowHeight]="34">
     <ng-template pTemplate="colgroup" let-columns>
       <colgroup>
           <col *ngFor="let coluna of colunas" style="width:100%">

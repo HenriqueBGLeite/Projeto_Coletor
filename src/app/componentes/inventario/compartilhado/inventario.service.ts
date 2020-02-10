@@ -15,7 +15,6 @@ export class InventarioService {
   constructor(private httpClient: HttpClient) { }
 
   public buscarProduto(filtro: string){
-    console.log(`${this.urlApi}getProdutoInventario/${filtro}`);
     return this.httpClient.get(`${this.urlApi}getProdutoInventario/${filtro}`);
   }
 

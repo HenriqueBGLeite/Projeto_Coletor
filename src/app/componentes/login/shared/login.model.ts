@@ -1,7 +1,7 @@
 export class Usuario {
 
     public constructor(
-        public codigo?: string,
+        public codigo?: number,
         public nome?: string,
         public base?: string,
         public erro?: string,

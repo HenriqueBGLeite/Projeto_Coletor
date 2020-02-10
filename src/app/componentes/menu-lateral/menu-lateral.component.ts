@@ -19,6 +19,23 @@ export class MenuLateralComponent implements OnInit {
 
   ngOnInit() {
     this.buscaUsuarioLogado();
+  }
+
+  clickItemMenu() {
+    this.display = false;
+  }
+
+  buscaUsuarioLogado(): Usuario{
+    this.usuarioLogado = this.authService.getUsuarioLogado();
+    this.carregaMenu();
+    return this.usuarioLogado;
+  }
+
+  sair(){
+    this.authService.mostrarMenu.emit(false);;
+  }
+
+  carregaMenu() {
     this.items = [
       {
         label: 'Menu Coletor', items: [
@@ -38,18 +55,6 @@ export class MenuLateralComponent implements OnInit {
         ]
       }
     ];
-  }
-
-  clickItemMenu() {
-    this.display = false;
-  }
-
-  buscaUsuarioLogado(): Usuario{
-    this.usuarioLogado = this.authService.getUsuarioLogado();
-    return this.usuarioLogado;
-  }
-  sair(){
-    this.authService.mostrarMenu.emit(false);;
   }
 
 }

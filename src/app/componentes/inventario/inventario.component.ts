@@ -37,12 +37,10 @@ export class InventarioComponent implements OnInit {
               this.produtos = new ProdutoInventario;
               this.blockUI.stop();
               this.focoBusca();
-
             }, (erro) => {
                   console.log(erro);
                   this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
                   this.blockUI.stop();
-                  
             })           
              
         } else {
@@ -60,7 +58,6 @@ export class InventarioComponent implements OnInit {
           this.focoBusca();
 
         }, (erro) => {
-              
               this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
               this.blockUI.stop();
         })  
@@ -69,7 +66,6 @@ export class InventarioComponent implements OnInit {
         this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.VALIDA_DADOS));
         this.focoBusca(); 
     }
-      
   }
 
   buscarProdutoId(codprod: string) {
@@ -88,8 +84,8 @@ export class InventarioComponent implements OnInit {
           }
         } else {
           this.produtos = produto;
-          this.lastroOrig = this.produtos.lastro;
-          this.camadaOrig = this.produtos.camada;
+          //Guarda o lastro e camada original do produto
+          this.lastroOrig = this.produtos.lastro; this.camadaOrig = this.produtos.camada;
           this.limpaVariavel(this.produtos);
           this.focoLastro();
         }
@@ -194,11 +190,7 @@ export class InventarioComponent implements OnInit {
   }
 
   limpaVariavel(prod: ProdutoInventario){
-    prod.lastro = null;
-    prod.camada = null;
-    prod.qtun = null;
-    prod.qtcx = null;
-    prod.total = 0;
+    prod.lastro = null; prod.camada = null;
+    prod.qtun = null; prod.qtcx = null;  prod.total = 0;
   }
-
 }
