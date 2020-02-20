@@ -24,7 +24,6 @@ export class ConsultarProdutoComponent implements OnInit {
   colunaEstoque: any[] = [];
   listaEndereco: any[] = [];
   listaEstoque: any[] = [];
-  tipoTabela: string = 'E';
 
   constructor(private router: Router, private pesquisaProdutoService: ConsultarProdutoService, 
               private messageService: MessageService, private authService: AuthService) { }
@@ -53,7 +52,6 @@ export class ConsultarProdutoComponent implements OnInit {
             this.pesquisaProdutoService.buscarEstoque(codprod).subscribe((estoque: any[]) => {
               this.listaEndereco = endereco;
               this.listaEstoque = estoque;
-              console.log(this.listaEstoque);
               this.produtos = produto;
               this.limpar = '';
             })
