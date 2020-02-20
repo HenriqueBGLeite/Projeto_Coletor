@@ -5,6 +5,8 @@ import { MensagemUtil } from 'src/Util/mensagem-util';
 import { Constantes } from 'src/Util/constantes';
 import { ProdutoInventario } from './compartilhado/produto-inventario.model';
 import { InventarioService } from './compartilhado/inventario.service';
+import { Usuario } from '../login/shared/login.model';
+import { AuthService } from '../login/shared/auth.service';
 
 
 @Component({
@@ -15,28 +17,32 @@ import { InventarioService } from './compartilhado/inventario.service';
 export class InventarioComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
   produtos: ProdutoInventario = new ProdutoInventario();
+  usuarioLogado: Usuario;
   lastroOrig: number = 0;
   camadaOrig: number = 0;
 
   configCalendar = Constantes.configCalendar;
 
-  constructor(private inventarioSevice: InventarioService, private messageService: MessageService) { }
+  constructor(private inventarioSevice: InventarioService, private messageService: MessageService, private authService: AuthService) { }
 
   ngOnInit() {
-    
+    this.buscaUsuarioLogado();    
   }
 
   salvar(){
-
-     if ( this.produtos.codprod != null ) { 
+     if ( this.produtos.codprod != null ) {    
       if ( this.produtos.lastro > 0 || this.produtos.camada > 0){
         if ( this.produtos.lastro == this.lastroOrig && this.produtos.camada == this.camadaOrig ) {
             this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
-            this.inventarioSevice.salvar(this.produtos).subscribe(() => {
-              this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
-              this.produtos = new ProdutoInventario;
-              this.blockUI.stop();
-              this.focoBusca();
+            this.inventarioSevice.salvar(this.produtos).subscribe((retorno) => {
+              if (retorno == true) {
+                this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
+                this.produtos = new ProdutoInventario;
+                this.blockUI.stop();
+                this.focoBusca();
+              } else 
+                  this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
+                  this.blockUI.stop();
             }, (erro) => {
                   console.log(erro);
                   this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
@@ -51,12 +57,15 @@ export class InventarioComponent implements OnInit {
         }
       } else {
         this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
-        this.inventarioSevice.salvar(this.produtos).subscribe(() => {
-          this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
-          this.produtos = new ProdutoInventario;
-          this.blockUI.stop();
-          this.focoBusca();
-
+        this.inventarioSevice.salvar(this.produtos).subscribe((retorno) => {
+          if (retorno == true) {
+            this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
+            this.produtos = new ProdutoInventario;
+            this.blockUI.stop();
+            this.focoBusca();
+          } else 
+              this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
+              this.blockUI.stop();
         }, (erro) => {
               this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
               this.blockUI.stop();
@@ -69,10 +78,9 @@ export class InventarioComponent implements OnInit {
   }
 
   buscarProdutoId(codprod: string) {
-    
     if ( codprod ) {
       this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
-      this.inventarioSevice.buscarProduto(codprod).subscribe((produto: ProdutoInventario) => {
+      this.inventarioSevice.buscarProduto(codprod, this.usuarioLogado.filial).subscribe((produto: ProdutoInventario) => {
         if ( produto.codprod == 0 ) {
           if ( produto.erro == 'S' ) {
             this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA));
@@ -193,4 +201,10 @@ export class InventarioComponent implements OnInit {
     prod.lastro = null; prod.camada = null;
     prod.qtun = null; prod.qtcx = null;  prod.total = 0;
   }
+
+  buscaUsuarioLogado(): Usuario{
+    this.usuarioLogado = this.authService.getUsuarioLogado();
+    return this.usuarioLogado;
+  }
+
 }

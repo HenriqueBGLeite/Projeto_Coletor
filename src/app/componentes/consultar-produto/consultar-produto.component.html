@@ -126,8 +126,8 @@
                 </div>
               </p-tabPanel> 
               <!--Estoque--> 
-              <p-tabPanel header="EST" leftIcon="pi pi-shopping-cart" (click)="definiTabela('E')">
-                  <app-tabela [colunas]="colunas" [lista]="lista"></app-tabela>                
+              <p-tabPanel header="EST" leftIcon="pi pi-shopping-cart">
+                  <app-tabela [colunas]="colunaEstoque" [lista]="listaEstoque"></app-tabela>                
               <!--
                 <div class="ui-g ui-fluid">
                   <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
@@ -164,8 +164,8 @@
               -->
               </p-tabPanel>
               <!--LISTA ENDEREÇO--> 
-              <p-tabPanel header="ENDER" leftIcon="pi pi-home" (click)="definiTabela('V')">
-                <app-tabela [colunas]="colunas"></app-tabela>
+              <p-tabPanel header="ENDER" leftIcon="pi pi-home">
+                <app-tabela [colunas]="colunaEndereco" [lista]="listaEndereco"></app-tabela>
               </p-tabPanel>           
             </p-tabView>
           </div>

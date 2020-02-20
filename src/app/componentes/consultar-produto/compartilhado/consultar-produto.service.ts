@@ -11,11 +11,15 @@ export class ConsultarProdutoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public buscarProduto(filtro: string){
-    return this.httpClient.get(`${this.urlApi}getProduto/${filtro}`);
+  public buscarProduto(produto: string, filial: number){
+    return this.httpClient.get(`${this.urlApi}getProduto/${produto}/${filial}`);
   }
 
-  public buscarTodosProdutos(){
-    return this.httpClient.get(`${this.urlApi}getTodosProdutos/`);
+  public buscarEndereco(produto: string, filial: number){
+    return this.httpClient.get(`${this.urlApi}getEnderecoProduto/${produto}/${filial}`);
+  }
+
+  public buscarEstoque(produto: string){
+    return this.httpClient.get(`${this.urlApi}getEstoqueProduto/${produto}`);
   }
 }

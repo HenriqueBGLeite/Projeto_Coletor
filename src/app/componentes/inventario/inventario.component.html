@@ -52,7 +52,7 @@
         <div class="ui-g-1 ui-md-1 ui-lg-1 variaveis">+</div>      
         <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
           <span class="ui-float-label">
-            <input id="qtun" name="qtun" [(ngModel)]="produtos.qtun" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtunit($event.target.value, 'E')" (blur)="buscaQtunit($event.target.value, 'T')" pInputText />
+            <input id="qtun" name="qtun" [(ngModel)]="produtos.qtun" value="0" class="style_input" type="number" pKeyFilter="pnum" (keyup.enter)="buscaQtunit($event.target.value, 'E')" (blur)="buscaQtunit($event.target.value, 'T')" pInputText />
             <label for="float-input">Qt.Un</label>
           </span>
         </div>

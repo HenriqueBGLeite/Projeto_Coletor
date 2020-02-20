@@ -5,6 +5,8 @@ import { NgBlockUI, BlockUI } from 'ng-block-ui';
 import { MensagemUtil } from 'src/Util/mensagem-util';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { Usuario } from '../login/shared/login.model';
+import { AuthService } from '../login/shared/auth.service';
 
 @Component({
   selector: 'app-consultar-produto',
@@ -16,25 +18,29 @@ export class ConsultarProdutoComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
 
   limpar: string;
+  usuarioLogado: Usuario;
   produtos: Produto = new Produto();
-  colunas: any[] = [];
-  lista: any[] = [];
+  colunaEndereco: any[] = [];
+  colunaEstoque: any[] = [];
+  listaEndereco: any[] = [];
+  listaEstoque: any[] = [];
   tipoTabela: string = 'E';
 
-  constructor(private router: Router, private pesquisaProdutoService: ConsultarProdutoService, private messageService: MessageService) { }
+  constructor(private router: Router, private pesquisaProdutoService: ConsultarProdutoService, 
+              private messageService: MessageService, private authService: AuthService) { }
 
   ngOnInit() {
-    
+    this.buscaUsuarioLogado(); 
+    this.carregaColunas();
   }
 
   buscarProdutoId(codprod: string) {
     
     if ( codprod ) {
       this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
-      this.pesquisaProdutoService.buscarProduto(codprod).subscribe((produto: Produto) => {
+      this.pesquisaProdutoService.buscarProduto(codprod, this.usuarioLogado.filial).subscribe((produto: Produto) => {
         if ( produto.codprod == 0 ) {
           if ( produto.erro == 'S' ) {
-            console.log(produto.mensagemErroWarning);
             this.messageService.add(MensagemUtil.criaMensagemErro(produto.mensagemErroWarning));
             this.limpar = '';
           }
@@ -43,11 +49,17 @@ export class ConsultarProdutoComponent implements OnInit {
             this.limpar = '';
           }
         } else {
-          this.produtos = produto;
-          this.limpar = '';
+          this.pesquisaProdutoService.buscarEndereco(codprod, this.usuarioLogado.filial).subscribe((endereco: any[]) => {
+            this.pesquisaProdutoService.buscarEstoque(codprod).subscribe((estoque: any[]) => {
+              this.listaEndereco = endereco;
+              this.listaEstoque = estoque;
+              console.log(this.listaEstoque);
+              this.produtos = produto;
+              this.limpar = '';
+            })
+          })
         }
       }, (erro) => {
-                console.log(erro);
                 this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA))
                 this.blockUI.stop();
                },
@@ -63,31 +75,31 @@ export class ConsultarProdutoComponent implements OnInit {
     element.focus();    
   }
 
-  definiTabela(tipo: string){
-    if (tipo == 'E') {
-      this.colunas = [
+  carregaColunas(){   
+      this.colunaEstoque = [
         {label: 'Filial', var: 'codfilial'},
         {label: 'Ger.', var: 'qtestger'},
         {label: 'Reserv.', var: 'qtreserv'},
         {label: 'Bloq.', var: 'qtbloqueada'},
         {label: 'Avar.', var: 'qtindeniz'}
-      ]
-    } else {
-      this.colunas = [
-        {label: 'Cod.', var: 'codprod'},
-        {label: 'Desc.', var: 'decricao'},
+      ];
+      this.colunaEndereco = [
         {label: 'Tipo End.', var: 'tipoender'},
-        {label: 'Deposito', var: 'deposito'},
+        {label: 'Dep.', var: 'deposito'},
         {label: 'Rua', var: 'rua'},
-        {label: 'Predio', var: 'predio'},
-        {label: 'Nivel', var: 'nivel'},
+        {label: 'Pred.', var: 'predio'},
+        {label: 'Niv.', var: 'nivel'},
         {label: 'Apto', var: 'apto'}
       ]
-    }
   }
 
   salvar(dados){
     this.produtos = new Produto;
     this.focoBusca();
+  }
+
+  buscaUsuarioLogado(): Usuario{
+    this.usuarioLogado = this.authService.getUsuarioLogado();
+    return this.usuarioLogado;
   }
 }

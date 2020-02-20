@@ -14,7 +14,7 @@ export class TabelaComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+    
   }
 
   loadDataOnScroll(event: LazyLoadEvent) {      
