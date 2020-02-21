@@ -13,14 +13,18 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.authService.mostrarMenu.subscribe(
-      mostrar => this.mostrarMenu = mostrar
-    );    
+    this.mostraMenu();
     this.telaCheia();
   }
 
   telaCheia(){
     window.scrollTo(0,1);
+  }
+  
+  mostraMenu(){
+    this.authService.mostrarMenu.subscribe(
+      mostrar => this.mostrarMenu = mostrar
+    );   
   }
 }
 

@@ -19,7 +19,7 @@ export class ConsultarProdutoService {
     return this.httpClient.get(`${this.urlApi}getEnderecoProduto/${produto}/${filial}`);
   }
 
-  public buscarEstoque(produto: string){
-    return this.httpClient.get(`${this.urlApi}getEstoqueProduto/${produto}`);
+  public buscarEstoque(produto: string, usuario: number){
+    return this.httpClient.get(`${this.urlApi}getEstoqueProduto/${produto}/${usuario}`);
   }
 }

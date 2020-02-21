@@ -17,13 +17,13 @@ export class ConsultarProdutoComponent implements OnInit {
 
   @BlockUI() blockUI: NgBlockUI;
 
-  limpar: string;
   usuarioLogado: Usuario;
   produtos: Produto = new Produto();
   colunaEndereco: any[] = [];
   colunaEstoque: any[] = [];
   listaEndereco: any[] = [];
   listaEstoque: any[] = [];
+  limpar: string;
 
   constructor(private router: Router, private pesquisaProdutoService: ConsultarProdutoService, 
               private messageService: MessageService, private authService: AuthService) { }
@@ -31,6 +31,13 @@ export class ConsultarProdutoComponent implements OnInit {
   ngOnInit() {
     this.buscaUsuarioLogado(); 
     this.carregaColunas();
+  }
+
+  salvar(dados){
+    this.produtos = new Produto;
+    this.listaEstoque = [];
+    this.listaEndereco = [];
+    this.focoBusca();
   }
 
   buscarProdutoId(codprod: string) {
@@ -49,16 +56,16 @@ export class ConsultarProdutoComponent implements OnInit {
           }
         } else {
           this.pesquisaProdutoService.buscarEndereco(codprod, this.usuarioLogado.filial).subscribe((endereco: any[]) => {
-            this.pesquisaProdutoService.buscarEstoque(codprod).subscribe((estoque: any[]) => {
-              this.listaEndereco = endereco;
+            this.listaEndereco = endereco;
+            this.pesquisaProdutoService.buscarEstoque(codprod, this.usuarioLogado.codigo).subscribe((estoque: any[]) => {
               this.listaEstoque = estoque;
-              this.produtos = produto;
-              this.limpar = '';
             })
           })
+          this.produtos = produto;
+          this.limpar = '';
         }
       }, (erro) => {
-                this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA))
+                this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA));
                 this.blockUI.stop();
                },
       () => this.blockUI.stop());
@@ -77,23 +84,18 @@ export class ConsultarProdutoComponent implements OnInit {
       this.colunaEstoque = [
         {label: 'Filial', var: 'codfilial'},
         {label: 'Ger.', var: 'qtestger'},
-        {label: 'Reserv.', var: 'qtreserv'},
-        {label: 'Bloq.', var: 'qtbloqueada'},
-        {label: 'Avar.', var: 'qtindeniz'}
+        {label: 'Reser.', var: 'qtreserv'},
+        {label: 'Bloq.', var: 'qtbloq'},
+        {label: 'Avar.', var: 'qtavaria'}
       ];
       this.colunaEndereco = [
-        {label: 'Tipo End.', var: 'tipoender'},
+        {label: 'Tipo End.', var: 'tipoEndereco'},
         {label: 'Dep.', var: 'deposito'},
         {label: 'Rua', var: 'rua'},
         {label: 'Pred.', var: 'predio'},
         {label: 'Niv.', var: 'nivel'},
         {label: 'Apto', var: 'apto'}
       ]
-  }
-
-  salvar(dados){
-    this.produtos = new Produto;
-    this.focoBusca();
   }
 
   buscaUsuarioLogado(): Usuario{

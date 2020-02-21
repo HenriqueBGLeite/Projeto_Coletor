@@ -11,6 +11,7 @@ export class MensagemUtil {
     public static VALIDA_DADOS = 'Dados inválidos para requisição.';
     public static VALIDA_LASTRO_CAMADA = 'Lastro/Camada informados, diferem do cadastro.';
     public static USUARIO_NAO_CADASTRADO = 'Usuário inválido ou não cadastrado.';
+    public static USUARIO_NAO_ENCONTRADO = 'Usuário não encontrado, efetue novamente o login.';
 
 
     public static criaMensagemSucesso(mensagem: string) {

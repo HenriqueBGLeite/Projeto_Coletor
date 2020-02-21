@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MessageService } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
+import { MensagemUtil } from 'src/Util/mensagem-util';
 
 
 
@@ -27,7 +28,11 @@ export class AuthService {
   }
 
   getUsuarioLogado(): Usuario{
-    return this.usuario;
+    if (this.usuario != null)
+      return this.usuario;
+    else 
+      this.router.navigate(['/login']);
+      this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.USUARIO_NAO_ENCONTRADO));
   }
 
   sair(){    
