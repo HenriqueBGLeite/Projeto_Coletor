@@ -12,9 +12,9 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class MenuLateralComponent implements OnInit {
 
   display: boolean = false;
-
   items: MenuItem[] = [];
   usuarioLogado: Usuario;
+
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
@@ -32,7 +32,7 @@ export class MenuLateralComponent implements OnInit {
   }
 
   sair(){
-    this.authService.mostrarMenu.emit(false);;
+    this.authService.sair();
   }
 
   carregaMenu() {
