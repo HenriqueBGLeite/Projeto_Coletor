@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService,  private messageService: MessageService, private router: Router) { }
 
   ngOnInit() {
-    this.authService.mostrarMenu.emit(false);
+    //this.authService.mostrarMenu.emit.(false);
+    this.authService.sair();
   }
 
 

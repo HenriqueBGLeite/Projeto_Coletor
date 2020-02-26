@@ -34,10 +34,7 @@ export class ConsultarProdutoComponent implements OnInit {
   }
 
   salvar(dados){
-    this.produtos = new Produto;
-    this.listaEstoque = [];
-    this.listaEndereco = [];
-    this.focoBusca();
+    this.limparDados();
   }
 
   buscarProdutoId(codprod: string) {
@@ -63,6 +60,7 @@ export class ConsultarProdutoComponent implements OnInit {
           })
           this.produtos = produto;
           this.limpar = '';
+          this.blockUI.stop();
         }
       }, (erro) => {
                 this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA));
@@ -102,4 +100,12 @@ export class ConsultarProdutoComponent implements OnInit {
     this.usuarioLogado = this.authService.getUsuarioLogado();
     return this.usuarioLogado;
   }
+
+  limparDados(){
+    this.produtos = new Produto;
+    this.listaEstoque = [];
+    this.listaEndereco = [];
+    this.focoBusca();
+  }
+
 }
