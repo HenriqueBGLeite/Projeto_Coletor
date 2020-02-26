@@ -34,7 +34,18 @@ export class ConsultarProdutoComponent implements OnInit {
   }
 
   salvar(dados){
-    this.limparDados();
+    this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
+    this.pesquisaProdutoService.salvar(dados).subscribe((retorno) => {
+      if ( retorno == true ) {
+        this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
+        this.limparDados();
+        this.focoBusca();
+        this.blockUI.stop();
+      }
+      else
+        this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
+        this.blockUI.stop();
+    });
   }
 
   buscarProdutoId(codprod: string) {

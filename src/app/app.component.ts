@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
   
   mostraMenu(){
     this.authService.mostrarMenu.subscribe((mostrar) => {
-      console.log(mostrar);
       this.mostrarMenu = mostrar
       });   
   }
