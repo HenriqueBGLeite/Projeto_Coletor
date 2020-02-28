@@ -21,10 +21,10 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService,  private messageService: MessageService, private router: Router) { }
 
   ngOnInit() {
-    //this.authService.mostrarMenu.emit.(false);
-    this.authService.sair();
+    setTimeout(() => {
+      this.authService.sair();
+    });
   }
-
 
   login(){
     this.blockUI.start(MensagemUtil.VALIDANDO_DADOS);

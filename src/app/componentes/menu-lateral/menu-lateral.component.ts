@@ -18,7 +18,9 @@ export class MenuLateralComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.buscaUsuarioLogado();
+    setTimeout(() => {
+      this.buscaUsuarioLogado(); 
+    });
   }
 
   clickItemMenu() {
@@ -48,6 +50,8 @@ export class MenuLateralComponent implements OnInit {
           { label: 'CONF. OS', icon: 'pi pi-check', routerLink: '#', disabled: true },
           { separator: true },
           { label: 'CONSULTAR PRODUTO', icon: 'pi pi-search', routerLink: '/consultar-produto' },
+          { separator: true },
+          { label: 'LISTAR ENDEREÇO', icon: 'pi pi-list', routerLink: '#', disabled: true },
           { separator: true },
           { label: 'INVENTÁRIO', icon: 'fa fa-dropbox', routerLink: '/inventario' },
           { separator: true },

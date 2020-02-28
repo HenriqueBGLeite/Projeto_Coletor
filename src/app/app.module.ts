@@ -22,6 +22,7 @@ import { LoginModule } from './componentes/login/login.module';
 import { DropdownModule } from 'primeng/dropdown';
 import { TabelaComponent } from './componentes/tabela/tabela.component';
 import { TabelaModule } from './componentes/tabela/tabela.module';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 
@@ -49,7 +50,7 @@ import { TabelaModule } from './componentes/tabela/tabela.module';
     TabelaModule
   ],
   providers: [MessageService,
-    MessageServiceUtil, AuthService,
+    MessageServiceUtil, AuthService, 
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent]
