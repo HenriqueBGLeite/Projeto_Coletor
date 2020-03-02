@@ -24,6 +24,10 @@ export class ConsultarProdutoService {
     return this.httpClient.get(`${this.urlApi}getEstoqueProduto/${produto}/${usuario}`);
   }
 
+  public buscarFilial(usuario: number){
+    return this.httpClient.get(`${this.urlApi}getFiliais/${usuario}`);
+  }
+
   public salvar(produto: Produto){
     return this.httpClient.put(`${this.urlApi}editaDadosProd/`, produto);
   }

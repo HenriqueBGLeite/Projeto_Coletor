@@ -24,7 +24,7 @@
 }
 
 .efeito{
-    padding-top: 10px;
+    padding-top: 15px;
 }
 
 .apenas_leitura{
@@ -44,4 +44,8 @@
     font-style: italic;
     color: #000;
     background-color: rgb(206, 206, 206);
+}
+
+.filial {
+    width: 100%;
 }

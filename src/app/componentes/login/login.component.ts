@@ -6,7 +6,6 @@ import { Constantes } from 'src/Util/constantes';
 import { MensagemUtil } from 'src/Util/mensagem-util';
 import { Router } from '@angular/router';
 import { NgBlockUI, BlockUI } from 'ng-block-ui';
-import { AuthGuard } from 'src/app/guard/auth.guard';
 
 @Component({
   selector: 'app-login',

@@ -3,7 +3,7 @@ import { ConsultarProdutoService } from './compartilhado/consultar-produto.servi
 import { Produto } from './compartilhado/produto.model';
 import { NgBlockUI, BlockUI } from 'ng-block-ui';
 import { MensagemUtil } from 'src/Util/mensagem-util';
-import { MessageService } from 'primeng/api';
+import { MessageService, SelectItem } from 'primeng/api';
 import { Router } from '@angular/router';
 import { Usuario } from '../login/shared/login.model';
 import { AuthService } from '../login/shared/auth.service';
@@ -23,12 +23,14 @@ export class ConsultarProdutoComponent implements OnInit {
   colunaEstoque: any[] = [];
   listaEndereco: any[] = [];
   listaEstoque: any[] = [];
+  filiais: any [] = [];
   limpar: string;
 
   constructor(private router: Router, private pesquisaProdutoService: ConsultarProdutoService, 
               private messageService: MessageService, private authService: AuthService) { }
 
   ngOnInit() {
+    this.buscaFiliais();
     this.buscaUsuarioLogado(); 
     this.carregaColunas();
   }
@@ -37,7 +39,7 @@ export class ConsultarProdutoComponent implements OnInit {
     this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
     this.pesquisaProdutoService.salvar(dados).subscribe((retorno) => {
       if ( retorno == true ) {
-        this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_SALVO));
+        this.messageService.add(MensagemUtil.criaMensagemSucesso(MensagemUtil.REGISTRO_ALTERADO));
         this.limparDados();
         this.focoBusca();
         this.blockUI.stop();
@@ -57,10 +59,12 @@ export class ConsultarProdutoComponent implements OnInit {
           if ( produto.erro == 'S' ) {
             this.messageService.add(MensagemUtil.criaMensagemErro(produto.mensagemErroWarning));
             this.limpar = '';
+            this.limparDados();
           }
           else {
             this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.ERRO_NENHUM_REGISTRO));
             this.limpar = '';
+            this.limparDados();
           }
         } else {
           this.pesquisaProdutoService.buscarEndereco(codprod, this.usuarioLogado.filial).subscribe((endereco: any[]) => {
@@ -75,6 +79,7 @@ export class ConsultarProdutoComponent implements OnInit {
         }
       }, (erro) => {
                 this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_NA_BUSCA));
+                this.limparDados();
                 this.blockUI.stop();
                },
       () => this.blockUI.stop());
@@ -110,6 +115,12 @@ export class ConsultarProdutoComponent implements OnInit {
   buscaUsuarioLogado(): Usuario{
     this.usuarioLogado = this.authService.getUsuarioLogado();
     return this.usuarioLogado;
+  }
+
+  buscaFiliais(){
+    this.pesquisaProdutoService.buscarFilial(this.buscaUsuarioLogado().codigo).subscribe((fil: any []) => {
+      this.filiais = fil;
+    });
   }
 
   limparDados(){
