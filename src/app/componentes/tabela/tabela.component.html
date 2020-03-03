@@ -1,5 +1,11 @@
-<div>
-  <p-table [value]="lista" [paginator]="true" [rows]="5">
+
+<div>  
+  <p-table [value]="lista" [paginator]="true" [rows]="5" [scrollable]="true" [style]="{width:'240px'}">
+    <ng-template pTemplate="colgroup" let-coluna>
+      <colgroup>
+        <col *ngFor="let coluna of colunas" style="width:50px">
+      </colgroup>
+    </ng-template>
     <ng-template pTemplate="header">
       <tr>
         <th *ngFor="let coluna of colunas">{{ coluna.label }}</th>
