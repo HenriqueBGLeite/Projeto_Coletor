@@ -20,8 +20,8 @@ import { ButtonModule } from 'primeng/button';
 import { AuthService } from './componentes/login/shared/auth.service';
 import { LoginModule } from './componentes/login/login.module';
 import { DropdownModule } from 'primeng/dropdown';
-import { TabelaComponent } from './componentes/tabela/tabela.component';
 import { TabelaModule } from './componentes/tabela/tabela.module';
+import { HomeProdutoModule } from './componentes/home-produto/home-produto.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
@@ -47,9 +47,11 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     CardModule,
     ButtonModule,
     LoginModule,
-    TabelaModule
+    TabelaModule,
+    HomeProdutoModule
   ],
-  providers: [MessageService,
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},
+    MessageService,
     MessageServiceUtil, AuthService, 
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ],

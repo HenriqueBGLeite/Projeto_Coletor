@@ -1,14 +1,14 @@
 <p-panel header="Consultar Produto" class="title">
   <form #dados="ngForm">
     <div class="ui-g">
-      <div class="ui-g-8 ui-md-8 ui-lg-8">
+      <div class="ui-g-8 ui-md-8 ui-lg-6">
         <div class="ui-inputgroup camposBusca">
           <input #produto id="codprod" class="responsive" [(ngModel)]="limpar" name="buscar" type="number" pKeyFilter="pnum" 
-                  placeholder="COD.PROD / EAN / DUN" pInputText />
+                   pInputText />          
           <button pButton id="pesquisar" icon="fa fa-search" on-click="buscarProdutoId(produto.value)"></button>
         </div>
       </div>
-      <div class="ui-g-4 ui-md-4 ui-lg-4">
+      <div class="ui-g-4 ui-md-4 ui-lg-6">
         <div class="ui-inputgroup filial">
           <span class="ui-inputgroup-addon"><i class="pi pi-home" style="line-height: 1.25;"></i></span>
           <select id="inputState" class="form-control filial" [(ngModel)]="usuarioLogado.filial" name="codfilial">
@@ -88,7 +88,7 @@
                         <label for="float-input">Cód.Barras Master</label>
                       </span>
                     </div>
-                    <div class="ui-g-2 ui-md-2 ui-lg-2 efeito">
+                    <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
                       <span class="ui-float-label">
                         <input id="alt" class="edicao" name="alt" type="number" pKeyFilter="pnum" [(ngModel)]="produtos.alt" pInputText />
                         <label for="float-input">Alt</label>
@@ -106,7 +106,7 @@
                         <label for="float-input">Comp</label>
                       </span>
                     </div>
-                    <div class="ui-g-4 ui-md-4 ui-lg-4 efeito">
+                    <div class="ui-g-3 ui-md-3 ui-lg-3 efeito">
                       <span class="ui-float-label">
                         <input id="peso" class="edicao" name="peso" type="number" pKeyFilter="pnum" [(ngModel)]="produtos.peso" pInputText />
                         <label for="float-input">Peso(K/g)</label>

@@ -5,6 +5,7 @@ import { InventarioComponent } from './componentes/inventario/inventario.compone
 import { HomeComponent } from './componentes/home/home.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { AuthGuard } from './guard/auth.guard';
+import { HomeProdutoComponent } from './componentes/home-produto/home-produto.component';
 
 const routes: Routes = [
   //Rota default do projeto
@@ -16,6 +17,12 @@ const routes: Routes = [
   //Rota Home
   { 
     path: 'home', component: HomeComponent,
+    //canActivate: [AuthGuard] 
+  },
+  
+  //Rotas para home produto
+  {
+    path: 'home-produto', component: HomeProdutoComponent, 
     //canActivate: [AuthGuard] 
   },
   
