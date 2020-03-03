@@ -3,5 +3,6 @@
 }
 
 .responsive{
+    display: grid;
     text-align: right;
 }

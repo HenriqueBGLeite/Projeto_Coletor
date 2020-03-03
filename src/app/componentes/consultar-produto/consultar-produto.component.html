@@ -1,14 +1,14 @@
 <p-panel header="Consultar Produto" class="title">
   <form #dados="ngForm">
     <div class="ui-g">
-      <div class="ui-g-8 ui-md-8 ui-lg-6">
+      <div class="ui-g-8 ui-md-8 ui-lg-8">
         <div class="ui-inputgroup camposBusca">
           <input #produto id="codprod" class="responsive" [(ngModel)]="limpar" name="buscar" type="number" pKeyFilter="pnum" 
-                   pInputText />          
+                 placeholder="COD.PROD / EAN / DUN" pInputText />          
           <button pButton id="pesquisar" icon="fa fa-search" on-click="buscarProdutoId(produto.value)"></button>
         </div>
       </div>
-      <div class="ui-g-4 ui-md-4 ui-lg-6">
+      <div class="ui-g-4 ui-md-4 ui-lg-4">
         <div class="ui-inputgroup filial">
           <span class="ui-inputgroup-addon"><i class="pi pi-home" style="line-height: 1.25;"></i></span>
           <select id="inputState" class="form-control filial" [(ngModel)]="usuarioLogado.filial" name="codfilial">
@@ -34,7 +34,7 @@
           <div class="ui-g-12 ui-md-12 ui-lg-12">
             <p-tabView>
               <!--Embalagem\Dimensão--> 
-              <p-tabPanel header="EMB\DIM" leftIcon="fa fa-dropbox">
+              <p-tabPanel header="EMB\DIM"> <!--leftIcon="fa fa-dropbox"-->
                 <div class="ui-g ui-fluid">
                   <p-fieldset legend="UNIDADE" class="subtitle">
                     <div class="ui-g-6 ui-md-6 ui-lg-6 efeito">
@@ -136,11 +136,11 @@
                 </div>
               </p-tabPanel> 
               <!--Estoque--> 
-              <p-tabPanel header="EST" leftIcon="pi pi-shopping-cart">
+              <p-tabPanel header="EST"> <!--leftIcon="pi pi-shopping-cart"-->
                 <app-tabela [colunas]="colunaEstoque" [lista]="listaEstoque"></app-tabela>
               </p-tabPanel>
               <!--LISTA ENDEREÇO--> 
-              <p-tabPanel header="ENDER" leftIcon="pi pi-home">
+              <p-tabPanel header="ENDER"> <!--leftIcon="pi pi-home"-->
                 <app-tabela [colunas]="colunaEndereco" [lista]="listaEndereco"></app-tabela>
               </p-tabPanel>           
             </p-tabView>

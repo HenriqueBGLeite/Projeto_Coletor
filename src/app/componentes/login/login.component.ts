@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
           this.usuario = new Usuario();
         }
       }, (erro) => {
+            console.log(erro);
             this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_BUSCA));
             this.usuario = new Usuario();
             this.blockUI.stop();

@@ -12,7 +12,7 @@ import { MensagemUtil } from 'src/Util/mensagem-util';
   providedIn: 'root'
 })
 export class AuthService {
-  private usuario: Usuario;
+  private usuario: Usuario = new Usuario();
   urlApi = environment.urlApi.concat('/Login/');
   usuarioAutenticado: boolean = false;
   mostrarMenu = new EventEmitter<boolean>(false);
@@ -27,8 +27,8 @@ export class AuthService {
       return this.httpClient.post(`${this.urlApi}AutenticaUsuario/`, usuario);
   }
 
-  getUsuarioLogado(): Usuario{
-    if (this.usuario != null)
+  getUsuarioLogado(): Usuario {
+    if (this.usuario.codigo != null)
       return this.usuario;
     else 
       this.router.navigate(['/login']);
