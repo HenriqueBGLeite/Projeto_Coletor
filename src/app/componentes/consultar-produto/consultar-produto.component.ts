@@ -105,12 +105,12 @@ export class ConsultarProdutoComponent implements OnInit {
         {label: 'Avar.', var: 'qtavaria'}
       ];
       this.colunaEndereco = [
-        {label: 'Tipo End.', var: 'tipoEndereco'},
         {label: 'Dep.', var: 'deposito'},
         {label: 'Rua', var: 'rua'},
         {label: 'Pred.', var: 'predio'},
         {label: 'Niv.', var: 'nivel'},
-        {label: 'Apto', var: 'apto'}
+        {label: 'Apto', var: 'apto'},
+        {label: 'Tipo End.', var: 'tipoEndereco'}
       ]
   }
 
