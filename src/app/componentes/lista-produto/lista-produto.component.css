@@ -1,0 +1,19 @@
+.title {
+    text-align: center;
+}
+
+.camposBusca {
+    padding-left: 0px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    width: 100%;
+}
+
+.responsive{
+    width: 100%;
+    font-size: 12px;
+}
+
+.filial {
+    width: 100%;
+}

@@ -6,6 +6,7 @@ import { HomeComponent } from './componentes/home/home.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { AuthGuard } from './guard/auth.guard';
 import { HomeProdutoComponent } from './componentes/home-produto/home-produto.component';
+import { ListaProdutoComponent } from './componentes/lista-produto/lista-produto.component';
 
 const routes: Routes = [
   //Rota default do projeto
@@ -29,6 +30,11 @@ const routes: Routes = [
   //Rotas para consultar produto
   { 
     path: 'consultar-produto', component: ConsultarProdutoComponent, 
+    //canActivate: [AuthGuard] 
+  },
+
+  { 
+    path: 'lista-produto', component: ListaProdutoComponent, 
     //canActivate: [AuthGuard] 
   },
   

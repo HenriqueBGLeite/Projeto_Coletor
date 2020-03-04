@@ -1,0 +1,27 @@
+<p-panel header="Listagem Picking Produto" class="title">
+  <div class="ui-g">
+    <div class="ui-g-8 ui-md-8 ui-lg-8">
+      <div class="ui-inputgroup camposBusca">
+        <input #produto id="codprod" class="responsive" [(ngModel)]="limpar" name="buscar" type="number" pKeyFilter="pnum" 
+               placeholder="COD.PROD / EAN / DUN" (keyup.enter)="buscarProduto(produto.value)" pInputText />          
+        <button pButton id="pesquisar" icon="fa fa-search" on-click="buscarProduto(produto.value)"></button>
+      </div>
+    </div>
+    <div class="ui-g-4 ui-md-4 ui-lg-4">
+      <div class="ui-inputgroup filial">
+        <span class="ui-inputgroup-addon"><i class="pi pi-home" style="line-height: 1.25;"></i></span>
+        <select id="inputState" class="form-control filial" [(ngModel)]="usuarioLogado.filial" name="codfilial">
+          <option ng-init="somethingHere = usuarioLogado.filial" *ngFor="let filiais of filiais" [value]="filiais.codfilial">
+            {{ filiais.codfilial }}
+          </option>
+        </select>
+      </div>
+    </div>
+    
+    <block-ui>
+      <div class="ui-g-12 ui-md-12 ui-lg-12">
+        <app-tabela [colunas]="colunas" [lista]="endereco" [larguraTabela]="larguraTabela" [larguraColuna]="larguraColuna"></app-tabela>
+      </div>
+    </block-ui>
+  </div>
+</p-panel>

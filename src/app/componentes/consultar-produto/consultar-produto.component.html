@@ -137,11 +137,11 @@
               </p-tabPanel> 
               <!--Estoque--> 
               <p-tabPanel header="EST"> <!--leftIcon="pi pi-shopping-cart"-->
-                <app-tabela [colunas]="colunaEstoque" [lista]="listaEstoque"></app-tabela>
+                <app-tabela [colunas]="colunaEstoque" [lista]="listaEstoque" [larguraTabela]="larguraTabela" [larguraColuna]="larguraColuna"></app-tabela>
               </p-tabPanel>
               <!--LISTA ENDEREÇO--> 
               <p-tabPanel header="ENDER"> <!--leftIcon="pi pi-home"-->
-                <app-tabela [colunas]="colunaEndereco" [lista]="listaEndereco"></app-tabela>
+                <app-tabela [colunas]="colunaEndereco" [lista]="listaEndereco" [larguraTabela]="larguraTabela" [larguraColuna]="larguraColuna"></app-tabela>
               </p-tabPanel>           
             </p-tabView>
           </div>

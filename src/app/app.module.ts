@@ -23,6 +23,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TabelaModule } from './componentes/tabela/tabela.module';
 import { HomeProdutoModule } from './componentes/home-produto/home-produto.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { ListaProdutoModule } from './componentes/lista-produto/lista-produto.module';
 
 
 
@@ -48,7 +49,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     ButtonModule,
     LoginModule,
     TabelaModule,
-    HomeProdutoModule
+    HomeProdutoModule,
+    ListaProdutoModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},
     MessageService,

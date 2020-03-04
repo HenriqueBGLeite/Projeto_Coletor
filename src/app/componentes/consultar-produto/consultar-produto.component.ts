@@ -23,6 +23,8 @@ export class ConsultarProdutoComponent implements OnInit {
   colunaEstoque: any[] = [];
   listaEndereco: any[] = [];
   listaEstoque: any[] = [];
+  larguraTabela: string = '{240}';
+  larguraColuna: string = '50';
   filiais: any [] = [];
   limpar: string;
 

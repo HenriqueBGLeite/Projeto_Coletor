@@ -1,9 +1,9 @@
 
 <div>  
-  <p-table [value]="lista" [paginator]="true" [rows]="5" [scrollable]="true" [style]="{width:'240px'}">
+  <p-table [value]="lista" [paginator]="true" [rows]="5" [scrollable]="true" [style]="{width: '240px'}">
     <ng-template pTemplate="colgroup" let-coluna>
       <colgroup>
-        <col *ngFor="let coluna of colunas" style="width:50px">
+        <col *ngFor="let coluna of colunas" [style.width.px]="larguraColuna">
       </colgroup>
     </ng-template>
     <ng-template pTemplate="header">
