@@ -13,7 +13,7 @@ export class MenuLateralComponent implements OnInit {
 
   display: boolean = false;
   items: MenuItem[] = [];
-  usuarioLogado: Usuario;
+  usuarioLogado: Usuario = new Usuario;
 
   constructor(private authService: AuthService) { }
 

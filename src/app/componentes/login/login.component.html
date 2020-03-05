@@ -1,18 +1,18 @@
-<p-card class="ui-card-content">
+<p-card class="ui-card-content user_senha">
   <block-ui>
     <div class="ui-g ui-fluid">
       <div class="ui-g-12 ui-md-12">
-        <img src="../../../assets/imagens/tela_login.png"/>
+        <img src="../../../assets/imagens/tela_login.jpg"/>
       </div>
       <div class="ui-g-12 ui-md-12">
         <div class="ui-inputgroup responsive">
-          <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
-          <input type="text" class="form-control responsive" placeholder="Usuário" name="nome" [(ngModel)]="usuario.codigo">
+          <span class="icone"><i class="pi pi-user icone" style="line-height: 1.25;"></i></span>
+          <input type="text" class="form-control responsive" placeholder="  Usuário" name="nome" [(ngModel)]="usuario.codigo">
         </div>
       </div>
       <div class="ui-g-12 ui-md-12">
         <div class="ui-inputgroup responsive">
-          <span class="ui-inputgroup-addon"><i class="pi pi-home" style="line-height: 1.25;"></i></span>
+          <span class="icone"><i class="pi pi-home icone" style="line-height: 1.25;"></i></span>
           <select id="inputState" class="form-control responsive" [(ngModel)]="usuario.base">
             <option *ngFor="let base of base" [value]="base.value">
               {{base.label}}
@@ -20,8 +20,8 @@
           </select>
         </div>
       </div>
-      <div class="ui-g-12 ui-md-12 ui-lg-12 salvar">
-        <p-button label="ENTRAR" icon="pi pi-key" iconPos="left" (onClick)="login()"></p-button>     
+      <div class="ui-g-12 ui-md-12 ui-lg-12 salvar">    
+        <button pButton type="button" class="ui-button-danger salvar" label="ENTRAR" icon="pi pi-key" iconPos="left" on-click="login()"></button>
       </div>
     </div>
   </block-ui>
