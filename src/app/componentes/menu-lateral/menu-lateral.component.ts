@@ -11,7 +11,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class MenuLateralComponent implements OnInit {
 
-  display: boolean = false;
+  display: boolean = true;
   items: MenuItem[] = [];
   usuarioLogado: Usuario = new Usuario;
 
@@ -42,8 +42,6 @@ export class MenuLateralComponent implements OnInit {
       {
         label: 'Menu Coletor', items: [
           { label: `${this.usuarioLogado.codigo} - ${this.usuarioLogado.nome}`},
-          { separator: true },
-          { label: 'INÍCIO', icon: 'pi pi-home', routerLink: '/home' },
           { separator: true },
           { label: 'CONF. ENTRADA', icon: 'pi pi-inbox', routerLink: '#', disabled: true },
           { separator: true },

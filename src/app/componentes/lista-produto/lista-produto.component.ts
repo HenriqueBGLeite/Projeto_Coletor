@@ -32,9 +32,6 @@ export class ListaProdutoComponent implements OnInit {
     this.buscaFiliais();
     this.buscaUsuarioLogado();
     this.carregaColunas();
-
-    /*console.log("Largura Tabela: " || this.larguraTabela);
-    console.log("Largura Coluna: " || this.larguraColuna);*/
   }
 
   buscarProduto(codprod: string) {
@@ -42,6 +39,7 @@ export class ListaProdutoComponent implements OnInit {
       this.blockUI.start(MensagemUtil.CARREGANDO_REGISTRO);
       this.listaEnderecoService.buscarEnderecoPicking(codprod, this.usuarioLogado.filial).subscribe((endereco: any[]) => {
         Array.prototype.push.apply(this.endereco, endereco);
+        console.log(this.endereco);
         this.limpar = '';
         this.blockUI.stop();
       }, (erro) => {
