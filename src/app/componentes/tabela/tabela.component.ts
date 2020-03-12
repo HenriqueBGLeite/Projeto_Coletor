@@ -12,7 +12,6 @@ export class TabelaComponent implements OnInit {
   @Input() colunas: any[] = [];
   @Input() lista: any[] = [];
   @Input() larguraTabela: string;
-  @Input() larguraColuna: string;
 
   constructor() { }
 

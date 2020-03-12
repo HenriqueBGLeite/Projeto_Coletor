@@ -24,7 +24,6 @@ export class ConsultarProdutoComponent implements OnInit {
   listaEndereco: any[] = [];
   listaEstoque: any[] = [];
   larguraTabela: string = '240';
-  larguraColuna: string = '60';
   filiais: any [] = [];
   limpar: string;
 
@@ -98,19 +97,19 @@ export class ConsultarProdutoComponent implements OnInit {
 
   carregaColunas(){   
       this.colunaEstoque = [
-        {label: 'Filial', var: 'codfilial', width: '20%'},
-        {label: 'Ger.', var: 'qtestger', width: '20%'},
-        {label: 'Reser.', var: 'qtreserv', width: '20%'},
-        {label: 'Bloq.', var: 'qtbloq', width: '20%'},
-        {label: 'Avar.', var: 'qtavaria', width: '20%'}
+        {label: 'Filial', var: 'codfilial', px: '50'},
+        {label: 'Ger.', var: 'qtestger', px: '60'},
+        {label: 'Reser.', var: 'qtreserv', px: '60'},
+        {label: 'Bloq.', var: 'qtbloq', px: '50'},
+        {label: 'Avar.', var: 'qtavaria', px: '50'}
       ];
       this.colunaEndereco = [
-        {label: 'Dep.', var: 'deposito', width: '15%'},
-        {label: 'Rua', var: 'rua', width: '15%'},
-        {label: 'Pred.', var: 'predio', width: '15%'},
-        {label: 'Niv.', var: 'nivel', width: '15%'},
-        {label: 'Apto', var: 'apto', width: '15%'},
-        {label: 'Tipo End.', var: 'tipoEndereco', width: '25%'}
+        {label: 'Dep.', var: 'deposito', px: '50'},
+        {label: 'Rua', var: 'rua', px: '50'},
+        {label: 'Pred.', var: 'predio', px: '60'},
+        {label: 'Niv.', var: 'nivel', px: '50'},
+        {label: 'Apto', var: 'apto', px: '60'},
+        {label: 'Tipo End.', var: 'tipoEndereco', px: '90'}
       ]
   }
 

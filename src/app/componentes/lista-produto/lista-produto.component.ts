@@ -26,7 +26,6 @@ export class ListaProdutoComponent implements OnInit {
   colunas: any [] = [];
   endereco: ListaEndereco [] = [];
   larguraTabela: string = "270";
-  larguraColuna: string = '100';
   limpar: string;
 
   ngOnInit() {
@@ -70,13 +69,13 @@ export class ListaProdutoComponent implements OnInit {
 
   carregaColunas(){   
     this.colunas = [
-      {label: 'Cod.Prod', var: 'codprod', width: '30%'},
-      {label: 'Descrição', var: 'descricao', width: '80%'},
-      {label: 'Dep.', var: 'deposito', width: '20%'},
-      {label: 'Rua', var: 'rua', width: '20%'},
-      {label: 'Pred.', var: 'predio', width: '25%'},
-      {label: 'Niv.', var: 'nivel', width: '20%'},
-      {label: 'Apto', var: 'apto', width: '25%'}
+      {label: 'Cod.Prod', var: 'codprod', px: '90'},
+      {label: 'Descrição', var: 'descricao', px: '300'},
+      {label: 'Dep.', var: 'deposito', px: '50'},
+      {label: 'Rua', var: 'rua', px: '50'},
+      {label: 'Pred.', var: 'predio', px: '60'},
+      {label: 'Niv.', var: 'nivel', px: '50'},
+      {label: 'Apto', var: 'apto', px: '50'}
     ]
 }
 
