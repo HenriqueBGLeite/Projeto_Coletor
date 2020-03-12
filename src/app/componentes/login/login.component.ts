@@ -27,10 +27,10 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.blockUI.start(MensagemUtil.VALIDANDO_DADOS);
-    if ( this.usuario.codigo != null && this.usuario.base != null ) {
+    if ( this.usuario.codigo != null && this.usuario.base != null ) {     
       this.authService.fazerLogin(this.usuario).subscribe((usuario) => {
         if (usuario == true) {
-          this.authService.mostrarMenu.emit(true);
+          this.authService.updateMostrarMenu(true);
           this.router.navigate(['/home']);
           this.blockUI.stop();
         } else {
@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
           this.usuario = new Usuario();
         }
       }, (erro) => {
-            console.log(erro);
             this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_BUSCA));
             this.usuario = new Usuario();
             this.blockUI.stop();

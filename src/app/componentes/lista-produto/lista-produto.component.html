@@ -1,4 +1,10 @@
 <p-panel header="Listagem Picking Produto" class="title">
+  <p-confirmDialog #cd [style]="{width: '90%'}">
+    <p-footer>
+      <button type="button" pButton icon="pi pi-times" label="NÃO" (click)="cd.reject()"></button>
+      <button type="button" pButton icon="pi pi-check" label="SIM" (click)="cd.accept()"></button>
+  </p-footer>
+  </p-confirmDialog>
   <div class="ui-g">
     <div class="ui-g-8 ui-md-8 ui-lg-8">
       <div class="ui-inputgroup camposBusca">
@@ -23,5 +29,8 @@
         <app-tabela [colunas]="colunas" [lista]="endereco" [larguraTabela]="larguraTabela" [larguraColuna]="larguraColuna"></app-tabela>
       </div>
     </block-ui>
+    <div class="ui-g-12 ui-md-12 ui-lg-12">
+      <p-button class="botao-limpar" label="LIMPAR LISTA" icon="pi pi-trash" iconPos="left" (click)="limparListaConfirmar()"></p-button>
+    </div>
   </div>
 </p-panel>

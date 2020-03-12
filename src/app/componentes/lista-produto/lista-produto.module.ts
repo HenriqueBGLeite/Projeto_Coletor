@@ -4,7 +4,7 @@ import { ListaProdutoComponent } from './lista-produto.component';
 import { PanelModule } from 'primeng/panel';
 import { TabelaModule } from '../tabela/tabela.module';
 import { ButtonModule } from 'primeng/button';
-import { MessageService } from 'primeng/api';
+import { MessageService, ConfirmationService } from 'primeng/api';
 import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,6 +14,8 @@ import { BlockUIModule } from 'ng-block-ui';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { TabViewModule } from 'primeng/tabview';
 import {InputTextModule} from 'primeng/inputtext';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+
 
 
 @NgModule({
@@ -33,8 +35,9 @@ import {InputTextModule} from 'primeng/inputtext';
     TableModule,
     MessagesModule,
     MessageModule,
-    KeyFilterModule
+    KeyFilterModule,
+    ConfirmDialogModule
 
-  ], providers: [MessageService]
+  ], providers: [MessageService, ConfirmationService]
 })
 export class ListaProdutoModule { }

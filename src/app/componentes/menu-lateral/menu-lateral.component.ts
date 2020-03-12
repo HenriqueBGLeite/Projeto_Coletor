@@ -28,6 +28,7 @@ export class MenuLateralComponent implements OnInit {
   }
 
   buscaUsuarioLogado(): Usuario{
+    console.log("Atualizou usuario do menu");
     this.usuarioLogado = this.authService.getUsuarioLogado();
     this.carregaMenu();
     return this.usuarioLogado;
@@ -49,7 +50,7 @@ export class MenuLateralComponent implements OnInit {
           { separator: true },
           { label: 'DADOS PRODUTO', icon: 'pi pi-search', routerLink: '/home-produto' },
           { separator: true },
-          { label: 'INVENTÁRIO', icon: 'fa fa-dropbox', routerLink: '/inventario' },
+          { label: 'INVENTÁRIO', icon: 'fa fa-dropbox', routerLink: '/inventario', disabled: true},
           { separator: true },
           { label: 'SAIR', icon: 'pi pi-sign-out', routerLink: '/login' },
         ]

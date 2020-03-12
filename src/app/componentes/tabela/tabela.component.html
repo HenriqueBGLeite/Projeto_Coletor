@@ -1,6 +1,27 @@
 
+<div>
+  <!-- Tabela com largura dinamica das colunas
+  <p-table [value]="lista" [paginator]="true" [rows]="5" [scrollable]="true" [resizableColumns]="true" [style]="{width: '500px'}">
+    <ng-template pTemplate="colgroup" let-coluna>
+      <colgroup>
+        <col *ngFor="let coluna of colunas" [style.width]="coluna.width">
+      </colgroup>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th *ngFor="let coluna of colunas">{{ coluna.label }}</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-dados>
+      <tr>
+        <td *ngFor="let coluna of colunas">{{ dados[coluna.var] }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+--> 
 <div>  
-  <p-table [value]="lista" [paginator]="true" [rows]="5" [scrollable]="true" [style]="{width: '240px'}">
+  <p-table [value]="lista" [paginator]="true" [pageLinks]="3"  [rows]="5" [scrollable]="true" [style]="{'width': larguraTabela + 'px' }">
     <ng-template pTemplate="colgroup" let-coluna>
       <colgroup>
         <col *ngFor="let coluna of colunas" [style.width.px]="larguraColuna">

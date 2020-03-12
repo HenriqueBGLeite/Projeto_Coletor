@@ -4,7 +4,7 @@
       <p-button class="responsive" label="ALTERAR DADOS" icon="fa fa-pencil-square-o" (onClick)="navegar('AD')"></p-button>
     </div>
     <div class="ui-g-12 ui-md-12 ui-lg-12">
-      <p-button class="responsive" label="ALTERAR PICKING" icon="fa fa-list-alt" iconPos="left" (onClick)="navegar('AP')"></p-button>
+      <p-button class="responsive" label="ALTERAR PICKING" [disabled]="true" icon="fa fa-list-alt" iconPos="left" (onClick)="navegar('AP')"></p-button>
     </div>
     <div class="ui-g-12 ui-md-12 ui-lg-12">
       <p-button class="responsive" label="LISTAR ENDEREÇOS" icon="fa fa-list-ul" iconPos="left" (onClick)="navegar('LE')"></p-button>

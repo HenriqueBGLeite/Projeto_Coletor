@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from './componentes/login/shared/auth.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,7 +9,7 @@ import { AuthService } from './componentes/login/shared/auth.service';
 })
 export class AppComponent implements OnInit {
 
-  mostrarMenu: boolean = false;
+  mostrarMenu: boolean;
 
   constructor(private authService: AuthService) {}
 
@@ -22,8 +23,8 @@ export class AppComponent implements OnInit {
   }
   
   mostraMenu(){
-    this.authService.mostrarMenu.subscribe((mostrar) => {
-      this.mostrarMenu = mostrar
+    this.authService.MenuEnabled.subscribe((mostrar) => {     
+      this.mostrarMenu = mostrar;
       });   
   }
 }

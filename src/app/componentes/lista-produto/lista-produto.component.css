@@ -17,3 +17,8 @@
 .filial {
     width: 100%;
 }
+
+.botao-limpar{
+    display: grid;
+    text-align: right;
+}
