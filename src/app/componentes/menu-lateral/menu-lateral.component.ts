@@ -28,7 +28,6 @@ export class MenuLateralComponent implements OnInit {
   }
 
   buscaUsuarioLogado(): Usuario{
-    console.log("Atualizou usuario do menu");
     this.usuarioLogado = this.authService.getUsuarioLogado();
     this.carregaMenu();
     return this.usuarioLogado;

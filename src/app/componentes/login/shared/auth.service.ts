@@ -23,28 +23,11 @@ export class AuthService {
 
   constructor(private router: Router, private messageService: MessageService, private httpClient: HttpClient) { }
 
-  fazerLogin(usuario: Usuario){
-    /*console.log("Buscar Usuario");
-    console.log(usuario.codigo);*/    
-    
-      this.httpClient.get(`${this.urlApi}getUsuario/${usuario.codigo}`).subscribe((usu: Usuario) => {
-
-        /*console.log("Atualizou Usuario");
-        console.log("Usuario retornado do backend");        
-        console.log(usu);*/       
-
-        this.usuario = usu;
-      }, (erro) => {});    
-
-      console.log("Autentica o usuario");
-      return this.httpClient.post(`${this.urlApi}AutenticaUsuario/`, usuario);
-
+  fazerLogin(usuario: Usuario) {
+    return this.httpClient.get(`${this.urlApi}getUsuario/${usuario.codigo}`);
   }
 
-  getUsuarioLogado(): Usuario {
-    console.log("Usuario que esta salvo no localstorage");
-    console.log(this.usuario);
-    
+  getUsuarioLogado(): Usuario {    
     if (this.usuario != null)
       return this.usuario;
     else 
@@ -54,6 +37,7 @@ export class AuthService {
 
   sair(){    
     this.usuarioAutenticado = false;
+    this.usuario = new Usuario();
     this.router.navigate(['/login']);
     this.updateMostrarMenu(false);
   }
@@ -61,5 +45,9 @@ export class AuthService {
   public updateMostrarMenu(MenuEnabled: boolean) {
     this.mostrarMenu.next(MenuEnabled);
 }
+
+  atualizaUsuarioLogado(usuario: Usuario){
+    this.usuario = usuario;
+  }
 
 }

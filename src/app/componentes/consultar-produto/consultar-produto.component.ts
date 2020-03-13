@@ -31,9 +31,14 @@ export class ConsultarProdutoComponent implements OnInit {
               private messageService: MessageService, private authService: AuthService) { }
 
   ngOnInit() {
+    this.carregarDadosIniciais();
+  }
+
+  carregarDadosIniciais(){
     this.buscaFiliais();
-    this.buscaUsuarioLogado(); 
+    this.buscaUsuarioLogado();
     this.carregaColunas();
+    this.focoBusca();
   }
 
   salvar(dados){
@@ -74,8 +79,9 @@ export class ConsultarProdutoComponent implements OnInit {
               this.listaEstoque = estoque;
             })
           })
-          this.produtos = produto;
           this.limpar = '';
+          this.focoProduto();
+          this.produtos = produto;
           this.blockUI.stop();
         }
       }, (erro) => {
@@ -92,6 +98,11 @@ export class ConsultarProdutoComponent implements OnInit {
 
   focoBusca(){
     var element = document.getElementById("codprod");
+    element.focus();    
+  }
+
+  focoProduto(){
+    var element = document.getElementById("codigo");
     element.focus();    
   }
 

@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
+      this.focoBusca();
       this.authService.sair();
     });
   }
@@ -28,8 +29,9 @@ export class LoginComponent implements OnInit {
   login(){
     this.blockUI.start(MensagemUtil.VALIDANDO_DADOS);
     if ( this.usuario.codigo != null && this.usuario.base != null ) {     
-      this.authService.fazerLogin(this.usuario).subscribe((usuario) => {
-        if (usuario == true) {
+      this.authService.fazerLogin(this.usuario).subscribe((usuario: Usuario) => {       
+        if (usuario.erro == null && usuario.warning == null) {
+          this.authService.atualizaUsuarioLogado(usuario);
           this.authService.updateMostrarMenu(true);
           this.router.navigate(['/home']);
           this.blockUI.stop();
@@ -37,16 +39,24 @@ export class LoginComponent implements OnInit {
           this.blockUI.stop();
           this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.USUARIO_NAO_CADASTRADO));
           this.usuario = new Usuario();
+          this.focoBusca();
         }
       }, (erro) => {
             this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_BUSCA));
             this.usuario = new Usuario();
+            this.focoBusca();
             this.blockUI.stop();
       })    ;
     }
     else {
       this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.VALIDA_DADOS));
+      this.focoBusca();
       this.blockUI.stop();
     }
+  }
+
+  focoBusca(){
+    var element = document.getElementById("codigo");
+    element.focus();    
   }
 }
