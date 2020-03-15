@@ -24,7 +24,7 @@ export class ListaProdutoComponent implements OnInit {
   usuarioLogado: Usuario;
   filiais: any [] = [];
   colunas: any [] = [];
-  endereco: ListaEndereco [] = [];
+  endereco: ListaEndereco[] = [];
   larguraTabela: string = "270";
   limpar: string;
 
@@ -51,9 +51,24 @@ export class ListaProdutoComponent implements OnInit {
               this.limpar = '';
             }
           } else {
-            Array.prototype.push.apply(this.endereco, endereco);
-            this.limpar = '';
-            this.blockUI.stop();
+              if ( this.endereco.length > 0 ) {
+                this.endereco.forEach((endAtual) => { 
+                  if ( endAtual.codprod == end.codprod ) {               
+                    this.limpar = '';
+                    this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.PRODUTO_REPETIDO));
+                  }
+                  else {
+                    Array.prototype.push.apply(this.endereco, endereco);
+                    this.limpar = '';                         
+                  }
+                }); 
+                this.blockUI.stop(); 
+              }
+              else {               
+                Array.prototype.push.apply(this.endereco, endereco);
+                this.limpar = ''; 
+                this.blockUI.stop(); 
+              }
           }                         
         });     
       }, (erro) => {

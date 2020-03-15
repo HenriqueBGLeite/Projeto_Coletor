@@ -1,5 +1,6 @@
 export class MensagemUtil {
 
+    //Geral
     public static BUSCA_REALIZADA = 'Buscar realizada com sucesso!';
     public static ERRO_NENHUM_REGISTRO = 'Nenhum produto encontrado!';
     public static ERRO_NA_BUSCA = 'Erro ao buscar registros na API.';
@@ -11,6 +12,12 @@ export class MensagemUtil {
     public static ERRO_BUSCA = 'Ocorreu um erro na busca!';
     public static VALIDA_DADOS = 'Dados inválidos para requisição.';
     public static VALIDA_LASTRO_CAMADA = 'Lastro/Camada informados, diferem do cadastro.';
+
+    //Tela Listagem
+    public static PRODUTO_REPETIDO = 'Produto já esta na listagem!';
+
+
+    //Tela Login
     public static USUARIO_NAO_CADASTRADO = 'Usuário inválido ou não cadastrado.';
     public static USUARIO_NAO_ENCONTRADO = 'Falha na autenticação, efetue novamente o login.';
 
