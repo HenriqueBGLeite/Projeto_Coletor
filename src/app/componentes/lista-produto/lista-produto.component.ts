@@ -7,6 +7,7 @@ import { MessageService, ConfirmationService } from 'primeng/api';
 import { MensagemUtil } from 'src/Util/mensagem-util';
 import { ListaEndereco } from './compartilhado/lista-endereco.model';
 import { ListaProdutoService } from './compartilhado/listar-produto.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-lista-produto',
@@ -52,16 +53,13 @@ export class ListaProdutoComponent implements OnInit {
             }
           } else {
               if ( this.endereco.length > 0 ) {
-                this.endereco.forEach((endAtual) => { 
-                  if ( endAtual.codprod == end.codprod ) {               
-                    this.limpar = '';
-                    this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.PRODUTO_REPETIDO));
-                  }
-                  else {
-                    Array.prototype.push.apply(this.endereco, endereco);
-                    this.limpar = '';                         
-                  }
-                }); 
+                if (this.endereco.find(endereco => endereco.codprod == end.codprod)) {
+                  this.limpar = '';
+                  this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.PRODUTO_REPETIDO));
+                } else {
+                  Array.prototype.push.apply(this.endereco, endereco);
+                  this.limpar = ''; 
+                };
                 this.blockUI.stop(); 
               }
               else {               

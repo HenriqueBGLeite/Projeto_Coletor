@@ -108,19 +108,19 @@ export class ConsultarProdutoComponent implements OnInit {
 
   carregaColunas(){   
       this.colunaEstoque = [
-        {label: 'Filial', var: 'codfilial', px: '50'},
-        {label: 'Ger.', var: 'qtestger', px: '60'},
-        {label: 'Reser.', var: 'qtreserv', px: '60'},
-        {label: 'Bloq.', var: 'qtbloq', px: '50'},
-        {label: 'Avar.', var: 'qtavaria', px: '50'}
+        {label: 'Filial', var: 'codfilial', perc: '50'},
+        {label: 'Ger.', var: 'qtestger', perc: '60'},
+        {label: 'Reser.', var: 'qtreserv', perc: '60'},
+        {label: 'Bloq.', var: 'qtbloq', perc: '50'},
+        {label: 'Avar.', var: 'qtavaria', perc: '50'}
       ];
       this.colunaEndereco = [
-        {label: 'Dep.', var: 'deposito', px: '50'},
-        {label: 'Rua', var: 'rua', px: '50'},
-        {label: 'Pred.', var: 'predio', px: '60'},
-        {label: 'Niv.', var: 'nivel', px: '50'},
-        {label: 'Apto', var: 'apto', px: '60'},
-        {label: 'Tipo End.', var: 'tipoEndereco', px: '90'}
+        {label: 'Dep.', var: 'deposito', perc: '50'},
+        {label: 'Rua', var: 'rua', perc: '50'},
+        {label: 'Pred.', var: 'predio', perc: '60'},
+        {label: 'Niv.', var: 'nivel', perc: '50'},
+        {label: 'Apto', var: 'apto', perc: '60'},
+        {label: 'Tipo End.', var: 'tipoEndereco', perc: '90'}
       ]
   }
 

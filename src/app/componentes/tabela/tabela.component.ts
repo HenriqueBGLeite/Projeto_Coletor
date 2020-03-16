@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LazyLoadEvent } from 'primeng/api';
 import { stringify } from 'querystring';
+import { mobile } from 'src/Util/screen-utils';
 
 @Component({
   selector: 'app-tabela',
@@ -12,8 +13,14 @@ export class TabelaComponent implements OnInit {
   @Input() colunas: any[] = [];
   @Input() lista: any[] = [];
   @Input() larguraTabela: string;
+  teste: string;
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() { this.defineStyleTabela(); }
+
+  defineStyleTabela(){
+    console.log(window.innerWidth);
+    this.teste = window.innerWidth.toString();
+  }
 }
