@@ -13,14 +13,14 @@ export class TabelaComponent implements OnInit {
   @Input() colunas: any[] = [];
   @Input() lista: any[] = [];
   @Input() larguraTabela: string;
-  teste: string;
+  @Input() totalDados: number = 25;
 
   constructor() { }
 
   ngOnInit() { this.defineStyleTabela(); }
 
   defineStyleTabela(){
-    console.log(window.innerWidth);
-    this.teste = window.innerWidth.toString();
+    window.innerWidth.toString();
   }
+
 }

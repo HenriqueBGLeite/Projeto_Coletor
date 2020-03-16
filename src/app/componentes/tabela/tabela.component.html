@@ -20,10 +20,10 @@
   </p-table>
   -->
 <!-- TABELA FUNCIONAL -->
-    <p-table [value]="lista" [paginator]="true" [pageLinks]="3"  [rows]="5" [scrollable]="true" [style]="{'width': larguraTabela + 'px' }" [resizableColumns]="true">
+    <p-table [value]="lista" [paginator]="true" [pageLinks]="3" [rows]="5" [totalRecords]="totalDados" [scrollable]="true" [style]="{'width': larguraTabela + 'px' }" [resizableColumns]="true">
     <ng-template pTemplate="colgroup" let-coluna>
       <colgroup>
-        <col *ngFor="let coluna of colunas" [style.width.px]="coluna.px">
+        <col *ngFor="let coluna of colunas" [style.width.px]="coluna.px" [style.font-size.em]="coluna.style">
       </colgroup>
     </ng-template>
     <ng-template pTemplate="header">

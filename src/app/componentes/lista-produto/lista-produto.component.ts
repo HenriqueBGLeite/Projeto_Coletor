@@ -27,6 +27,7 @@ export class ListaProdutoComponent implements OnInit {
   colunas: any [] = [];
   endereco: ListaEndereco[] = [];
   larguraTabela: string = "270";
+  totalDados: number;
   limpar: string;
 
   ngOnInit() {
@@ -58,12 +59,14 @@ export class ListaProdutoComponent implements OnInit {
                   this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.PRODUTO_REPETIDO));
                 } else {
                   Array.prototype.push.apply(this.endereco, endereco);
+                  this.totalDados = this.endereco.length;
                   this.limpar = ''; 
                 };
                 this.blockUI.stop(); 
               }
               else {               
                 Array.prototype.push.apply(this.endereco, endereco);
+                this.totalDados = this.endereco.length;
                 this.limpar = ''; 
                 this.blockUI.stop(); 
               }
@@ -83,7 +86,7 @@ export class ListaProdutoComponent implements OnInit {
   carregaColunas(){   
     this.colunas = [
       {label: 'Cod.Prod', var: 'codprod', px: '90'},
-      {label: 'Descrição', var: 'descricao', px: '300'},
+      {label: 'Descrição', var: 'descricao', px: '300', style: '10'},
       {label: 'Dep.', var: 'deposito', px: '50'},
       {label: 'Rua', var: 'rua', px: '50'},
       {label: 'Pred.', var: 'predio', px: '60'},
