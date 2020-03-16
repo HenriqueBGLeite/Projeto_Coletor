@@ -7,7 +7,6 @@ import { MessageService, ConfirmationService } from 'primeng/api';
 import { MensagemUtil } from 'src/Util/mensagem-util';
 import { ListaEndereco } from './compartilhado/lista-endereco.model';
 import { ListaProdutoService } from './compartilhado/listar-produto.service';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-lista-produto',
@@ -85,8 +84,8 @@ export class ListaProdutoComponent implements OnInit {
 
   carregaColunas(){   
     this.colunas = [
-      {label: 'Cod.Prod', var: 'codprod', px: '90'},
-      {label: 'Descrição', var: 'descricao', px: '300', style: '10'},
+      {label: 'Cod.Prod', var: 'codprod', px: '80'},
+      {label: 'Descrição', var: 'descricao', px: '250'},
       {label: 'Dep.', var: 'deposito', px: '50'},
       {label: 'Rua', var: 'rua', px: '50'},
       {label: 'Pred.', var: 'predio', px: '60'},

@@ -13,7 +13,7 @@ export class TabelaComponent implements OnInit {
   @Input() colunas: any[] = [];
   @Input() lista: any[] = [];
   @Input() larguraTabela: string;
-  @Input() totalDados: number = 25;
+  @Input() totalDados: number;
 
   constructor() { }
 
