@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           this.blockUI.stop();
         } else {
           this.blockUI.stop();
-          this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.USUARIO_NAO_CADASTRADO));
+          this.messageService.add(MensagemUtil.criaMensagemAviso(usuario.mensagemErroWarning));
           this.usuario = new Usuario();
           this.focoBusca();
         }

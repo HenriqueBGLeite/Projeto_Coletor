@@ -8,7 +8,7 @@
   <div class="ui-g">
     <div class="ui-g-8 ui-md-8 ui-lg-8">
       <div class="ui-inputgroup camposBusca">
-        <input #produto id="codprod" class="responsive" [(ngModel)]="limpar" name="buscar" type="number" pKeyFilter="pnum" 
+        <input #produto id="codprod" class="responsive" [(ngModel)]="limpar" name="buscar" type="number" pKeyFilter="num" 
                placeholder="COD.PROD / EAN / DUN" (keyup.enter)="buscarProduto(produto.value)" pInputText />          
         <button pButton id="pesquisar" icon="fa fa-search" on-click="buscarProduto(produto.value)"></button>
       </div>

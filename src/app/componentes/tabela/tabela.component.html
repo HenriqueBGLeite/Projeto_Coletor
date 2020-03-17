@@ -23,7 +23,7 @@
     <p-table [value]="lista" [paginator]="true" [pageLinks]="3" [rows]="5" [totalRecords]="totalDados" [scrollable]="true" [style]="{'width': larguraTabela + 'px' }" [resizableColumns]="true">
     <ng-template pTemplate="colgroup" let-coluna>
       <colgroup>
-        <col *ngFor="let coluna of colunas" [style.width.px]="coluna.px" [style.font-size.em]="coluna.style">
+        <col *ngFor="let coluna of colunas" [style.width.px]="coluna.px">
       </colgroup>
     </ng-template>
     <ng-template pTemplate="header">

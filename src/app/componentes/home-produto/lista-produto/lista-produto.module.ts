@@ -15,6 +15,7 @@ import { KeyFilterModule } from 'primeng/keyfilter';
 import { TabViewModule } from 'primeng/tabview';
 import {InputTextModule} from 'primeng/inputtext';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
 
 
 
@@ -36,7 +37,8 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
     MessagesModule,
     MessageModule,
     KeyFilterModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    ScrollPanelModule
 
   ], providers: [MessageService, ConfirmationService]
 })

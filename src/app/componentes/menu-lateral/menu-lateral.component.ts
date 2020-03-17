@@ -49,7 +49,7 @@ export class MenuLateralComponent implements OnInit {
           { separator: true },
           { label: 'DADOS PRODUTO', icon: 'pi pi-search', routerLink: '/home-produto' },
           { separator: true },
-          { label: 'INVENTÁRIO', icon: 'fa fa-dropbox', routerLink: '/inventario'},
+          { label: 'INVENTÁRIO', icon: 'fa fa-dropbox', routerLink: '/home-inventario'},
           { separator: true },
           { label: 'SAIR', icon: 'pi pi-sign-out', routerLink: '/login' },
         ]

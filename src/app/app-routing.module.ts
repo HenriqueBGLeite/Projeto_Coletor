@@ -1,12 +1,13 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { ConsultarProdutoComponent } from './componentes/home-produto/consultar-produto/consultar-produto.component';
-import { InventarioComponent } from './componentes/inventario/inventario.component';
+import { InventarioComponent } from './componentes/home-inventario/inventario/inventario.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { AuthGuard } from './guard/auth.guard';
 import { HomeProdutoComponent } from './componentes/home-produto/home-produto.component';
 import { ListaProdutoComponent } from './componentes/home-produto/lista-produto/lista-produto.component';
+import { HomeInventarioComponent } from './componentes/home-inventario/home-inventario.component';
 
 const routes: Routes = [
   //Rota default do projeto
@@ -26,8 +27,7 @@ const routes: Routes = [
     path: 'home-produto', component: HomeProdutoComponent, 
     //canActivate: [AuthGuard] 
   },
-  
-  //Rotas para consultar produto
+ 
   { 
     path: 'consultar-produto', component: ConsultarProdutoComponent, 
     //canActivate: [AuthGuard] 
@@ -39,6 +39,12 @@ const routes: Routes = [
   },
   
   //Rota para inventario
+
+  { 
+    path: 'home-inventario', component: HomeInventarioComponent,
+    //canActivate: [AuthGuard]
+  }, 
+
   { 
     path: 'inventario', component: InventarioComponent,
     //canActivate: [AuthGuard]

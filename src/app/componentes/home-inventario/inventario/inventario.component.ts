@@ -5,8 +5,8 @@ import { MensagemUtil } from 'src/Util/mensagem-util';
 import { Constantes } from 'src/Util/constantes';
 import { ProdutoInventario } from './compartilhado/produto-inventario.model';
 import { InventarioService } from './compartilhado/inventario.service';
-import { Usuario } from '../login/shared/login.model';
-import { AuthService } from '../login/shared/auth.service';
+import { Usuario } from '../../login/shared/login.model';
+import { AuthService } from '../../login/shared/auth.service';
 
 
 @Component({

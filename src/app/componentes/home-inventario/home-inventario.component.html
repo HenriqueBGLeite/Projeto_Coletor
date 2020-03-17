@@ -1,0 +1,10 @@
+<p-panel header="Inventário" class="title">
+  <div class="ui-g principal">
+    <div class="ui-g-12 ui-md-12 ui-lg-12">
+      <h1 class="titulo">ONDE ESTOU?</h1>
+    </div>
+    <div class="ui-g-12 ui-md-12 ui-lg-12">
+      <input pInputText id="codigo" pKeyFilter="num" placeholder="Cód.Endereço" [(ngModel)]="limpar" (keyup.enter)=buscaEndereco($event.target.value)/>
+    </div>
+  </div>
+</p-panel>

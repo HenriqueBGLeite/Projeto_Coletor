@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { LoginComponent } from './login.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { BlockUIModule } from 'ng-block-ui';
+import { KeyFilterModule } from 'primeng/keyfilter';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { BlockUIModule } from 'ng-block-ui';
     CardModule,
     ButtonModule,
     DropdownModule,
-    BlockUIModule
+    BlockUIModule,
+    KeyFilterModule
   ]
 })
 export class LoginModule { }

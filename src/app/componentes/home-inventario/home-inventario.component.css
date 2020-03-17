@@ -1,0 +1,20 @@
+.title {
+    text-align: center;
+}
+
+.principal {
+    background-color: #CDBA96;
+}
+
+#codigo{
+    text-align: center;
+    font-size: large;
+    width: 80%;
+}
+
+.titulo {
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: xx-large;
+    font-style: italic;
+}
