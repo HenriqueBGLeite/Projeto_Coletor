@@ -1,43 +1,45 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListaProdutoComponent } from './lista-produto.component';
+import { ConsultarProdutoComponent } from './consultar-produto.component';
 import { PanelModule } from 'primeng/panel';
-import { TabelaModule } from '../tabela/tabela.module';
 import { ButtonModule } from 'primeng/button';
-import { MessageService, ConfirmationService } from 'primeng/api';
-import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
+import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { BlockUIModule } from 'ng-block-ui';
 import { KeyFilterModule } from 'primeng/keyfilter';
+import { MessageService } from 'primeng/api';
 import { TabViewModule } from 'primeng/tabview';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 import {InputTextModule} from 'primeng/inputtext';
-import {ConfirmDialogModule} from 'primeng/confirmdialog';
-
-
+import {FieldsetModule} from 'primeng/fieldset';
+import { TabelaModule } from '../../tabela/tabela.module';
 
 @NgModule({
   declarations: [
-    ListaProdutoComponent
+    ConsultarProdutoComponent
   ],
   imports: [
     CommonModule,
     PanelModule,
-    TabelaModule,
     ButtonModule,
-    FormsModule,
-    BlockUIModule,
-    TabViewModule,
-    InputTextModule,
-    HttpClientModule,
     TableModule,
+    DropdownModule,
+    FormsModule,
+    HttpClientModule,
     MessagesModule,
     MessageModule,
+    BlockUIModule,
     KeyFilterModule,
-    ConfirmDialogModule
-
-  ], providers: [MessageService, ConfirmationService]
+    TabViewModule,
+    InputTextareaModule,
+    InputTextModule,
+    FieldsetModule,
+    TabelaModule
+  ], providers: [MessageService]
 })
-export class ListaProdutoModule { }
+
+export class ConsultarProdutoModule { }

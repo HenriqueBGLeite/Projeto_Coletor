@@ -5,8 +5,8 @@ import { NgBlockUI, BlockUI } from 'ng-block-ui';
 import { MensagemUtil } from 'src/Util/mensagem-util';
 import { MessageService, SelectItem } from 'primeng/api';
 import { Router } from '@angular/router';
-import { Usuario } from '../login/shared/login.model';
-import { AuthService } from '../login/shared/auth.service';
+import { Usuario } from '../../login/shared/login.model';
+import { AuthService } from '../../login/shared/auth.service';
 
 @Component({
   selector: 'app-consultar-produto',

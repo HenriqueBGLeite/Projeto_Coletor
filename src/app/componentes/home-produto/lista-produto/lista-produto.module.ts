@@ -1,45 +1,43 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ConsultarProdutoComponent } from './consultar-produto.component';
+import { ListaProdutoComponent } from './lista-produto.component';
 import { PanelModule } from 'primeng/panel';
+import { TabelaModule } from '../../tabela/tabela.module';
 import { ButtonModule } from 'primeng/button';
-import { TableModule } from 'primeng/table';
-import { DropdownModule } from 'primeng/dropdown';
+import { MessageService, ConfirmationService } from 'primeng/api';
 import { FormsModule } from '@angular/forms';
+import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { BlockUIModule } from 'ng-block-ui';
 import { KeyFilterModule } from 'primeng/keyfilter';
-import { MessageService } from 'primeng/api';
 import { TabViewModule } from 'primeng/tabview';
-import { InputTextareaModule } from 'primeng/inputtextarea';
 import {InputTextModule} from 'primeng/inputtext';
-import {FieldsetModule} from 'primeng/fieldset';
-import { TabelaModule } from '../tabela/tabela.module';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+
+
 
 @NgModule({
   declarations: [
-    ConsultarProdutoComponent
+    ListaProdutoComponent
   ],
   imports: [
     CommonModule,
     PanelModule,
+    TabelaModule,
     ButtonModule,
-    TableModule,
-    DropdownModule,
     FormsModule,
+    BlockUIModule,
+    TabViewModule,
+    InputTextModule,
     HttpClientModule,
+    TableModule,
     MessagesModule,
     MessageModule,
-    BlockUIModule,
     KeyFilterModule,
-    TabViewModule,
-    InputTextareaModule,
-    InputTextModule,
-    FieldsetModule,
-    TabelaModule
-  ], providers: [MessageService]
-})
+    ConfirmDialogModule
 
-export class ConsultarProdutoModule { }
+  ], providers: [MessageService, ConfirmationService]
+})
+export class ListaProdutoModule { }

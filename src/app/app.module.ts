@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { MenuLateralModule } from './componentes/menu-lateral/menu-lateral.module';
 import { SidebarModule } from 'primeng/sidebar';
 import { GalleriaModule } from 'primeng/galleria';
-import { ConsultarProdutoModule } from './componentes/consultar-produto/consultar-produto.module';
+import { ConsultarProdutoModule } from './componentes/home-produto/consultar-produto/consultar-produto.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BlockUIModule } from 'ng-block-ui';
 import { MessageService } from 'primeng/api';
@@ -23,7 +23,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TabelaModule } from './componentes/tabela/tabela.module';
 import { HomeProdutoModule } from './componentes/home-produto/home-produto.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { ListaProdutoModule } from './componentes/lista-produto/lista-produto.module';
+import { ListaProdutoModule } from './componentes/home-produto/lista-produto/lista-produto.module';
 
 
 

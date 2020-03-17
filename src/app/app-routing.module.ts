@@ -1,12 +1,12 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { ConsultarProdutoComponent } from './componentes/consultar-produto/consultar-produto.component';
+import { ConsultarProdutoComponent } from './componentes/home-produto/consultar-produto/consultar-produto.component';
 import { InventarioComponent } from './componentes/inventario/inventario.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { AuthGuard } from './guard/auth.guard';
 import { HomeProdutoComponent } from './componentes/home-produto/home-produto.component';
-import { ListaProdutoComponent } from './componentes/lista-produto/lista-produto.component';
+import { ListaProdutoComponent } from './componentes/home-produto/lista-produto/lista-produto.component';
 
 const routes: Routes = [
   //Rota default do projeto

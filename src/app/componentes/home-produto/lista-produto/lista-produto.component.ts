@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../login/shared/auth.service';
-import { Usuario } from '../login/shared/login.model';
+import { AuthService } from '../../login/shared/auth.service';
+import { Usuario } from '../../login/shared/login.model';
 import { ConsultarProdutoService } from '../consultar-produto/compartilhado/consultar-produto.service';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { MessageService, ConfirmationService } from 'primeng/api';
