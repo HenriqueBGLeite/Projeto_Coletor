@@ -28,8 +28,7 @@ export class HomeProdutoComponent implements OnInit {
       this.router.navigate(['/consultar-produto']);
     }else if (param == 'LE'){
       this.router.navigate(['/lista-produto']);
-    }else
-      this.router.navigate(['/home-produto']);
+    }
   }
 
 }

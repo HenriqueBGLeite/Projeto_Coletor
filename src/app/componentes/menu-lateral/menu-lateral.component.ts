@@ -43,13 +43,13 @@ export class MenuLateralComponent implements OnInit {
         label: 'Menu Coletor', items: [
           { label: `${this.usuarioLogado.codigo} - ${this.usuarioLogado.nome}`},
           { separator: true },
-          { label: 'CONF. ENTRADA', icon: 'pi pi-inbox', routerLink: '#', disabled: true },
+          { label: 'CONF. ENTRADA', icon: 'pi pi-inbox', routerLink: '/home', disabled: true },
           { separator: true },
-          { label: 'CONF. OS', icon: 'pi pi-check', routerLink: '#', disabled: true },
+          { label: 'CONF. OS', icon: 'pi pi-check', routerLink: '/home', disabled: true },
           { separator: true },
           { label: 'DADOS PRODUTO', icon: 'pi pi-search', routerLink: '/home-produto' },
           { separator: true },
-          { label: 'INVENTÁRIO', icon: 'fa fa-dropbox', routerLink: '/inventario', disabled: true},
+          { label: 'INVENTÁRIO', icon: 'fa fa-dropbox', routerLink: '/inventario'},
           { separator: true },
           { label: 'SAIR', icon: 'pi pi-sign-out', routerLink: '/login' },
         ]

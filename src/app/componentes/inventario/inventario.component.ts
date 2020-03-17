@@ -20,6 +20,7 @@ export class InventarioComponent implements OnInit {
   usuarioLogado: Usuario;
   lastroOrig: number = 0;
   camadaOrig: number = 0;
+  value: Date;
 
   configCalendar = Constantes.configCalendar;
 
@@ -30,6 +31,8 @@ export class InventarioComponent implements OnInit {
   }
 
   salvar(){
+    console.log(this.produtos);
+    
      if ( this.produtos.codprod != null ) {    
       if ( this.produtos.lastro > 0 || this.produtos.camada > 0){
         if ( this.produtos.lastro == this.lastroOrig && this.produtos.camada == this.camadaOrig ) {
@@ -67,7 +70,7 @@ export class InventarioComponent implements OnInit {
               this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
               this.blockUI.stop();
         }, (erro) => {
-              this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
+              this.messageService.add(MensagemUtil.criaMensagemErro(erro));
               this.blockUI.stop();
         })  
       }      
@@ -92,6 +95,7 @@ export class InventarioComponent implements OnInit {
           }
         } else {
           this.produtos = produto;
+          this.produtos.datavalidade = new Date;
           //Guarda o lastro e camada original do produto
           this.lastroOrig = this.produtos.lastro; this.camadaOrig = this.produtos.camada;
           this.limpaVariavel(this.produtos);
