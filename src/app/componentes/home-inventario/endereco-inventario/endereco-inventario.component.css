@@ -3,6 +3,10 @@
     text-align: center;
 }
 
+.principal {
+    background-color: #B5B5B5;
+}
+
 #codigo{
     text-align: center;
     font-size: large;
@@ -18,4 +22,14 @@
     font-family: 'Times New Roman', Times, serif;
     font-size: xx-large;
     font-style: italic;
+}
+
+.efeito{
+    padding-top: 15px;
+}
+
+.apenas_leitura{
+    size: 30px;
+    font-size: 20px;
+    background-color: rgb(206, 206, 206);
 }
