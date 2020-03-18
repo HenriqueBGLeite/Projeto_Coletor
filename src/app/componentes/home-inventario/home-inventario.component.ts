@@ -31,7 +31,6 @@ export class HomeInventarioComponent implements OnInit {
   }
 
   buscaEndereco(codigo: number){
-    console.log(codigo);
     this.router.navigate(['/inventario']);   
     this.limpar = ''; 
   }

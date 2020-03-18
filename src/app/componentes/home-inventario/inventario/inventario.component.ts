@@ -16,12 +16,12 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./inventario.component.css']
 })
 export class InventarioComponent implements OnInit {
+  
   @BlockUI() blockUI: NgBlockUI;
   produtos: ProdutoInventario = new ProdutoInventario();
   usuarioLogado: Usuario;
   lastroOrig: number = 0;
   camadaOrig: number = 0;
-
   configCalendar = Constantes.configCalendar;
 
   constructor(private inventarioSevice: InventarioService, private messageService: MessageService, private authService: AuthService) { }
