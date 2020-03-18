@@ -5,6 +5,7 @@ import { MenuModule } from 'primeng/menu';
 import { SidebarModule } from 'primeng/sidebar';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { ButtonModule } from 'primeng/button';
+import { BlockUIModule } from 'ng-block-ui';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ButtonModule } from 'primeng/button';
     MenuModule,
     SidebarModule,
     PanelMenuModule,
-    ButtonModule
+    ButtonModule,
+    BlockUIModule
 
   ],
   exports: [MenuLateralComponent]

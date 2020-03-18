@@ -8,6 +8,7 @@ import { AuthGuard } from './guard/auth.guard';
 import { HomeProdutoComponent } from './componentes/home-produto/home-produto.component';
 import { ListaProdutoComponent } from './componentes/home-produto/lista-produto/lista-produto.component';
 import { HomeInventarioComponent } from './componentes/home-inventario/home-inventario.component';
+import { EnderecoInventarioComponent } from './componentes/home-inventario/endereco-inventario/endereco-inventario.component';
 
 const routes: Routes = [
   //Rota default do projeto
@@ -42,6 +43,11 @@ const routes: Routes = [
 
   { 
     path: 'home-inventario', component: HomeInventarioComponent,
+    //canActivate: [AuthGuard]
+  }, 
+
+  { 
+    path: 'endereco-inventario', component: EnderecoInventarioComponent,
     //canActivate: [AuthGuard]
   }, 
 

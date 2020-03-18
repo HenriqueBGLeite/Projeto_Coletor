@@ -1,0 +1,21 @@
+
+.title {
+    text-align: center;
+}
+
+#codigo{
+    text-align: center;
+    font-size: large;
+    width: 80%;
+}
+
+.subtitle {
+    text-align: left;
+}
+
+.titulo {
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: xx-large;
+    font-style: italic;
+}

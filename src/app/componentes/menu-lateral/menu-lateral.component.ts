@@ -3,6 +3,10 @@ import { MenuItem } from 'primeng/api';
 import { AuthService } from '../login/shared/auth.service';
 import { Usuario } from '../login/shared/login.model';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { InventarioService } from '../home-inventario/inventario/compartilhado/inventario.service';
+import { Router } from '@angular/router';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import { MensagemUtil } from 'src/Util/mensagem-util';
 
 @Component({
   selector: 'app-menu-lateral',
@@ -11,11 +15,12 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class MenuLateralComponent implements OnInit {
 
+  @BlockUI() blockUI: NgBlockUI;
   display: boolean = true;
   items: MenuItem[] = [];
   usuarioLogado: Usuario = new Usuario;
 
-  constructor(private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService, private inventarioService: InventarioService) { }
 
   ngOnInit() {
     setTimeout(() => {
@@ -49,12 +54,29 @@ export class MenuLateralComponent implements OnInit {
           { separator: true },
           { label: 'DADOS PRODUTO', icon: 'pi pi-search', routerLink: '/home-produto' },
           { separator: true },
-          { label: 'INVENTÁRIO', icon: 'fa fa-dropbox', routerLink: '/home-inventario'},
+          { label: 'INVENTÁRIO', icon: 'fa fa-dropbox', command: (event) => {
+            this.validaTelaSeguinte();
+            //event.originalEvent: Browser event
+            //event.item: menuitem metadata
+          }},
           { separator: true },
           { label: 'SAIR', icon: 'pi pi-sign-out', routerLink: '/login' },
         ]
       }
     ];
+  }
+
+  validaTelaSeguinte(){
+    this.blockUI.start(MensagemUtil.VALIDANDO_DADOS);
+    this.inventarioService.buscarProxEndereco(this.usuarioLogado.codigo, 14531).subscribe((retorno) => {
+      if ( retorno != '-1') {
+        this.router.navigate(['/home-inventario']);
+        this.blockUI.stop();
+      } else {
+        this.router.navigate(['/endereco-inventario']);
+        this.blockUI.stop();
+      }
+    });
   }
 
 }

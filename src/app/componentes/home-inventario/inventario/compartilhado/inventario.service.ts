@@ -22,4 +22,8 @@ export class InventarioService {
     return this.httpClient.post(`${this.urlApi}gravaProdutoInventario/`, produto);
   }
 
+  public buscarProxEndereco(codUsuario: number, codEndereco: number){
+    return this.httpClient.get(`${this.urlApi}getProxEndereco/${codUsuario}/${codEndereco}`);
+  }
+
 }
