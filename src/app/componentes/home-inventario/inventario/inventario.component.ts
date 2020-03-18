@@ -7,6 +7,7 @@ import { ProdutoInventario } from './compartilhado/produto-inventario.model';
 import { InventarioService } from './compartilhado/inventario.service';
 import { Usuario } from '../../login/shared/login.model';
 import { AuthService } from '../../login/shared/auth.service';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -20,7 +21,6 @@ export class InventarioComponent implements OnInit {
   usuarioLogado: Usuario;
   lastroOrig: number = 0;
   camadaOrig: number = 0;
-  value: Date;
 
   configCalendar = Constantes.configCalendar;
 
@@ -28,11 +28,11 @@ export class InventarioComponent implements OnInit {
 
   ngOnInit() {
     this.buscaUsuarioLogado();    
+    this.focoBusca();
   }
 
   salvar(){
-    console.log(this.produtos);
-    
+    this.formartarDataGravacao();
      if ( this.produtos.codprod != null ) {    
       if ( this.produtos.lastro > 0 || this.produtos.camada > 0){
         if ( this.produtos.lastro == this.lastroOrig && this.produtos.camada == this.camadaOrig ) {
@@ -47,7 +47,6 @@ export class InventarioComponent implements OnInit {
                   this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
                   this.blockUI.stop();
             }, (erro) => {
-                  console.log(erro);
                   this.messageService.add(MensagemUtil.criaMensagemErro(MensagemUtil.ERRO_SALVAR));
                   this.blockUI.stop();
             })           
@@ -95,7 +94,6 @@ export class InventarioComponent implements OnInit {
           }
         } else {
           this.produtos = produto;
-          this.produtos.datavalidade = new Date;
           //Guarda o lastro e camada original do produto
           this.lastroOrig = this.produtos.lastro; this.camadaOrig = this.produtos.camada;
           this.limpaVariavel(this.produtos);
@@ -187,23 +185,16 @@ export class InventarioComponent implements OnInit {
     this.produtos.total =  ((this.produtos.lastro * this.produtos.camada) * this.produtos.qtunitcx) + (Number(this.produtos.qtun) + (Number(this.produtos.qtcx) * this.produtos.qtunitcx));
   }
 
-  formartarDataGravacao(produto: ProdutoInventario, dtvalidade) {
-    if (dtvalidade) {
-      let dia = parseInt(dtvalidade.substring(0, 2));
-      let mes = parseInt(dtvalidade.substring(2, 4)) - 1;
-      let ano = parseInt(dtvalidade.substring(4, 8));
-
-      let data = new Date(ano, mes, dia);
-
-      produto.datavalidade = data;
-
-      return produto;
-    }
+  formartarDataGravacao() {
+    var datePipe = new DatePipe("en-US");
+    this.produtos.datavalidade = datePipe.transform(this.produtos.datavalidade, "dd/MM/yyyy");
   }
 
   limpaVariavel(prod: ProdutoInventario){
     prod.lastro = null; prod.camada = null;
-    prod.qtun = null; prod.qtcx = null;  prod.total = 0;
+    prod.qtun = null; prod.qtcx = null;  
+    prod.total = 0;
+    prod.datavalidade = null;
   }
 
   buscaUsuarioLogado(): Usuario{

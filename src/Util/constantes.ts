@@ -9,7 +9,8 @@ export class Constantes {
         monthNamesShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
         today: 'Hoje',
         clear: 'Limpar',
-        dateFormat: 'dd/mm/yy'
+        dateFormat: 'dd/mm/yy',
+        weekHeader: 'Wk'
     }
 
     public static baseUsuario = [
