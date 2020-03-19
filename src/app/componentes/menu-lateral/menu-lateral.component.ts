@@ -68,11 +68,12 @@ export class MenuLateralComponent implements OnInit {
 
   validaTelaSeguinte(){
     this.blockUI.start(MensagemUtil.VALIDANDO_DADOS);
-    this.inventarioService.buscarProxEndereco(this.usuarioLogado.codigo, 14531).subscribe((retorno) => {
-      if ( retorno != '-1') {
+    this.inventarioService.buscarProxEndereco(this.usuarioLogado.codigo, 14531).subscribe((retorno: string) => {
+      if ( retorno == '-1') {
         this.router.navigate(['/home-inventario']);
         this.blockUI.stop();
       } else {
+        this.inventarioService.proxEndereco = retorno;
         this.router.navigate(['/endereco-inventario']);
         this.blockUI.stop();
       }

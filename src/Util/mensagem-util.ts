@@ -16,6 +16,9 @@ export class MensagemUtil {
     //Tela Listagem
     public static PRODUTO_REPETIDO = 'Produto já esta na listagem!';
 
+    //Tela Inventario
+    public static ENDERECO_NAO_CONFERE = 'Endereço não confere!';
+
 
     //Tela Login
     public static USUARIO_NAO_CADASTRADO = 'Usuário inválido ou não cadastrado.';

@@ -8,7 +8,10 @@ import { ProdutoInventario } from './produto-inventario.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class InventarioService {
+
+  proxEndereco: string;
 
   urlApi = environment.urlApi.concat('/Inventario/');
 
@@ -24,6 +27,10 @@ export class InventarioService {
 
   public buscarProxEndereco(codUsuario: number, codEndereco: number){
     return this.httpClient.get(`${this.urlApi}getProxEndereco/${codUsuario}/${codEndereco}`);
+  }
+
+  public buscarDadosEndereco(codEndereco: string){
+    return this.httpClient.get(`${this.urlApi}getDadosEndereco/123`);
   }
 
 }
