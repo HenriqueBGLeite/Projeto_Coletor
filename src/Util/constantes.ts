@@ -16,7 +16,7 @@ export class Constantes {
     public static baseUsuario = [
         { label: 'EPOCA', value: 'EPOCA' },
         { label: 'MRURAL', value: 'MRURAL' },
-        { label: 'EPOCOTESTE', value: 'EPOCATESTE' }
+        { label: 'EPOCATESTE', value: 'TESTE-EPOCA' }
     ]
     
 };
