@@ -25,12 +25,12 @@ export class InventarioService {
     return this.httpClient.post(`${this.urlApi}gravaProdutoInventario/`, produto);
   }
 
-  public buscarProxEndereco(codUsuario: number, codEndereco: number){
+  public buscarProxEndereco(codUsuario: number, codEndereco?: number){
     return this.httpClient.get(`${this.urlApi}getProxEndereco/${codUsuario}/${codEndereco}`);
   }
 
   public buscarDadosEndereco(codEndereco: string){
-    return this.httpClient.get(`${this.urlApi}getDadosEndereco/123`);
+    return this.httpClient.get(`${this.urlApi}getDadosEndereco/${codEndereco}`);
   }
 
 }

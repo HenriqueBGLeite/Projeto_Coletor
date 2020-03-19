@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../login/shared/login.model';
 import { Router } from '@angular/router';
 import { AuthService } from '../../login/shared/auth.service';
-import { MenuLateralComponent } from '../../menu-lateral/menu-lateral.component';
 import { InventarioService } from '../inventario/compartilhado/inventario.service';
 import { EnderecoInventario } from './compartilhado/endereco-inventario.model';
 import { NgBlockUI, BlockUI } from 'ng-block-ui';
@@ -16,7 +15,7 @@ import { MessageService } from 'primeng/api';
 })
 export class EnderecoInventarioComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService, private inventarioService: InventarioService,  private messageService: MessageService) { }
+  constructor ( private router: Router, private authService: AuthService, private inventarioService: InventarioService,  private messageService: MessageService ) { }
   @BlockUI() blockUI: NgBlockUI;
   usuarioLogado: Usuario;
   limpar: string;
@@ -35,12 +34,15 @@ export class EnderecoInventarioComponent implements OnInit {
   }
 
   validaEndereco(codigo: string) {
-    if ( codigo == this.endOrig) {
+    this.blockUI.start(MensagemUtil.VALIDANDO_DADOS);
+    if ( codigo == this.endOrig ) {
       this.router.navigate(['/inventario']);
+      this.blockUI.stop();
     }
     else {
       this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.ENDERECO_NAO_CONFERE));
       this.limpar = '';
+      this.blockUI.stop();
     }
   }
 
@@ -56,10 +58,20 @@ export class EnderecoInventarioComponent implements OnInit {
   }
 
   buscaDadosEndereco(){      
+    this.blockUI.start(MensagemUtil.VALIDANDO_DADOS);
     this.endOrig = this.inventarioService.proxEndereco;
-      this.inventarioService.buscarDadosEndereco(this.endOrig).subscribe((retorno => {
-        this.endereco = retorno;
-      }));
+      this.inventarioService.buscarDadosEndereco(this.endOrig).subscribe((retorno: EnderecoInventario) => {
+        if ( retorno.codigo != '0' ) {
+          this.endereco = retorno;
+          this.blockUI.stop();
+        } else {
+          this.router.navigate(['/home-inventario']);
+          this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.ENDERECO_INVALIDO));
+          this.blockUI.stop();
+        }          
+      }, (erro) => {
+        this.messageService.add(MensagemUtil.criaMensagemErro(erro.message));
+        this.blockUI.stop();
+      });
   }
-
 }

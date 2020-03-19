@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../login/shared/login.model';
 import { AuthService } from '../login/shared/auth.service';
 import { Router } from '@angular/router';
+import { InventarioService } from './inventario/compartilhado/inventario.service';
+import { NgBlockUI, BlockUI } from 'ng-block-ui';
 
 @Component({
   selector: 'app-home-inventario',
@@ -10,8 +12,8 @@ import { Router } from '@angular/router';
 })
 export class HomeInventarioComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService) { }
-
+  constructor(private router: Router, private authService: AuthService, private inventarioService: InventarioService) { }
+  @BlockUI() blockUI: NgBlockUI;
   usuarioLogado: Usuario;
   limpar: string;
 
@@ -30,8 +32,9 @@ export class HomeInventarioComponent implements OnInit {
     element.focus();    
   }
 
-  buscaEndereco(codigo: number){
-    this.router.navigate(['/inventario']);   
+  buscaEndereco(codigo: string){
+    this.inventarioService.proxEndereco = codigo;
+    this.router.navigate(['/endereco-inventario']);   
     this.limpar = ''; 
   }
 

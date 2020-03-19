@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 import { AuthService } from '../login/shared/auth.service';
 import { Usuario } from '../login/shared/login.model';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
@@ -20,7 +20,7 @@ export class MenuLateralComponent implements OnInit {
   items: MenuItem[] = [];
   usuarioLogado: Usuario = new Usuario;
 
-  constructor(private router: Router, private authService: AuthService, private inventarioService: InventarioService) { }
+  constructor(private router: Router, private authService: AuthService, private inventarioService: InventarioService, private messageService: MessageService) { }
 
   ngOnInit() {
     setTimeout(() => {
@@ -56,8 +56,6 @@ export class MenuLateralComponent implements OnInit {
           { separator: true },
           { label: 'INVENTÁRIO', icon: 'fa fa-dropbox', command: (event) => {
             this.validaTelaSeguinte();
-            //event.originalEvent: Browser event
-            //event.item: menuitem metadata
           }},
           { separator: true },
           { label: 'SAIR', icon: 'pi pi-sign-out', routerLink: '/login' },
@@ -68,7 +66,7 @@ export class MenuLateralComponent implements OnInit {
 
   validaTelaSeguinte(){
     this.blockUI.start(MensagemUtil.VALIDANDO_DADOS);
-    this.inventarioService.buscarProxEndereco(this.usuarioLogado.codigo, 14531).subscribe((retorno: string) => {
+    this.inventarioService.buscarProxEndereco(this.usuarioLogado.codigo).subscribe((retorno: string) => {
       if ( retorno == '-1') {
         this.router.navigate(['/home-inventario']);
         this.blockUI.stop();
@@ -77,6 +75,9 @@ export class MenuLateralComponent implements OnInit {
         this.router.navigate(['/endereco-inventario']);
         this.blockUI.stop();
       }
+    }, (erro) => {
+      this.messageService.add(MensagemUtil.criaMensagemErro(erro.message));
+      this.blockUI.stop();
     });
   }
 

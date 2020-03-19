@@ -24,10 +24,10 @@ export class AuthService {
   constructor(private router: Router, private messageService: MessageService, private httpClient: HttpClient) { }
 
   fazerLogin(usuario: Usuario) {
-    return this.httpClient.get(`${this.urlApi}getUsuario/${usuario.codigo}`);
+    return this.httpClient.get(`${this.urlApi}getUsuario/${usuario.codigo}/${usuario.base}`);
   }
 
-  getUsuarioLogado(): Usuario {    
+  getUsuarioLogado(): Usuario {   
     if (this.usuario != null)
       return this.usuario;
     else 
