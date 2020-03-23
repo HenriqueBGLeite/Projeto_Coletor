@@ -20,40 +20,39 @@ const routes: Routes = [
   //Rota Home
   { 
     path: 'home', component: HomeComponent,
-    //canActivate: [AuthGuard] 
+    canActivate: [AuthGuard] 
   },
   
   //Rotas para home produto
   {
     path: 'home-produto', component: HomeProdutoComponent, 
-    //canActivate: [AuthGuard] 
+    canActivate: [AuthGuard] 
   },
  
   { 
     path: 'consultar-produto', component: ConsultarProdutoComponent, 
-    //canActivate: [AuthGuard] 
+    canActivate: [AuthGuard] 
   },
 
   { 
     path: 'lista-produto', component: ListaProdutoComponent, 
-    //canActivate: [AuthGuard] 
+    canActivate: [AuthGuard] 
   },
   
   //Rota para inventario
-
   { 
     path: 'home-inventario', component: HomeInventarioComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   }, 
 
   { 
     path: 'endereco-inventario', component: EnderecoInventarioComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   }, 
 
   { 
     path: 'inventario', component: InventarioComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   }
   
 ];

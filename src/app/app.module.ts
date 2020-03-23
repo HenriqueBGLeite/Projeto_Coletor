@@ -21,6 +21,7 @@ import { TabelaModule } from './componentes/tabela/tabela.module';
 import { HomeProdutoModule } from './componentes/home-produto/home-produto.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HomeInventarioModule } from './componentes/home-inventario/home-inventario.module';
+import { AuthGuard } from './guard/auth.guard';
 
 
 
@@ -50,7 +51,7 @@ import { HomeInventarioModule } from './componentes/home-inventario/home-inventa
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},
     MessageService,
-    MessageServiceUtil, AuthService, 
+    MessageServiceUtil, AuthService, AuthGuard, 
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent]
