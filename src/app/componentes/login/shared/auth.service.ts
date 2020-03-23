@@ -60,13 +60,12 @@ export class AuthService {
     }
   }
 
-  getUsuarioLogado(): Usuario {   
+  /*getUsuarioLogado(): Usuario {   
     if (this.usuario != null)
       return this.usuario;
     else 
-      this.router.navigate(['/login']);
-      this.messageService.add(MensagemUtil.criaMensagemAviso(MensagemUtil.USUARIO_NAO_ENCONTRADO));
-  }
+      console.log(this.getDecodedToken()); 
+  }*/
 
   sair(){    
     this.usuarioAutenticado = false;

@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
           this.authService.atualizaUsuarioLogado(usuario);
           this.authService.updateMostrarMenu(true);
           this.router.navigate(['/home']);
-          console.log(this.authService.getDecodedToken())
           this.blockUI.stop();
         } else {
           this.blockUI.stop();

@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   }
 
   buscaUsuarioLogado(): Usuario{
-    this.usuarioLogado = this.authService.getUsuarioLogado();
+    this.usuarioLogado = this.authService.getDecodedToken();
     return this.usuarioLogado;
   }
 }

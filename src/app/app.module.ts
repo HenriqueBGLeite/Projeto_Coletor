@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { MenuLateralModule } from './componentes/menu-lateral/menu-lateral.module';
 import { SidebarModule } from 'primeng/sidebar';
 import { GalleriaModule } from 'primeng/galleria';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BlockUIModule } from 'ng-block-ui';
 import { MessageService } from 'primeng/api';
 import { MessageServiceUtil } from 'src/Util/message-service-util.service';
@@ -22,6 +22,7 @@ import { HomeProdutoModule } from './componentes/home-produto/home-produto.modul
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HomeInventarioModule } from './componentes/home-inventario/home-inventario.module';
 import { AuthGuard } from './guard/auth.guard';
+import { InterceptorToken } from './componentes/login/shared/interceptor-token.service';
 
 
 
@@ -52,6 +53,7 @@ import { AuthGuard } from './guard/auth.guard';
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},
     MessageService,
     MessageServiceUtil, AuthService, AuthGuard, 
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorToken, multi: true },
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent]
