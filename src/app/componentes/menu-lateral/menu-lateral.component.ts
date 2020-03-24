@@ -68,9 +68,11 @@ export class MenuLateralComponent implements OnInit {
     this.blockUI.start(MensagemUtil.VALIDANDO_DADOS);
     this.inventarioService.buscarProxEndereco(this.usuarioLogado.codigo).subscribe((retorno: string) => {
       if ( retorno == '-1') {
+        console.log("Caiu no Onde Estou.");
         this.router.navigate(['/home-inventario']);
         this.blockUI.stop();
       } else {
+        console.log("Caiu Endereço inventario.");
         this.inventarioService.proxEndereco = retorno;
         this.router.navigate(['/endereco-inventario']);
         this.blockUI.stop();
@@ -78,6 +80,7 @@ export class MenuLateralComponent implements OnInit {
     }, (erro) => {
       this.messageService.add(MensagemUtil.criaMensagemErro(erro.message));
       this.blockUI.stop();
+      console.log("Caiu erro.");
     });
   }
 

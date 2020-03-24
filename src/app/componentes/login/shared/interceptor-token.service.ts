@@ -4,9 +4,11 @@ import { Observable, of } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
+import { NgBlockUI, BlockUI } from 'ng-block-ui';
 
 @Injectable()
 export class InterceptorToken implements HttpInterceptor {
+  @BlockUI() blockUI: NgBlockUI;
 
     constructor(private authService: AuthService, private router: Router) { }
 
@@ -19,6 +21,7 @@ export class InterceptorToken implements HttpInterceptor {
       catchError((err: any) => {
           if (this.isRespostaTokenInvalido(err)) {
               this.authService.sair();
+              this.blockUI.stop();
               return of(err);
           }
           return next.handle(request);
