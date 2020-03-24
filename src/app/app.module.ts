@@ -20,7 +20,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TabelaModule } from './componentes/tabela/tabela.module';
 import { HomeProdutoModule } from './componentes/home-produto/home-produto.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { HomeInventarioModule } from './componentes/home-inventario/home-inventario.module';
+import { HomeInventarioModule } from './componentes/home-inventario-wms/home-inventario.module';
 import { AuthGuard } from './guard/auth.guard';
 import { InterceptorToken } from './componentes/login/shared/interceptor-token.service';
 

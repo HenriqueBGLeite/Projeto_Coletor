@@ -1,14 +1,14 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { ConsultarProdutoComponent } from './componentes/home-produto/consultar-produto/consultar-produto.component';
-import { InventarioComponent } from './componentes/home-inventario/inventario/inventario.component';
+import { InventarioComponent } from './componentes/home-inventario-wms/inventario/inventario.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { AuthGuard } from './guard/auth.guard';
 import { HomeProdutoComponent } from './componentes/home-produto/home-produto.component';
 import { ListaProdutoComponent } from './componentes/home-produto/lista-produto/lista-produto.component';
-import { HomeInventarioComponent } from './componentes/home-inventario/home-inventario.component';
-import { EnderecoInventarioComponent } from './componentes/home-inventario/endereco-inventario/endereco-inventario.component';
+import { HomeInventarioComponent } from './componentes/home-inventario-wms/home-inventario.component';
+import { EnderecoInventarioComponent } from './componentes/home-inventario-wms/endereco-inventario/endereco-inventario.component';
 
 const routes: Routes = [
   //Rota default do projeto

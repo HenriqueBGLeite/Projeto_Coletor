@@ -3,7 +3,7 @@ import { MenuItem, MessageService } from 'primeng/api';
 import { AuthService } from '../login/shared/auth.service';
 import { Usuario } from '../login/shared/login.model';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { InventarioService } from '../home-inventario/inventario/compartilhado/inventario.service';
+import { InventarioService } from '../home-inventario-wms/inventario/compartilhado/inventario.service';
 import { Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { MensagemUtil } from 'src/Util/mensagem-util';
@@ -68,11 +68,9 @@ export class MenuLateralComponent implements OnInit {
     this.blockUI.start(MensagemUtil.VALIDANDO_DADOS);
     this.inventarioService.buscarProxEndereco(this.usuarioLogado.codigo).subscribe((retorno: string) => {
       if ( retorno == '-1') {
-        console.log("Caiu no Onde Estou.");
         this.router.navigate(['/home-inventario']);
         this.blockUI.stop();
       } else {
-        console.log("Caiu Endereço inventario.");
         this.inventarioService.proxEndereco = retorno;
         this.router.navigate(['/endereco-inventario']);
         this.blockUI.stop();
@@ -80,7 +78,6 @@ export class MenuLateralComponent implements OnInit {
     }, (erro) => {
       this.messageService.add(MensagemUtil.criaMensagemErro(erro.message));
       this.blockUI.stop();
-      console.log("Caiu erro.");
     });
   }
 
