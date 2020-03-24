@@ -29,8 +29,7 @@ export class LoginComponent implements OnInit {
   login(){
     this.blockUI.start(MensagemUtil.VALIDANDO_DADOS);
     if ( this.usuario.codigo != null && this.usuario.base != null ) {     
-      this.authService.fazerLogin(this.usuario).subscribe((usuario: Usuario) => { 
-        console.log(usuario);                    
+      this.authService.fazerLogin(this.usuario).subscribe((usuario: Usuario) => {                  
         if (usuario.erro == "N" && usuario.warning == "N") {
           this.authService.criaTokenLocalStorage(usuario.token);
           this.authService.atualizaUsuarioLogado(usuario);

@@ -125,7 +125,7 @@ export class ConsultarProdutoComponent implements OnInit {
   }
 
   buscaUsuarioLogado(): Usuario{
-    this.usuarioLogado = this.authService.getDecodedToken();
+    this.usuarioLogado = this.authService.getDecodedToken();   
     return this.usuarioLogado;
   }
 
