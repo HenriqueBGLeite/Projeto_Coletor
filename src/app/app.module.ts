@@ -23,6 +23,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HomeInventarioModule } from './componentes/home-inventario-wms/home-inventario.module';
 import { AuthGuard } from './guard/auth.guard';
 import { InterceptorToken } from './componentes/login/shared/interceptor-token.service';
+import { HomeInventarioSemWmsModule } from './componentes/home-inventario-sem-wms/home-inventario-sem-wms.module';
 
 
 
@@ -48,7 +49,7 @@ import { InterceptorToken } from './componentes/login/shared/interceptor-token.s
     TabelaModule,
     HomeProdutoModule,
     HomeInventarioModule,
-    
+    HomeInventarioSemWmsModule    
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},
     MessageService,

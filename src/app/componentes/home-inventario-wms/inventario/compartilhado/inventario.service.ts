@@ -12,11 +12,13 @@ import { ProdutoInventario } from './produto-inventario.model';
 export class InventarioService {
 
   proxEndereco: string;
+  numinvent: number;
 
   urlApi = environment.urlApi.concat('/Inventario/');
 
   constructor(private httpClient: HttpClient) { }
 
+  //Inventario Com WMS
   public buscarProduto(produto: string, filial: number){
     return this.httpClient.get(`${this.urlApi}getProdutoInventario/${produto}/${filial}`);
   }
@@ -31,6 +33,15 @@ export class InventarioService {
 
   public buscarDadosEndereco(codEndereco: string){
     return this.httpClient.get(`${this.urlApi}getDadosEndereco/${codEndereco}`);
+  }
+
+  //Inventario Sem WMS
+  public buscarInventarioSemWms(codFilial: number, codUsuario: number){
+    return this.httpClient.get(`${this.urlApi}getInventario/${codFilial}/${codUsuario}`)
+  }
+
+  public buscarProdutoSemWms(){
+    return ('Chegou aqui');
   }
 
 }

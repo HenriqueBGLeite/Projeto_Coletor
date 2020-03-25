@@ -66,19 +66,30 @@ export class MenuLateralComponent implements OnInit {
 
   validaTelaSeguinte(){
     this.blockUI.start(MensagemUtil.VALIDANDO_DADOS);
-    this.inventarioService.buscarProxEndereco(this.usuarioLogado.codigo).subscribe((retorno: string) => {
-      if ( retorno == '-1') {
-        this.router.navigate(['/home-inventario']);
+    if ( this.usuarioLogado.usaWms === 'S' ) {
+      //Fluxo com WMS
+      this.inventarioService.buscarProxEndereco(this.usuarioLogado.codigo).subscribe((retorno: string) => {
+        if ( retorno == '-1') {
+          this.router.navigate(['/home-inventario']);
+          this.blockUI.stop();
+        } else {
+          this.inventarioService.proxEndereco = retorno;
+          this.router.navigate(['/endereco-inventario']);
+          this.blockUI.stop();
+        }
+      }, (erro) => {
+        this.messageService.add(MensagemUtil.criaMensagemErro(erro.message));
         this.blockUI.stop();
-      } else {
-        this.inventarioService.proxEndereco = retorno;
-        this.router.navigate(['/endereco-inventario']);
-        this.blockUI.stop();
-      }
-    }, (erro) => {
-      this.messageService.add(MensagemUtil.criaMensagemErro(erro.message));
+      });
+    } else {
+      this.inventarioService.buscarInventarioSemWms(this.usuarioLogado.filial, this.usuarioLogado.codigo).subscribe((retorno: number) =>{
+        console.log(retorno);        
+        this.inventarioService.numinvent = retorno;
+      });
+      this.router.navigate(['/inventario-sem-wms']);
       this.blockUI.stop();
-    });
+    }
+    
   }
 
 }

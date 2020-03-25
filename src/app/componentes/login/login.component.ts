@@ -15,7 +15,7 @@ import { NgBlockUI, BlockUI } from 'ng-block-ui';
 export class LoginComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
   usuario: Usuario = new Usuario();
-  base: SelectItem[] = Constantes.baseUsuario;
+  base: any [] = Constantes.baseUsuario;
 
   constructor(private authService: AuthService,  private messageService: MessageService, private router: Router) { }
 

@@ -14,6 +14,7 @@ export class Constantes {
     }
 
     public static baseUsuario = [
+        { label: 'Selecione sua base...', selected: true},
         { label: 'EPOCA', value: 'EPOCA' },
         { label: 'MRURAL', value: 'MRURAL' },
         { label: 'EPOCATESTE', value: 'TESTE-EPOCA' }

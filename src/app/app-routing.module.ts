@@ -9,6 +9,7 @@ import { HomeProdutoComponent } from './componentes/home-produto/home-produto.co
 import { ListaProdutoComponent } from './componentes/home-produto/lista-produto/lista-produto.component';
 import { HomeInventarioComponent } from './componentes/home-inventario-wms/home-inventario.component';
 import { EnderecoInventarioComponent } from './componentes/home-inventario-wms/endereco-inventario/endereco-inventario.component';
+import { HomeInventarioSemWmsComponent } from './componentes/home-inventario-sem-wms/home-inventario-sem-wms.component';
 
 const routes: Routes = [
   //Rota default do projeto
@@ -39,7 +40,7 @@ const routes: Routes = [
     canActivate: [AuthGuard] 
   },
   
-  //Rota para inventario
+  //Rota para inventario com WMS
   { 
     path: 'home-inventario', component: HomeInventarioComponent,
     canActivate: [AuthGuard]
@@ -53,8 +54,13 @@ const routes: Routes = [
   { 
     path: 'inventario', component: InventarioComponent,
     canActivate: [AuthGuard]
+  },
+
+  //Rota para inventario sem WMS
+  { 
+    path: 'inventario-sem-wms', component: HomeInventarioSemWmsComponent,
+    canActivate: [AuthGuard]
   }
-  
 ];
 
 @NgModule({

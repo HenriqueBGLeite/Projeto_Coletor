@@ -10,7 +10,7 @@ export class MensagemUtil {
     public static REGISTRO_ALTERADO = 'Registro alterado com sucesso!';
     public static ERRO_SALVAR = 'Ocorreu um erro ao tentar salvar o registro!';
     public static ERRO_BUSCA = 'Ocorreu um erro na busca!';
-    public static VALIDA_DADOS = 'Dados inválidos para requisição.';
+    public static VALIDA_DADOS = 'Dados inválidos para requisição. Verifique usuário e base!';
     public static VALIDA_LASTRO_CAMADA = 'Lastro/Camada informados, diferem do cadastro.';
 
     //Tela Listagem

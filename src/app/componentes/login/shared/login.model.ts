@@ -10,7 +10,6 @@ export class Usuario {
         public codArea?: number,
         public digitaQt?: string,
         public usaWms?: string,
-        public numInvent?: number,
         public acessoSistema?: string,
         public acessoDigQtInvent?: string,
         public acessoConfBonus?: string,
