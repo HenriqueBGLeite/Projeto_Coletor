@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       this.authService.fazerLogin(this.usuario).subscribe((usuario: Usuario) => {                  
         if (usuario.erro == "N" && usuario.warning == "N") {
           this.authService.criaTokenLocalStorage(usuario.token);
-          this.authService.atualizaUsuarioLogado(usuario);
+          //this.authService.atualizaUsuarioLogado(usuario);
           this.authService.updateMostrarMenu(true);
           this.router.navigate(['/home']);
           this.blockUI.stop();

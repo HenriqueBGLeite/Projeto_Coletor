@@ -14,12 +14,12 @@ import * as jwt_decode from "jwt-decode";
   providedIn: 'root'
 })
 export class AuthService {
-
+  
+  urlApi = environment.urlApi.concat('/Login/');
+  
   private mostrarMenu = new BehaviorSubject<boolean>(false);
   MenuEnabled = this.mostrarMenu.asObservable();
-
-  private usuario: Usuario;
-  urlApi = environment.urlApi.concat('/Login/');
+  
   usuarioAutenticado: boolean = false;
 
   constructor(private router: Router, private messageService: MessageService, private httpClient: HttpClient) { }
@@ -69,7 +69,7 @@ export class AuthService {
 
   sair(){    
     this.usuarioAutenticado = false;
-    this.usuario = new Usuario();
+    localStorage.clear();
     this.removeTokenLocalStorage();
     this.updateMostrarMenu(false);
     this.router.navigate(['/login']);
@@ -79,8 +79,8 @@ export class AuthService {
     this.mostrarMenu.next(MenuEnabled);
 }
 
-  atualizaUsuarioLogado(usuario: Usuario){
+  /*atualizaUsuarioLogado(usuario: Usuario){
     this.usuario = usuario;
-  }
+  }*/
 
 }

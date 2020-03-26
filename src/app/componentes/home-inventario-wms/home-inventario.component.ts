@@ -33,7 +33,7 @@ export class HomeInventarioComponent implements OnInit {
   }
 
   buscaEndereco(codigo: string){
-    this.inventarioService.proxEndereco = codigo;
+    localStorage.setItem('proxEndereco', codigo);
     this.router.navigate(['/endereco-inventario']);   
     this.limpar = ''; 
   }

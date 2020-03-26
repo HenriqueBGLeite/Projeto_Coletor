@@ -59,7 +59,7 @@ export class EnderecoInventarioComponent implements OnInit {
 
   buscaDadosEndereco(){      
     this.blockUI.start(MensagemUtil.VALIDANDO_DADOS);
-    this.endOrig = this.inventarioService.proxEndereco;
+    this.endOrig = localStorage.getItem('proxEndereco');
       this.inventarioService.buscarDadosEndereco(this.endOrig).subscribe((retorno: EnderecoInventario) => {
         if ( retorno.codigo != '0' ) {
           this.endereco = retorno;

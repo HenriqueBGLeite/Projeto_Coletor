@@ -11,9 +11,6 @@ import { ProdutoInventario } from './produto-inventario.model';
 
 export class InventarioService {
 
-  proxEndereco: string;
-  numinvent: number;
-
   urlApi = environment.urlApi.concat('/Inventario/');
 
   constructor(private httpClient: HttpClient) { }

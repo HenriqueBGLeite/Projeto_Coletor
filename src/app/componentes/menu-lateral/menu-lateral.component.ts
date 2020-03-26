@@ -73,7 +73,7 @@ export class MenuLateralComponent implements OnInit {
           this.router.navigate(['/home-inventario']);
           this.blockUI.stop();
         } else {
-          this.inventarioService.proxEndereco = retorno;
+          localStorage.setItem('proxEndereco', retorno);
           this.router.navigate(['/endereco-inventario']);
           this.blockUI.stop();
         }
@@ -83,8 +83,7 @@ export class MenuLateralComponent implements OnInit {
       });
     } else {
       this.inventarioService.buscarInventarioSemWms(this.usuarioLogado.filial, this.usuarioLogado.codigo).subscribe((retorno: number) =>{
-        console.log(retorno);        
-        this.inventarioService.numinvent = retorno;
+        localStorage.setItem('numInvent', retorno.toString());
       });
       this.router.navigate(['/inventario-sem-wms']);
       this.blockUI.stop();

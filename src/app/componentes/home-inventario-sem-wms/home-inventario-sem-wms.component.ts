@@ -18,14 +18,15 @@ export class HomeInventarioSemWmsComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
   produtoInventario: ProdutoInventarioSemWms = new ProdutoInventarioSemWms();
   usuarioLogado: Usuario;
-  numInvent: number = this.inventarioService.numinvent;
+  numInvent: string;
   limpar: string = '';
 
   constructor(private authService: AuthService, private messageService: MessageService, private inventarioService: InventarioService) { }
 
   ngOnInit() {
     this.buscaUsuarioLogado();
-    this.focoBusca();  
+    this.focoBusca();
+    this.numInvent = localStorage.getItem('numInvent');  
   }
 
   salvar(){
